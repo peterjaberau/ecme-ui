@@ -1,0 +1,5 @@
+export { createFixedHistoryPlugin } from './create-fixed-history-plugin'
+export * from './types'
+export * from './services'
+export * from '@flow/history'
+export * from './fixed-history-config'

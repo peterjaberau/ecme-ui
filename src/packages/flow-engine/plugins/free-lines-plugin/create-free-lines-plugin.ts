@@ -1,0 +1,34 @@
+import { WorkflowLinesManager } from '@flow/free-layout-core'
+import { definePluginCreator, PluginContext } from '@flow/canvas-core'
+
+import { FreeLinesPluginOptions } from './type'
+import { WorkflowLinesLayer } from './layer'
+import {
+    WorkflowBezierLineContribution,
+    WorkflowFoldLineContribution,
+} from './contributions'
+
+export const createFreeLinesPlugin = definePluginCreator({
+    singleton: true,
+    onInit: (ctx: PluginContext, opts: FreeLinesPluginOptions) => {
+        ctx.playground.registerLayer(WorkflowLinesLayer, {
+            ...opts,
+        })
+    },
+    onReady: (ctx: PluginContext, opts: FreeLinesPluginOptions) => {
+        const linesManager = ctx.container.get(WorkflowLinesManager)
+        linesManager
+            .registerContribution(WorkflowBezierLineContribution)
+            .registerContribution(WorkflowFoldLineContribution)
+
+        if (opts.contributions) {
+            opts.contributions.forEach((contribution) => {
+                linesManager.registerContribution(contribution)
+            })
+        }
+
+        if (opts.defaultLineType) {
+            linesManager.switchLineType(opts.defaultLineType)
+        }
+    },
+})

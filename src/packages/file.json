@@ -1,0 +1,183 @@
+[
+  {
+    "name": "@flowgram.ai/demo-fixed-layout",
+    "path": "apps/demo-fixed-layout"
+  },
+  {
+    "name": "@flowgram.ai/utils",
+    "path": "packages/common/utils"
+  },
+  {
+    "name": "@flowgram.ai/core",
+    "path": "packages/canvas-engine/core"
+  },
+  {
+    "name": "@flowgram.ai/document",
+    "path": "packages/canvas-engine/document"
+  },
+  {
+    "name": "@flowgram.ai/renderer",
+    "path": "packages/canvas-engine/renderer"
+  },
+  {
+    "name": "@flowgram.ai/reactive",
+    "path": "packages/common/reactive"
+  },
+  {
+    "name": "@flowgram.ai/background-plugin",
+    "path": "packages/plugins/background-plugin"
+  },
+  {
+    "name": "@flowgram.ai/fixed-layout-core",
+    "path": "packages/canvas-engine/fixed-layout-core"
+  },
+  {
+    "name": "@flowgram.ai/free-layout-core",
+    "path": "packages/canvas-engine/free-layout-core"
+  },
+  {
+    "name": "@flowgram.ai/editor",
+    "path": "packages/client/editor"
+  },
+  {
+    "name": "@flowgram.ai/fixed-drag-plugin",
+    "path": "packages/plugins/fixed-drag-plugin"
+  },
+  {
+    "name": "@flowgram.ai/fixed-history-plugin",
+    "path": "packages/plugins/fixed-history-plugin"
+  },
+  {
+    "name": "@flowgram.ai/fixed-layout-editor",
+    "path": "packages/client/fixed-layout-editor"
+  },
+  {
+    "name": "@flowgram.ai/fixed-reactor-plugin",
+    "path": "packages/plugins/fixed-reactor-plugin"
+  },
+  {
+    "name": "@flowgram.ai/form",
+    "path": "packages/node-engine/form"
+  },
+  {
+    "name": "@flowgram.ai/form-core",
+    "path": "packages/node-engine/form-core"
+  },
+  {
+    "name": "@flowgram.ai/free-history-plugin",
+    "path": "packages/plugins/free-history-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-hover-plugin",
+    "path": "packages/plugins/free-hover-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-layout-editor",
+    "path": "packages/client/free-layout-editor"
+  },
+  {
+    "name": "@flowgram.ai/free-lines-plugin",
+    "path": "packages/plugins/free-lines-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-node-panel-plugin",
+    "path": "packages/plugins/free-node-panel-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-snap-plugin",
+    "path": "packages/plugins/free-snap-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-stack-plugin",
+    "path": "packages/plugins/free-stack-plugin"
+  },
+  {
+    "name": "@flowgram.ai/free-container-plugin",
+    "path": "packages/plugins/free-container-plugin"
+  },
+  {
+    "name": "@flowgram.ai/group-plugin",
+    "path": "packages/plugins/group-plugin"
+  },
+  {
+    "name": "@flowgram.ai/history-node-plugin",
+    "path": "packages/plugins/history-node-plugin"
+  },
+  {
+    "name": "@flowgram.ai/minimap-plugin",
+    "path": "packages/plugins/minimap-plugin"
+  },
+  {
+    "name": "@flowgram.ai/node",
+    "path": "packages/node-engine/node"
+  },
+  {
+    "name": "@flowgram.ai/node-core-plugin",
+    "path": "packages/plugins/node-core-plugin"
+  },
+  {
+    "name": "@flowgram.ai/node-variable-plugin",
+    "path": "packages/plugins/node-variable-plugin"
+  },
+  {
+    "name": "@flowgram.ai/playground-react",
+    "path": "packages/client/playground-react"
+  },
+  {
+    "name": "@flowgram.ai/redux-devtool-plugin",
+    "path": "packages/plugins/redux-devtool-plugin"
+  },
+  {
+    "name": "@flowgram.ai/select-box-plugin",
+    "path": "packages/plugins/select-box-plugin"
+  },
+  {
+    "name": "@flowgram.ai/shortcuts-plugin",
+    "path": "packages/plugins/shortcuts-plugin"
+  },
+  {
+    "name": "@flowgram.ai/variable-core",
+    "path": "packages/variable-engine/variable-core"
+  },
+  {
+    "name": "@flowgram.ai/variable-layout",
+    "path": "packages/variable-engine/variable-layout"
+  },
+  {
+    "name": "@flowgram.ai/variable-plugin",
+    "path": "packages/plugins/variable-plugin"
+  },
+  {
+    "name": "@flowgram.ai/command",
+    "path": "packages/common/command"
+  },
+  {
+    "name": "@flowgram.ai/history",
+    "path": "packages/common/history"
+  },
+  {
+    "name": "@flowgram.ai/history-storage",
+    "path": "packages/common/history-storage"
+  },
+  {
+    "name": "@flowgram.ai/materials-plugin",
+    "path": "packages/plugins/materials-plugin"
+  },
+  {
+    "name": "@flowgram.ai/fixed-semi-materials",
+    "path": "packages/materials/fixed-semi-materials"
+  },
+  {
+    "name": "@flowgram.ai/free-auto-layout-plugin",
+    "path": "packages/plugins/free-auto-layout-plugin"
+  },
+  {
+    "name": "@flowgram.ai/i18n-plugin",
+    "path": "packages/plugins/i18n-plugin"
+  },
+  {
+    "name": "@flowgram.ai/i18n",
+    "path": "packages/common/i18n"
+  },
+
+]

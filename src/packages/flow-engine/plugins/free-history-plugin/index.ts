@@ -1,0 +1,6 @@
+export * from './create-free-history-plugin'
+export * from './types'
+export * from '@flow/history'
+export * from './free-history-config'
+export * from './hooks'
+export * from './free-history-registers'
