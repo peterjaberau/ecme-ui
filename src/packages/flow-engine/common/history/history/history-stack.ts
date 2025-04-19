@@ -19,7 +19,7 @@ import { type HistoryService } from './history-service'
 @injectable()
 export class HistoryStack {
     @inject(HistoryConfig)
-    historyConfig: HistoryConfig
+    historyConfig: HistoryConfig | any
 
     private _items: HistoryItem[] = []
 

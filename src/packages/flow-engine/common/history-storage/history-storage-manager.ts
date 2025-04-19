@@ -25,10 +25,10 @@ import { HistoryDatabase } from './history-database'
 export class HistoryStorageManager {
     private _toDispose = new DisposableCollection()
 
-    db: HistoryDatabase
+    db: HistoryDatabase | any
 
     @inject(HistoryManager)
-    protected historyManager: HistoryManager
+    protected historyManager: HistoryManager | any
 
     /**
      * 初始化
@@ -42,7 +42,7 @@ export class HistoryStorageManager {
         }
 
         this._toDispose.push(
-            this.historyManager.historyStack.onChange((event) => {
+            this.historyManager.historyStack.onChange((event: any) => {
                 if (event.type === HistoryStackChangeType.ADD) {
                     const [history, operations] = this.historyItemToRecord(
                         event.service,

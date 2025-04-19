@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { Rectangle } from '@flow/utils'
 import {
@@ -19,7 +19,7 @@ export interface PropsType {
     data: FlowNodeTransitionData
     rendererRegistry: FlowRendererRegistry
     isViewportVisible: (bounds: Rectangle) => boolean
-    linesSave: JSX.Element[]
+    linesSave: ReactElement[]
     dragService: FlowDragService
 }
 
@@ -98,7 +98,7 @@ export function createLines(props: PropsType): void {
             line.to,
         ).pad(10)
         if (props.isViewportVisible(bounds)) {
-            const jsxEl = renderLine(line, index) as JSX.Element
+            const jsxEl = renderLine(line, index) as ReactElement
             if (jsxEl) linesSave.push(jsxEl)
         }
     })

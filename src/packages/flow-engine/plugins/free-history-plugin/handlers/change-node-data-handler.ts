@@ -17,15 +17,15 @@ export interface ChangeNodeDataEvent extends DetailChangeEvent {
 @injectable()
 export class ChangeNodeDataHandler implements IHandler<ChangeNodeDataEvent> {
     @inject(HistoryService)
-    private _historyService: HistoryService
+    private _historyService: HistoryService | any
 
-    @inject(WorkflowDocument) document: WorkflowDocument
+    @inject(WorkflowDocument) document: WorkflowDocument | any
 
     @inject(HistoryEntityManager)
-    private _entityManager: HistoryEntityManager
+    private _entityManager: HistoryEntityManager | any
 
     @inject(FreeHistoryConfig)
-    private _config: FreeHistoryConfig
+    private _config: FreeHistoryConfig | any
 
     handle(event: ChangeNodeDataEvent) {
         const { path, value, initialized, node } = event

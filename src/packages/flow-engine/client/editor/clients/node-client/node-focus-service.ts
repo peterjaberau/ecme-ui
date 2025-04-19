@@ -13,7 +13,7 @@ export interface FocusNodeFormItemOptions {
 
 @injectable()
 export class NodeFocusService {
-    @inject(Playground) readonly playground: Playground
+    @inject(Playground) readonly playground: Playground | any
 
     protected previousOverlay: HTMLDivElement | undefined
 
@@ -33,7 +33,7 @@ export class NodeFocusService {
             this.previousOverlay.remove()
             this.previousOverlay = undefined
         }
-        const currentPromise = this.playground
+        const currentPromise: any = this.playground
             .scrollToView({ entities: [node], scrollToCenter: true, ...canvas })
             .then(() => {
                 if (
@@ -49,6 +49,7 @@ export class NodeFocusService {
                 )
             })
         this.currentPromise = currentPromise
+        //@ts-ignore
         return this.currentPromise
     }
 }

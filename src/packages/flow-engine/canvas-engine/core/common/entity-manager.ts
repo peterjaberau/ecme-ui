@@ -132,6 +132,7 @@ export class EntityManager implements Disposable {
 
     @multiInject(EntityManagerContribution)
     @optional()
+    //@ts-ignore
     contributions: EntityManagerContribution[]
 
     @injectPlaygroundContext() context: PlaygroundContext

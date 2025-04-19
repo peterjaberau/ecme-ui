@@ -22,22 +22,22 @@ import { GroupBox } from './components'
 export class GroupsLayer extends Layer<GroupsLayerOptions> {
     public readonly node: HTMLElement
 
-    @inject(FlowDocument) protected document: FlowDocument
+    @inject(FlowDocument) protected document: FlowDocument | any
 
     @inject(FlowRendererRegistry)
-    protected readonly rendererRegistry: FlowRendererRegistry
+    protected readonly rendererRegistry: FlowRendererRegistry | any
 
     @inject(FlowGroupService)
-    protected readonly groupService: FlowGroupService
+    protected readonly groupService: FlowGroupService | any
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeRenderData)
-    renderStates: FlowNodeRenderData[]
+    renderStates: FlowNodeRenderData[] | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransformData)
-    transforms: FlowNodeTransformData[]
+    transforms: FlowNodeTransformData[] | any
 
     private readonly className = 'gedit-groups-layer'
 
@@ -52,7 +52,7 @@ export class GroupsLayer extends Layer<GroupsLayerOptions> {
         this.node!.style.transform = `scale(${scale})`
     }
 
-    public render(): JSX.Element {
+    public render(): Element  | any{
         if (this.documentTransformer.loading) return <></>
         this.documentTransformer.refresh()
 
@@ -60,7 +60,7 @@ export class GroupsLayer extends Layer<GroupsLayerOptions> {
     }
 
     /** 渲染分组 */
-    protected renderGroups(): JSX.Element {
+    protected renderGroups(): Element | any {
         const Box = this.renderer || GroupBox
         return (
             <>

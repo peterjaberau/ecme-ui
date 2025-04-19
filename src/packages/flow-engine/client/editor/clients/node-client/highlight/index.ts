@@ -1,2 +1,2 @@
-export { highlightFormItem, HighLightOptions } from './highlight-form-item'
+export { highlightFormItem, type HighLightOptions } from './highlight-form-item'
 export { useHighlight } from './use-highlight'

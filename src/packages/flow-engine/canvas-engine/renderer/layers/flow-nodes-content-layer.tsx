@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { inject, injectable } from 'inversify'
 import { Cache, type CacheOriginItem, domUtils } from '@flow/utils'
@@ -24,7 +24,7 @@ import {
 
 interface NodePortal extends CacheOriginItem {
     id: string
-    Portal: () => JSX.Element
+    Portal: () => ReactElement
 }
 
 /**
@@ -32,18 +32,19 @@ interface NodePortal extends CacheOriginItem {
  */
 @injectable()
 export class FlowNodesContentLayer extends Layer {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeRenderData)
-    _renderStates: FlowNodeRenderData[]
+    _renderStates: FlowNodeRenderData[] | any
 
     get renderStatesVisible(): FlowNodeRenderData[] {
+        //@ts-ignore
         return this.document.getRenderDatas<FlowNodeRenderData>(
             FlowNodeRenderData,
             false,
@@ -54,7 +55,7 @@ export class FlowNodesContentLayer extends Layer {
 
     node = domUtils.createDivWithClass('gedit-flow-nodes-layer')
 
-    getPortalRenderer(data: FlowNodeRenderData): (props: any) => JSX.Element {
+    getPortalRenderer(data: FlowNodeRenderData): (props: any) => ReactElement {
         const meta = data.entity.getNodeMeta()
         const renderer = this.rendererRegistry.getRendererComponent(
             (meta.renderKey as FlowRendererKey) || FlowRendererKey.NODE_RENDER,
@@ -87,7 +88,7 @@ export class FlowNodesContentLayer extends Layer {
             const { config } = this
             const PortalRenderer = this.getPortalRenderer(data!)
 
-            function Portal(): JSX.Element {
+            function Portal(): ReactElement {
                 React.useEffect(() => {
                     // 第一次加载需要把宽高通知
                     if (node.clientWidth && node.clientHeight) {
@@ -104,6 +105,7 @@ export class FlowNodesContentLayer extends Layer {
                 // 这里使用 portal，改 dom 样式不会引起 react 重新渲染
                 return ReactDOM.createPortal(
                     <PlaygroundEntityContext.Provider value={entity}>
+                        //@ts-ignore
                         <PortalRenderer
                             node={entity}
                             version={data?.version}
@@ -141,7 +143,7 @@ export class FlowNodesContentLayer extends Layer {
         return this.reactPortals.getMoreByItems(this.renderStatesVisible)
     }
 
-    render() {
+    render(): ReactElement | any {
         if (this.documentTransformer.loading) return <></>
         this.documentTransformer.refresh()
 

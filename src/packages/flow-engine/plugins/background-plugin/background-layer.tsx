@@ -26,7 +26,7 @@ export class BackgroundLayer extends Layer<BackgroundLayerOptions> {
     static type = 'WorkflowBackgroundLayer'
 
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
     private _patternId = `${PATTERN_PREFIX}${id++}`
 

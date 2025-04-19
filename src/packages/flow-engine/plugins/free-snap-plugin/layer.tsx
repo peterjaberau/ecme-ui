@@ -25,9 +25,9 @@ interface SnapRenderLine {
 export class WorkflowSnapLayer extends Layer<WorkflowSnapLayerOptions> {
     public static type = 'WorkflowSnapLayer'
 
-    @inject(WorkflowDocument) private readonly document: WorkflowDocument
+    @inject(WorkflowDocument) private readonly document: WorkflowDocument | any
 
-    @inject(WorkflowSnapService) private readonly service: WorkflowSnapService
+    @inject(WorkflowSnapService) private readonly service: WorkflowSnapService | any
 
     public readonly node = domUtils.createDivWithClass(
         'gedit-playground-layer gedit-flow-snap-layer',
@@ -48,7 +48,7 @@ export class WorkflowSnapLayer extends Layer<WorkflowSnapLayerOptions> {
         ])
     }
 
-    public render(): JSX.Element {
+    public render(): Element | any {
         return (
             <>
                 {this.alignLines.length > 0 && (
@@ -69,7 +69,7 @@ export class WorkflowSnapLayer extends Layer<WorkflowSnapLayerOptions> {
         this.node.style.transform = `scale(${scale})`
     }
 
-    private renderEdgeLines(): JSX.Element[] {
+    private renderEdgeLines(): Element[] | any {
         return this.edgeLines.map((renderLine: SnapRenderLine) => {
             const { className, sourceNode, top, left, width, height, dashed } =
                 renderLine
@@ -99,7 +99,7 @@ export class WorkflowSnapLayer extends Layer<WorkflowSnapLayerOptions> {
         })
     }
 
-    private renderAlignLines(): JSX.Element[] {
+    private renderAlignLines(): Element[]  | any {
         return this.alignLines.map((renderLine: SnapRenderLine) => {
             const id = `${renderLine.className}-${renderLine.sourceNode}-${renderLine.top}-${renderLine.left}-${renderLine.width}-${renderLine.height}`
             const isHorizontal = isGreaterThan(

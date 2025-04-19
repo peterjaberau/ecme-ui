@@ -5,7 +5,7 @@ import { FieldValue } from '../types/field'
 import { Path } from './path'
 
 export class Store<TValues = FieldValue> {
-    protected _values: TValues
+    protected _values: TValues | any
 
     get values() {
         return this._values

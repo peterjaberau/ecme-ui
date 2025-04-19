@@ -17,7 +17,7 @@ interface RenameInfo {
 
 @injectable()
 export class VariableFieldKeyRenameService {
-    @inject(VariableEngine) variableEngine: VariableEngine
+    @inject(VariableEngine) variableEngine: VariableEngine | any
 
     toDispose = new DisposableCollection()
 
@@ -88,9 +88,10 @@ export class VariableFieldKeyRenameService {
     @postConstruct()
     init() {
         this.toDispose.pushAll([
+            //@ts-ignore
             this.variableEngine.onGlobalEvent<VariableDeclarationListChangeAction>(
                 'VariableListChange',
-                (_action) => {
+                (_action: any) => {
                     this.handleFieldListChange(
                         _action.ast,
                         _action.payload?.prev,
@@ -98,9 +99,10 @@ export class VariableFieldKeyRenameService {
                     )
                 },
             ),
+            //@ts-ignore
             this.variableEngine.onGlobalEvent<ObjectPropertiesChangeAction>(
                 'ObjectPropertiesChange',
-                (_action) => {
+                (_action: any) => {
                     this.handleFieldListChange(
                         _action.ast,
                         _action.payload?.prev,

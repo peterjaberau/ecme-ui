@@ -71,4 +71,4 @@ class I18nImpl {
 
 const I18n = new I18nImpl([enUSLanguageDefault, zhCNLanguageDefault])
 
-export { I18n, I18nLanguage }
+export { I18n, type I18nLanguage }

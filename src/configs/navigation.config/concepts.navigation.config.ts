@@ -73,6 +73,41 @@ const conceptsNavigationConfig: NavigationTree[] = [
                 ],
             },
             {
+                key: 'concepts.flow-builder',
+                path: '',
+                title: 'Flow Builder',
+                translateKey: 'nav.conceptsFlowBuilder.flowBuilder',
+                icon: 'ai',
+                type: NAV_ITEM_TYPE_COLLAPSE,
+                authority: [ADMIN, USER],
+                meta: {
+                    description: {
+                        translateKey: 'nav.conceptsFlowBuilder.flowBuilderDesc',
+                        label: 'Flow builder tools',
+                    },
+                },
+                subMenu: [
+                    {
+                        key: 'concepts.flow-builder.demo',
+                        path: `${CONCEPTS_PREFIX_PATH}/flow-builder/demo`,
+                        title: 'Chat',
+                        translateKey: 'nav.conceptsFlowBuilder.demo',
+                        icon: 'aiChat',
+                        type: NAV_ITEM_TYPE_ITEM,
+                        authority: [ADMIN, USER],
+                        meta: {
+                            description: {
+                                translateKey: 'nav.conceptsFlowBuilder.demoDesc',
+                                label: 'Flow builder demo',
+                            },
+                        },
+                        subMenu: [],
+                    },
+
+                ],
+            },
+
+            {
                 key: 'concepts.projects',
                 path: '',
                 title: 'Projects',
@@ -613,6 +648,10 @@ const conceptsNavigationConfig: NavigationTree[] = [
                 },
                 subMenu: [],
             },
+
+
+
+
             {
                 key: 'concepts.flowManager',
                 path: `${CONCEPTS_PREFIX_PATH}/flow-manager`,

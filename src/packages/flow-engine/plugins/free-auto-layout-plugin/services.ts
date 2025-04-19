@@ -9,7 +9,7 @@ import { Layout, type LayoutOptions } from './layout'
 
 @injectable()
 export class AutoLayoutService {
-    @inject(WorkflowDocument) private readonly document: WorkflowDocument
+    @inject(WorkflowDocument) private readonly document: WorkflowDocument | any
 
     public async layout(options: LayoutOptions = {}): Promise<void> {
         await this.layoutNode(this.document.root, options)

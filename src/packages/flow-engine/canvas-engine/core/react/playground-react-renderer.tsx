@@ -19,7 +19,7 @@ export const PlaygroundReactRenderer: React.FC<PlaygroundReactRendererProps> = (
 ) => {
     const playground = usePlayground()
     const playgroundConfig = useService<PlaygroundConfig>(PlaygroundConfig)
-    const ref = useRef<any>()
+    const ref = useRef(null as any)
     /**
      * 初始化画布
      */

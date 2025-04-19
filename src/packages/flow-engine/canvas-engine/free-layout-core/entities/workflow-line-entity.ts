@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash-es'
+import { isEqual } from 'lodash'
 import { domUtils, type IPoint, Rectangle } from '@flow/utils'
 import { Entity, type EntityOpts } from '@flow/canvas-core'
 
@@ -55,7 +55,7 @@ export class WorkflowLineEntity extends Entity<WorkflowLineEntityOpts> {
 
     readonly linesManager: WorkflowLinesManager
 
-    private _from: WorkflowNodeEntity
+    private _from: WorkflowNodeEntity | any
 
     private _to?: WorkflowNodeEntity
 
@@ -70,7 +70,7 @@ export class WorkflowLineEntity extends Entity<WorkflowLineEntityOpts> {
         from: '',
     }
 
-    readonly isDrawing: boolean
+    readonly isDrawing: boolean | any
 
     /**
      * 线条 Portal 挂载的 div

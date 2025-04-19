@@ -61,7 +61,7 @@ export class PipelineRenderer implements Disposable, IMessageHandler {
      */
     readonly onAllLayersRendered = this.onAllLayersRenderedEmitter.event
 
-    @inject(LoggerService) protected readonly loggerService: LoggerService
+    @inject(LoggerService) protected readonly loggerService: LoggerService | any
 
     constructor(
         @inject(PipelineEntitiesSelector)
@@ -141,7 +141,7 @@ export class PipelineRenderer implements Disposable, IMessageHandler {
             // 重载 layer autorun
             layer.render = (() => {
                 this.updateLayer(layer, true)
-            }) as () => JSX.Element
+            }) as () => Element
         }
     }
 

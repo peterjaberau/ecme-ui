@@ -36,7 +36,7 @@ export class PipelineEntitiesSelector {
 
     // @inject(AbleManager) ableManager: AbleManager;
 
-    @inject(EntityManager) entityManager: EntityManager
+    @inject(EntityManager) entityManager: EntityManager | any
 
     /**
      * 订阅关联的 entity，会影响 autorun

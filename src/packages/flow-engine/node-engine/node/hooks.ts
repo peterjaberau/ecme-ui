@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { useRefresh } from '@flow/utils'
 import { FlowNodeFormData } from '@flow/form-core'
-import { Errors, Warnings } from '@flowgram.ai/form/src/types'
+import { Errors, Warnings } from '@flow/form/types'
 import {
     FormState,
     useFormErrors,

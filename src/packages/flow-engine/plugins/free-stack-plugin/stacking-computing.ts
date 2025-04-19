@@ -7,19 +7,19 @@ import {
 import type { StackingContext } from './type'
 
 export class StackingComputing {
-    private currentLevel: number
+    private currentLevel: number | any
 
-    private topLevel: number
+    private topLevel: number | any
 
-    private maxLevel: number
+    private maxLevel: number | any
 
-    private nodeIndexes: Map<string, number>
+    private nodeIndexes: Map<string, number> | any
 
-    private nodeLevel: Map<string, number>
+    private nodeLevel: Map<string, number> | any
 
-    private lineLevel: Map<string, number>
+    private lineLevel: Map<string, number> | any
 
-    private context: StackingContext
+    private context: StackingContext | any
 
     public compute(params: {
         root: WorkflowNodeEntity

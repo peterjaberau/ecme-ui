@@ -12,9 +12,9 @@ export class MapType extends BaseType<MapJSON> {
 
     static kind: string = ASTKind.Map
 
-    keyType: BaseType
+    keyType: BaseType | any
 
-    valueType: BaseType
+    valueType: BaseType | any
 
     fromJSON({ keyType = ASTKind.String, valueType }: MapJSON): void {
         // Key 默认为 String

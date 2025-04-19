@@ -8,8 +8,8 @@ import Computation = Tracker.Computation
 
 export function observe<T = any>(fc: React.FC<T>): React.FC<T> {
     return function ReactiveObserver(props: T) {
-        const childrenRef = useRef<React.ReactElement<any, any> | null>()
-        const computationRef = useRef<Computation | undefined>()
+        const childrenRef = useRef<React.ReactElement<any, any> | null | any>(null)
+        const computationRef = useRef<Computation | undefined | any>(null)
         const refresh = useRefresh()
         computationRef.current?.stop()
         computationRef.current = new Tracker.Computation((c) => {

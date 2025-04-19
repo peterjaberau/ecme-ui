@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import type { FlowTransitionLine } from '@flow/canvas-document'
 
 import { useBaseColor } from '../hooks/use-base-color'
 import { DEFAULT_LINE_ATTRS } from './utils'
 
-function StraightLine(props: FlowTransitionLine): JSX.Element {
+function StraightLine(props: FlowTransitionLine): ReactElement {
     const { from, to, activated, style } = props
     const { baseColor, baseActivatedColor } = useBaseColor()
 

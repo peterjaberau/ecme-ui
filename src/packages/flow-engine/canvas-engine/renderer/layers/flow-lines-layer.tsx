@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { groupBy, throttle } from 'lodash'
 import { inject, injectable } from 'inversify'
@@ -23,29 +23,30 @@ import { createLines } from '../components/LinesRenderer'
 
 @injectable()
 export class FlowLinesLayer extends Layer {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     @inject(FlowDragService)
-    protected readonly dragService: FlowDragService
+    protected readonly dragService: FlowDragService | any
 
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
     node = domUtils.createDivWithClass('gedit-flow-lines-layer')
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntity(FlowRendererStateEntity)
-    readonly flowRenderState: FlowRendererStateEntity
+    readonly flowRenderState: FlowRendererStateEntity | any
 
     /**
      * 监听 transition 变化
      */
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransitionData)
-    _transitions: FlowNodeTransitionData[]
+    _transitions: FlowNodeTransitionData[] | any
 
     get transitions(): FlowNodeTransitionData[] {
+        //@ts-ignore
         return this.document.getRenderDatas<FlowNodeTransitionData>(
             FlowNodeTransitionData,
         )
@@ -74,12 +75,13 @@ export class FlowLinesLayer extends Layer {
         return `0 0 ${ratio} ${ratio}`
     }
 
-    render(): JSX.Element {
-        const allLines: JSX.Element[] = []
+    render(): ReactElement | any {
+        const allLines: ReactElement[] = []
         const isViewportVisible = this.config.isViewportVisible.bind(
             this.config,
         )
         // 还没初始化
+        //@ts-ignore
         if (this.documentTransformer.loading) return <></>
         this.documentTransformer.refresh()
 
@@ -88,7 +90,7 @@ export class FlowLinesLayer extends Layer {
                 data: transition,
                 rendererRegistry: this.rendererRegistry,
                 isViewportVisible,
-                linesSave: allLines,
+                linesSave: allLines as any,
                 dragService: this.dragService,
             })
         })
@@ -97,7 +99,7 @@ export class FlowLinesLayer extends Layer {
         // 通过将 activated 的项排到最后，防止 hover 层级覆盖
         const { activateLines = [], normalLines = [] } = groupBy(
             allLines,
-            (line) => (line.props.activated ? 'activateLines' : 'normalLines'),
+            (line: any) => (line.props.activated ? 'activateLines' : 'normalLines'),
         )
         const resultLines = [...normalLines, ...activateLines]
 
@@ -109,11 +111,11 @@ export class FlowLinesLayer extends Layer {
                 FlowRendererKey.MARKER_ACTIVATE_ARROW,
             )
         const arrow = arrowRenderer
-            ? React.createElement(arrowRenderer.renderer as () => JSX.Element)
+            ? React.createElement(arrowRenderer.renderer as () => ReactElement | any)
             : null
         const activateArrow = activateArrowRenderer
             ? React.createElement(
-                  activateArrowRenderer.renderer as () => JSX.Element,
+                  activateArrowRenderer.renderer as () => ReactElement | any,
               )
             : null
 

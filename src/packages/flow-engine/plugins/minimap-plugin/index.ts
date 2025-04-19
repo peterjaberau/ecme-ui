@@ -7,7 +7,7 @@ export {
 export { createMinimapPlugin } from './create-plugin'
 export { FlowMinimapLayer } from './layer'
 export { FlowMinimapService } from './service'
-export {
+export type {
     MinimapCanvasStyle,
     MinimapInactiveStyle,
     MinimapServiceOptions,

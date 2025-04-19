@@ -7,7 +7,7 @@ import {
     PlaygroundReactContentProps,
 } from '../layers/playground-content-layer'
 
-export { PlaygroundReactContentProps }
+export { type PlaygroundReactContentProps }
 
 export const PlaygroundReactContent: React.FC<PlaygroundReactContentProps> = (
     props,

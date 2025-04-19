@@ -41,7 +41,7 @@ export class FlowDragEntity extends ConfigEntity<FlowDragEntityConfig> {
 
     static type = 'FlowDragEntity'
 
-    private containerDom: HTMLDivElement
+    private containerDom: HTMLDivElement | any
 
     private containerX = 0
 

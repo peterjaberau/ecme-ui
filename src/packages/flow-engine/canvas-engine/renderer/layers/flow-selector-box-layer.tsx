@@ -34,24 +34,24 @@ export interface FlowSelectorBoxOptions extends LayerOptions {
 @injectable()
 export class FlowSelectorBoxLayer extends Layer<FlowSelectorBoxOptions> {
     @inject(FlowDocument)
-    protected flowDocument: FlowDocument
+    protected flowDocument: FlowDocument | any
 
     @inject(ContextMenuService)
-    readonly contextMenuService: ContextMenuService
+    readonly contextMenuService: ContextMenuService | any
 
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
-    @inject(SelectionService) readonly selectionService: SelectionService
+    @inject(SelectionService) readonly selectionService: SelectionService | any
 
     @observeEntity(SelectorBoxConfigEntity)
-    protected selectorBoxConfigEntity: SelectorBoxConfigEntity
+    protected selectorBoxConfigEntity: SelectorBoxConfigEntity | any
 
     @observeEntity(FlowSelectConfigEntity)
-    protected selectConfigEntity: FlowSelectConfigEntity
+    protected selectConfigEntity: FlowSelectConfigEntity | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity | any
 
     readonly node = domUtils.createDivWithClass('gedit-selector-box-layer')
 
@@ -65,7 +65,7 @@ export class FlowSelectorBoxLayer extends Layer<FlowSelectorBoxOptions> {
      */
     protected selectorBoxBlock = this.createDOMCache('gedit-selector-box-block')
 
-    protected transformVisibles: FlowNodeTransformData[]
+    protected transformVisibles: FlowNodeTransformData[] | any
 
     /**
      * 拖动选择框
@@ -76,6 +76,7 @@ export class FlowSelectorBoxLayer extends Layer<FlowSelectorBoxOptions> {
             const mousePos = this.playgroundConfigEntity.getPosFromMouseEvent(e)
             this.transformVisibles = this.flowDocument
                 .getRenderDatas(FlowNodeTransformData, false)
+                //@ts-ignore
                 .filter((transform) => {
                     const { entity } = transform
                     if (entity.originParent) {
@@ -127,7 +128,7 @@ export class FlowSelectorBoxLayer extends Layer<FlowSelectorBoxOptions> {
             }),
             this.selectionService.onSelectionChanged(() => {
                 const selectedNodes = this.selectionService.selection.filter(
-                    (entity) => entity instanceof FlowNodeEntity,
+                    (entity: any) => entity instanceof FlowNodeEntity,
                 )
 
                 this.selectConfigEntity.selectedNodes =

@@ -44,10 +44,10 @@ export interface PlaygroundLayerOptions extends LayerOptions {
 @injectable()
 export class PlaygroundLayer extends Layer<PlaygroundLayerOptions> {
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity  | any
 
     @optional()
     @inject(ProtectWheelArea)
@@ -94,7 +94,7 @@ export class PlaygroundLayer extends Layer<PlaygroundLayerOptions> {
             )
         }
         this.toDispose.pushAll([
-            this.config.onGrabDisableChange((disable) => {
+            this.config.onGrabDisableChange((disable: any) => {
                 if (disable) {
                     this.grabDragger.stop(0, 0)
                 }
@@ -570,7 +570,7 @@ export class PlaygroundLayer extends Layer<PlaygroundLayerOptions> {
         // 原因：在 pipelineNode.parentElement 上设置 style.cursor，子元素继承样式时 cursor 样式优先级不够（子元素自身也存在 cursor 配置）
         if (cursor === 'grab' || cursor === 'grabbing') {
             let classSelector = ''
-            this.playgroundNode.classList.forEach((className) => {
+            this.playgroundNode.classList.forEach((className: any) => {
                 classSelector += `.${className}`
             })
             this.cursorStyle.innerText = `.${classSelector} * { cursor: ${finalCursor} }`

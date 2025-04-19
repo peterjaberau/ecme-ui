@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import type { FlowNodeEntity } from '@flow/fixed-layout-editor'
 
@@ -9,7 +9,7 @@ export interface PropsType {
     dragNodes: FlowNodeEntity[]
 }
 
-export default function DragNode(props: PropsType): JSX.Element {
+export default function DragNode(props: PropsType): ReactElement | any {
     const { dragStart, dragNodes } = props
 
     const dragLength = (dragNodes || [])

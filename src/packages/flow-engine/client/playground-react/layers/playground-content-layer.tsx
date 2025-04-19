@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { injectable } from 'inversify'
 import { Layer } from '@flow/canvas-core'
@@ -32,7 +32,8 @@ export class PlaygroundContentLayer extends Layer<PlaygroundReactContentProps> {
         this.render()
     }
 
-    render(): JSX.Element {
+
+    render(): ReactElement | any {
         return (
             <div
                 className={this.options.className}

@@ -17,9 +17,7 @@ const Workspace = () => {
         //   const newFlow: any = await addFlow();
     }
 
-    const handleOpenFlow = (id: string) => {
-        navigate(`/editor/${id}`)
-    }
+    console.log('flows', flows)
 
     return (
         <>
@@ -27,9 +25,6 @@ const Workspace = () => {
             <div className="mt-6">
                 <FlowList
                     flowList={flows}
-                    onDelete={deleteFlow}
-                    onOpen={handleOpenFlow}
-                    onClick={updateFlow}
                 />
             </div>
         </>

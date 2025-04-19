@@ -46,14 +46,14 @@ export const FlowDocumentProvider = Symbol('FlowDocumentProvider')
  */
 @injectable()
 export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
-    @inject(EntityManager) protected entityManager: EntityManager
+    @inject(EntityManager) protected entityManager: EntityManager | any
 
-    @inject(FlowDocumentConfig) readonly config: FlowDocumentConfig
+    @inject(FlowDocumentConfig) readonly config: FlowDocumentConfig | any
 
     /**
      * 流程画布配置项
      */
-    @inject(FlowDocumentOptions) @optional() public options: FlowDocumentOptions
+    @inject(FlowDocumentOptions) @optional() public options: FlowDocumentOptions | any
 
     @multiInject(FlowDocumentContribution)
     @optional()
@@ -93,24 +93,24 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
 
     readonly onLayoutChange = this.onLayoutChangeEmitter.event
 
-    root: FlowNodeEntity
+    root: FlowNodeEntity | any
 
     /**
      * 原始的 tree 结构
      */
-    originTree: FlowVirtualTree<FlowNodeEntity>
+    originTree: FlowVirtualTree<FlowNodeEntity>  | any
 
-    transformer: FlowDocumentTransformerEntity
+    transformer: FlowDocumentTransformerEntity  | any
 
     /**
      * 渲染相关的全局轧辊台
      */
-    renderState: FlowRendererStateEntity
+    renderState: FlowRendererStateEntity | any
 
     /**
      * 渲染后的 tree 结构
      */
-    renderTree: FlowRenderTree<FlowNodeEntity>
+    renderTree: FlowRenderTree<FlowNodeEntity> | any
 
     @postConstruct()
     init(): void {
@@ -124,11 +124,11 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
         this.root = this.addNode({ id: 'root', type: FlowNodeBaseType.ROOT })
         this.originTree = new FlowVirtualTree<FlowNodeEntity>(this.root)
         this.transformer =
-            this.entityManager.createEntity<FlowDocumentTransformerEntity>(
-                FlowDocumentTransformerEntity,
-                { document: this },
-            )
+            //@ts-ignore
+            this.entityManager.createEntity<FlowDocumentTransformerEntity | any>(
+                FlowDocumentTransformerEntity, { document: this })
         this.renderState =
+            //@ts-ignore
             this.entityManager.createEntity<FlowRendererStateEntity>(
                 FlowRendererStateEntity,
             )
@@ -158,12 +158,13 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
         this.entityManager.changeEntityLocked = true
         // 添加前的节点
         const oldNodes =
+            //@ts-ignore
             this.entityManager.getEntities<FlowNodeEntity>(FlowNodeEntity)
         // 添加后的节点
         const newNodes: FlowNodeEntity[] = [this.root]
         this.addBlocksAsChildren(this.root, json.nodes || [], newNodes)
         // 删除无效的节点
-        oldNodes.forEach((node) => {
+        oldNodes.forEach((node: any) => {
             if (!newNodes.includes(node)) {
                 node.dispose()
             }
@@ -254,7 +255,7 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
             hidden,
             index,
         } = data
-        let node = this.getNode(id)
+        let node: any = this.getNode(id)
         let isNew = false
         const register = this.getNodeRegistry(type, data.originParent)
         // node 类型变化则全部删除重新来
@@ -264,6 +265,7 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
         }
         if (!node) {
             const { dataRegistries } = register
+            //@ts-ignore
             node = this.entityManager.createEntity<FlowNodeEntity>(
                 FlowNodeEntity,
                 {
@@ -448,6 +450,7 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
      */
     getNode(id: string): FlowNodeEntity | undefined {
         if (!id) return undefined
+        //@ts-ignore
         return this.entityManager.getEntityById<FlowNodeEntity>(id)
     }
 
@@ -624,8 +627,9 @@ export class FlowDocument<T = FlowDocumentJSON> implements Disposable {
         containHiddenNodes = true,
     ): T[] {
         const result: T[] = []
-        this.renderTree.traverse((node) => {
+        this.renderTree.traverse((node: any) => {
             if (!containHiddenNodes && node.hidden) return
+            //@ts-ignore
             result.push(node.getData<T>(dataRegistry)!)
         })
         return result

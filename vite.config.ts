@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.join(__dirname, 'src'),
+      '@flow-builder': path.join(__dirname, 'src/packages/flow-builder'),
       '@flow/utils': path.join(__dirname, 'src/packages/flow-engine/common/utils'),
       '@flow/canvas-core': path.join(__dirname, 'src/packages/flow-engine/canvas-engine/core'),
       '@flow/canvas-document': path.join(__dirname, 'src/packages/flow-engine/canvas-engine/document'),

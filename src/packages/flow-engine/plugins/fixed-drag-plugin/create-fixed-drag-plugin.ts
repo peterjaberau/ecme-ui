@@ -28,7 +28,7 @@ export const createFixedDragPlugin = definePluginCreator<
     onInit(ctx, opts): void {
         // 默认可用，所以强制判断 false
         if (opts.enable !== false) {
-            ctx.playground.registerLayer(FlowDragLayer, {
+            ctx.playground.registerLayer(FlowDragLayer as any, {
                 onDrop: opts.onDrop ? opts.onDrop.bind(null, ctx) : undefined,
                 canDrop: opts.canDrop
                     ? opts.canDrop.bind(null, ctx)

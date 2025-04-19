@@ -12,7 +12,7 @@ export class ChangeContentHandler
     implements IHandler<WorkflowContentChangeEvent>
 {
     @inject(HistoryService)
-    private _historyService: HistoryService
+    private _historyService: HistoryService | any
 
     async handle(event: WorkflowContentChangeEvent, ctx: PluginContext) {
         if (!this._historyService.undoRedoService.canPush()) {

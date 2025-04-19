@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import type { FlowTransitionLine } from '@flow/canvas-document'
 
@@ -8,7 +8,7 @@ interface PropsType extends FlowTransitionLine {
     rendererRegistry: FlowRendererRegistry
 }
 
-function CustomLine(props: PropsType): JSX.Element {
+function CustomLine(props: PropsType): ReactElement {
     const { renderKey, rendererRegistry, ...line } = props
 
     if (!renderKey) {
@@ -23,7 +23,7 @@ function CustomLine(props: PropsType): JSX.Element {
 
     const Component = renderer.renderer as (
         props: FlowTransitionLine,
-    ) => JSX.Element
+    ) => ReactElement
 
     return <Component {...line} />
 }

@@ -23,10 +23,10 @@ export const FREE_LAYOUT_KEY = 'free-layout'
 export class FreeLayout implements FlowLayout {
     name = FREE_LAYOUT_KEY
 
-    @inject(PlaygroundConfigEntity) playgroundConfig: PlaygroundConfigEntity
+    @inject(PlaygroundConfigEntity) playgroundConfig: PlaygroundConfigEntity | any
 
     @inject(FlowDocumentProvider)
-    protected documentProvider: FlowDocumentProvider
+    protected documentProvider: FlowDocumentProvider | any
 
     get document(): FlowDocument {
         return this.documentProvider()

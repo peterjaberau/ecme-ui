@@ -8,7 +8,7 @@ export interface ExpressionListJSON {
 export class ExpressionList extends ASTNode<ExpressionListJSON> {
     static kind: string = ASTKind.ExpressionList
 
-    expressions: ASTNode[]
+    expressions: ASTNode[] | any
 
     fromJSON({ expressions }: ExpressionListJSON): void {
         this.expressions = expressions.map((_expression, idx) => {
@@ -28,7 +28,7 @@ export class ExpressionList extends ASTNode<ExpressionListJSON> {
     toJSON(): ASTNodeJSON {
         return {
             kind: ASTKind.ExpressionList,
-            properties: this.expressions.map((_expression) =>
+            properties: this.expressions.map((_expression: any) =>
                 _expression.toJSON(),
             ),
         }

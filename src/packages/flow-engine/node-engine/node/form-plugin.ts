@@ -31,7 +31,7 @@ export class FormPlugin<Opts = any> implements Disposable {
 
     readonly opts?: Opts
 
-    protected _formModel: FormModelV2
+    protected _formModel: FormModelV2  | any
 
     constructor(name: string, config: FormPluginConfig, opts?: Opts) {
         this.name = name

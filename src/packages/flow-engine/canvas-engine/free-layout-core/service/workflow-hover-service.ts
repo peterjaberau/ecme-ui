@@ -20,7 +20,7 @@ export type WorkfloEntityHoverable =
  */
 @injectable()
 export class WorkflowHoverService {
-    @inject(EntityManager) protected entityManager: EntityManager
+    @inject(EntityManager) protected entityManager: EntityManager | any
 
     protected onHoveredChangeEmitter = new Emitter<string>()
 

@@ -25,22 +25,22 @@ import { HistoryManager } from './history-manager'
 @injectable()
 export class HistoryService implements IHistoryService {
     @inject(UndoRedoService)
-    readonly undoRedoService: UndoRedoService
+    readonly undoRedoService: UndoRedoService | any
 
     @inject(OperationRegistry)
-    readonly operationRegistry: OperationRegistry
+    readonly operationRegistry: OperationRegistry | any
 
     @inject(OperationService)
-    readonly operationService: OperationService
+    readonly operationService: OperationService | any
 
     @inject(HistoryContext)
-    readonly context: HistoryContext
+    readonly context: HistoryContext | any
 
     @inject(HistoryConfig)
-    readonly config: HistoryConfig
+    readonly config: HistoryConfig  | any
 
     @inject(HistoryManager)
-    historyManager: HistoryManager
+    historyManager: HistoryManager | any
 
     private _toDispose = new DisposableCollection()
 
@@ -178,8 +178,8 @@ export class HistoryService implements IHistoryService {
     getHistoryOperations(): Operation<unknown>[] {
         return this.historyManager.historyStack.items
             .reverse()
-            .map((item) =>
-                item.operations.map((o) => ({
+            .map((item: any) =>
+                item.operations.map((o: any) => ({
                     ...pick(o, ['type', 'value']),
                     label: o.label || o.type,
                 })),

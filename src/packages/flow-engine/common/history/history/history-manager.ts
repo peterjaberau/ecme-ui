@@ -17,9 +17,9 @@ import { type HistoryService } from './history-service'
 
 @injectable()
 export class HistoryManager implements IHistoryManager {
-    @inject(HistoryStack) readonly historyStack: HistoryStack
+    @inject(HistoryStack) readonly historyStack: HistoryStack | any
 
-    @inject(HistoryConfig) readonly historyConfig: HistoryConfig
+    @inject(HistoryConfig) readonly historyConfig: HistoryConfig | any
 
     private _historyServices = new Map<HistoryService, Disposable>()
 

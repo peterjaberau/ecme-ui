@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { UIDragNodeContainer } from './styles'
 
-export default function DraggingAdder(): JSX.Element {
+export default function DraggingAdder(): ReactElement | any {
     return <UIDragNodeContainer />
 }

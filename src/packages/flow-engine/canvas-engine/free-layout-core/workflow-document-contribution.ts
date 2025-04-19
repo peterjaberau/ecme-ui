@@ -13,7 +13,7 @@ import { WorkflowNodeLinesData, WorkflowNodePortsData } from './entity-datas'
 export class WorkflowDocumentContribution
     implements FlowDocumentContribution<WorkflowDocument>
 {
-    @inject(FreeLayout) freeLayout: FreeLayout
+    @inject(FreeLayout) freeLayout: FreeLayout | any
 
     registerDocument(document: WorkflowDocument): void {
         // 注册节点数据

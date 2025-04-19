@@ -6,7 +6,7 @@ import { Disposable, Emitter } from '@flow/utils'
 
 @injectable()
 export class FixedHistoryFormDataService implements Disposable {
-    @inject(FlowDocument) document: FlowDocument
+    @inject(FlowDocument) document: FlowDocument | any
 
     private _cache = new Map<FlowNodeFormData, Map<string, any>>()
 
@@ -48,15 +48,16 @@ export class FixedHistoryFormDataService implements Disposable {
      * @returns 表单数据
      */
     getFormDataByNodeId(id: string) {
-        const node = this.document.getNode(id)
+        const node: any = this.document.getNode(id)
         if (!node) {
             return
         }
-        const formData = node.getData<FlowNodeFormData>(FlowNodeFormData)
+        // @ts-ignore
+        const formData: any = node.getData<FlowNodeFormData>(FlowNodeFormData)
         return formData
     }
 
-    getFormItemValue(formData: FlowNodeFormData, path: string) {
+    getFormItemValue(formData: FlowNodeFormData | any, path: string) {
         const formItem = this.getFormItem(formData, path)
 
         if (!formItem) {

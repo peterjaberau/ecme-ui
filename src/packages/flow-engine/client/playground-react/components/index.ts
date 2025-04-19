@@ -1,5 +1,5 @@
-export { PlaygroundReact, PlaygroundRef } from './playground-react'
+export { PlaygroundReact, type PlaygroundRef } from './playground-react'
 export {
     PlaygroundReactContent,
-    PlaygroundReactContentProps,
+    type PlaygroundReactContentProps,
 } from './playground-react-content'

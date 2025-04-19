@@ -7,7 +7,7 @@ import { HistoryService } from '@flow/history'
 
 @injectable()
 export class FixedHistoryOperationService extends FlowOperationBaseServiceImpl {
-    @inject(HistoryService) historyService: HistoryService
+    @inject(HistoryService) historyService: HistoryService | any
 
     apply(operation: FlowOperation): any {
         return this.historyService.pushOperation(operation)

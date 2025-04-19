@@ -51,7 +51,7 @@ export class FlowScrollBarLayer extends Layer<ScrollBarOptions> {
     @inject(FlowDocument) @optional() flowDocument?: FlowDocument
 
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
     // @observeEntity(FlowDocumentTransformerEntity) readonly documentTransformer: FlowDocumentTransformerEntity
 
@@ -76,36 +76,36 @@ export class FlowScrollBarLayer extends Layer<ScrollBarOptions> {
     )
 
     // 最左边的位置
-    private mostLeft: number
+    private mostLeft: number | any
 
     // 最右边的位置
-    private mostRight: number
+    private mostRight: number | any
 
     // 最上面的位置
-    private mostTop: number
+    private mostTop: number | any
 
     // 最下面的位置
-    private mostBottom: number
+    private mostBottom: number | any
 
     // 视区宽度
-    private viewportWidth: number
+    private viewportWidth: number | any
 
     // 视区高度
-    private viewportHeight: number
+    private viewportHeight: number | any
 
     // 元素宽高
-    private width: number
+    private width: number | any
 
-    private height: number
+    private height: number | any
 
     // 底部滚动条宽度
-    private scrollBottomWidth: number
+    private scrollBottomWidth: number | any
 
     // 右侧滚动条高度
-    private scrollRightHeight: number
+    private scrollRightHeight: number | any
 
     // 缩放比
-    private scale: number
+    private scale: number | any
 
     // 总滚动距离
     private sum = 0

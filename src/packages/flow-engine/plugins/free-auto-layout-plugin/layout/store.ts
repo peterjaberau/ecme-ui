@@ -9,11 +9,11 @@ interface LayoutStoreData {
 }
 
 export class LayoutStore {
-    private indexMap: Map<string, string>
+    private indexMap: Map<string, string> | any
 
     private init: boolean = false
 
-    private store: LayoutStoreData
+    private store: LayoutStoreData | any
 
     public get initialized(): boolean {
         return this.init

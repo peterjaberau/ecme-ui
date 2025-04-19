@@ -25,6 +25,17 @@ const conceptsRoute: Routes = [
         },
     },
     {
+        key: 'concepts.flow-builder.demo',
+        path: `${CONCEPTS_PREFIX_PATH}/flow-builder/demo`,
+        component: lazy(() => import('@/views/concepts/flow-builder/FlowBuilderDemo')),
+        authority: [ADMIN, USER],
+        meta: {
+            pageContainerType: 'contained',
+            pageBackgroundType: 'plain',
+        },
+    },
+
+    {
         key: 'concepts.customers.customerList',
         path: `${CONCEPTS_PREFIX_PATH}/customers/customer-list`,
         component: lazy(
@@ -335,6 +346,7 @@ const conceptsRoute: Routes = [
         },
     },
 
+
     {
         key: 'concepts.flowManager',
         path: `${CONCEPTS_PREFIX_PATH}/flow-manager`,
@@ -345,6 +357,18 @@ const conceptsRoute: Routes = [
             pageBackgroundType: 'plain',
         },
     },
+
+    {
+        key: 'concepts.flowManager',
+        path: `${CONCEPTS_PREFIX_PATH}/flow-manager/edit/:id`,
+        component: lazy(() => import('@/views/concepts/workflows/Workflow/pages/Editor')),
+        authority: [ADMIN, USER],
+        meta: {
+            pageContainerType: 'contained',
+            pageBackgroundType: 'plain',
+        },
+    },
+
 
 
 

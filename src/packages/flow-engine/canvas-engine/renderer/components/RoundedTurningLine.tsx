@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { ReactElement, useMemo } from 'react'
 
 import { isNil } from 'lodash'
 import { Point } from '@flow/utils'
@@ -24,7 +24,7 @@ interface PropsType extends FlowTransitionLine {
 /**
  * 圆角转弯线
  */
-function RoundedTurningLine(props: PropsType): JSX.Element | null {
+function RoundedTurningLine(props: PropsType): ReactElement | null {
     const {
         vertices,
         radius = DEFAULT_RADIUS,

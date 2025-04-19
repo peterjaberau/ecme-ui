@@ -241,7 +241,7 @@ export namespace Tracker {
 
         private _recomputing = false
 
-        private _result: V
+        private _result: V | any
 
         /**
          * 是否停止

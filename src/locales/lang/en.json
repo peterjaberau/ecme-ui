@@ -13,6 +13,10 @@
             "chat": "Chat",
             "image": "Image"
         },
+        "conceptsFlowBuilder": {
+            "flowBuilder": "Flow Builder",
+            "demo": "Demo"
+        },
         "conceptsCustomers": {
             "customers": "Customer",
             "customerList": "List",
@@ -56,9 +60,11 @@
             "manageArticle": "Manage Article",
             "faq": "FAQ"
         },
+
         "calendar": "Calendar",
         "fileManager": "File Manager",
         "flowManager": "Flow Manager",
+        "flowBuilder": "Flow Builder",
         "mail": "Mail",
         "chat": "Chat",
         "uiComponents": "UI Components",

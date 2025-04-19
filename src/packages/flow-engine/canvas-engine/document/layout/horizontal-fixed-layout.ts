@@ -54,7 +54,7 @@ export class HorizontalFixedLayout implements FlowLayout {
     >()
 
     @inject(FlowDocumentProvider)
-    protected documentProvider: FlowDocumentProvider
+    protected documentProvider: FlowDocumentProvider | any
 
     @multiInject(FlowLayoutContribution)
     @optional()

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import {
     Playground,
@@ -10,7 +10,7 @@ import {
 import { Arrow } from '../../assets'
 import { Container } from './styles'
 
-function Collapse(props: CollapseProps): JSX.Element {
+function Collapse(props: CollapseProps): ReactElement {
     const { collapseNode, activateNode, hoverActivated } = props
 
     const activateData = activateNode?.getData(FlowNodeRenderData)

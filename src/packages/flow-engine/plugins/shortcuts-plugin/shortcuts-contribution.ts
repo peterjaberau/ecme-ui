@@ -26,9 +26,9 @@ export class ShortcutsRegistry {
     @inject(ContributionProvider)
     @named(ShortcutsContribution)
     @optional()
-    protected contribs: ContributionProvider<ShortcutsContribution>
+    protected contribs: ContributionProvider<ShortcutsContribution>  | any
 
-    @inject(CommandRegistry) protected commandRegistry: CommandRegistry
+    @inject(CommandRegistry) protected commandRegistry: CommandRegistry | any
 
     readonly shortcutsHandlers: ShortcutsHandler[] = []
 
@@ -67,6 +67,6 @@ export class ShortcutsRegistry {
 
     @postConstruct()
     protected init(): void {
-        this.contribs?.forEach((contrib) => contrib.registerShortcuts(this))
+        this.contribs?.forEach((contrib: any) => contrib.registerShortcuts(this))
     }
 }

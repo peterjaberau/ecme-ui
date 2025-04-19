@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -15,9 +14,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
+
+    // to accept decorators
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": true,
+
     "paths": {
       "@/*": ["./src/*"],
-
+      "@flow-builder/*": ["./src/packages/flow-builder/*"],
+      "@flow-builder": ["./src/packages/flow-builder"],
 
 
       "@flow/utils/*": ["./src/packages/flow-engine/common/utils/*"],

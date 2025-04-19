@@ -5,7 +5,7 @@ import { NodeEngineContext } from './node-engine-context'
 
 @injectable()
 export class NodeEngine {
-    @inject(NodeManager) nodeManager: NodeManager
+    @inject(NodeManager) nodeManager: NodeManager | any
 
-    @inject(NodeEngineContext) context: NodeEngineContext
+    @inject(NodeEngineContext) context: NodeEngineContext | any
 }

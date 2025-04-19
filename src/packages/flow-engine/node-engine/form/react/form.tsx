@@ -2,7 +2,7 @@ import React, { Children, useEffect, useMemo } from 'react'
 
 import { isFunction } from 'lodash'
 
-import { toForm } from 'src/core/to-form'
+import { toForm } from '../core/to-form'
 import { FormControl, FormOptions, FormRenderProps } from '../types/form'
 import { createForm } from '../core/create-form'
 import { FormModelContext } from './context'

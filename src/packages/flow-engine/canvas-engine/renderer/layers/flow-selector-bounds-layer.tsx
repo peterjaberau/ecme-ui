@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { inject, injectable } from 'inversify'
 import { domUtils } from '@flow/utils'
@@ -50,27 +50,27 @@ export interface FlowSelectorBoundsLayerOptions extends LayerOptions {
 @injectable()
 export class FlowSelectorBoundsLayer extends Layer<FlowSelectorBoundsLayerOptions> {
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
-    @inject(CommandRegistry) readonly commandRegistry: CommandRegistry
+    @inject(CommandRegistry) readonly commandRegistry: CommandRegistry | any
 
     @observeEntity(FlowSelectConfigEntity)
-    protected flowSelectConfigEntity: FlowSelectConfigEntity
+    protected flowSelectConfigEntity: FlowSelectConfigEntity | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity | any
 
     @observeEntity(SelectorBoxConfigEntity)
-    protected selectorBoxConfigEntity: SelectorBoxConfigEntity
+    protected selectorBoxConfigEntity: SelectorBoxConfigEntity | any
 
     /**
      * 需要监听节点的展开和收起状态，重新绘制边框
      */
     @observeEntityDatas(FlowNodeEntity, FlowNodeRenderData)
-    renderStates: FlowNodeRenderData[]
+    renderStates: FlowNodeRenderData[] | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransformData)
-    _transforms: FlowNodeTransformData[]
+    _transforms: FlowNodeTransformData[] | any
 
     readonly node = domUtils.createDivWithClass('gedit-selector-bounds-layer')
 
@@ -118,7 +118,7 @@ export class FlowSelectorBoundsLayer extends Layer<FlowSelectorBoundsLayerOption
     // /**
     //  * 渲染工具栏
     //  */
-    // renderCommandMenus(): JSX.Element[] {
+    // renderCommandMenus(): Element[] {
     //   return this.commandRegistry.commands
     //     .filter(cmd => cmd.category === FlowRendererCommandCategory.SELECTOR_BOX)
     //     .map(cmd => {
@@ -139,7 +139,7 @@ export class FlowSelectorBoundsLayer extends Layer<FlowSelectorBoundsLayerOption
     //     .filter(c => c);
     // }
 
-    render(): JSX.Element {
+    render(): ReactElement | any {
         const {
             ignoreOneSelect,
             ignoreChildrenLength,

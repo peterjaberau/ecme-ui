@@ -154,7 +154,8 @@ export class Controller {
                     eventKey,
                     '',
                     // @ts-ignore
-                    (event) =>
+                    (event: any) =>
+                        // @ts-ignore
                         this.nativeHandlers[eventKey]({
                             ...this.state.shared,
                             event,

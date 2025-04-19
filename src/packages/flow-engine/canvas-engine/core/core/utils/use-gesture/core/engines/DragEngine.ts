@@ -287,7 +287,7 @@ export class DragEngine extends CoordinatesEngine<'drag'> {
         }
     }
 
-    setupPointer(event: PointerEvent) {
+    setupPointer(event: PointerEvent | any) {
         const config = this.config
         const device = config.device
 

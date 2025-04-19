@@ -2,21 +2,21 @@ import { useObserve } from '@flow/reactive'
 
 import { Form, FormControl, FormState } from '../types'
 
-export function useFormState(control?: FormControl<any> | Form) {
+export function useFormState(control?: FormControl<any> | Form | any) {
     // @ts-ignore
     return useObserve<FormState>(
         control?._formModel.reactiveState.value || ({} as FormState),
     )
 }
 
-export function useFormErrors(control?: FormControl<any> | Form) {
+export function useFormErrors(control?: FormControl<any> | Form | any)  {
     // @ts-ignore
     return useObserve<FormState>(
         control?._formModel.reactiveState.value || ({} as FormState),
     )?.errors
 }
 
-export function useFormWarnings(control?: FormControl<any> | Form) {
+export function useFormWarnings(control?: FormControl<any> | Form | any) {
     // @ts-ignore
     return useObserve<FormState>(
         control?._formModel.reactiveState.value || ({} as FormState),

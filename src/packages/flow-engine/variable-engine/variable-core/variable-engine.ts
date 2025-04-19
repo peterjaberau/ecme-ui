@@ -29,7 +29,7 @@ export class VariableEngine implements Disposable {
 
     // 获取 inversify container 容器
     @inject(ContainerProvider)
-    private readonly containerProvider: ContainerProvider
+    private readonly containerProvider: ContainerProvider | any
 
     get container(): interfaces.Container {
         return this.containerProvider()

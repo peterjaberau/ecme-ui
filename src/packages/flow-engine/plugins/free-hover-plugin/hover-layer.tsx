@@ -45,30 +45,30 @@ const NODE_CLASS_NAME = '.gedit-flow-activity-node'
 export class HoverLayer extends Layer<HoverLayerOptions> {
     static type = 'HoverLayer'
 
-    @inject(WorkflowDocument) document: WorkflowDocument
+    @inject(WorkflowDocument) document: WorkflowDocument | any
 
-    @inject(WorkflowSelectService) selectionService: WorkflowSelectService
+    @inject(WorkflowSelectService) selectionService: WorkflowSelectService | any
 
-    @inject(WorkflowDragService) dragService: WorkflowDragService
+    @inject(WorkflowDragService) dragService: WorkflowDragService | any
 
-    @inject(WorkflowHoverService) hoverService: WorkflowHoverService
+    @inject(WorkflowHoverService) hoverService: WorkflowHoverService | any
 
     @inject(WorkflowLinesManager)
-    linesManager: WorkflowLinesManager
+    linesManager: WorkflowLinesManager | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity | any
 
     @observeEntity(SelectorBoxConfigEntity)
-    protected selectorBoxConfigEntity: SelectorBoxConfigEntity
+    protected selectorBoxConfigEntity: SelectorBoxConfigEntity | any
 
-    @inject(PlaygroundConfigEntity) configEntity: PlaygroundConfigEntity
+    @inject(PlaygroundConfigEntity) configEntity: PlaygroundConfigEntity | any
 
     /**
      * 监听节点 transform
      */
     @observeEntityDatas(WorkflowNodeEntity, FlowNodeTransformData)
-    protected readonly nodeTransforms: FlowNodeTransformData[]
+    protected readonly nodeTransforms: FlowNodeTransformData[] | any
 
     /**
      * 按选中排序
@@ -79,16 +79,16 @@ export class HoverLayer extends Layer<HoverLayerOptions> {
     autorun(): void {
         const { activatedNode } = this.selectionService
         this.nodeTransformsWithSort = this.nodeTransforms
-            .filter((n) => n.entity.id !== 'root')
+            .filter((n: any) => n.entity.id !== 'root')
             .reverse() // 后创建的排在前面
-            .sort((n1) => (n1.entity === activatedNode ? -1 : 0))
+            .sort((n1: any) => (n1.entity === activatedNode ? -1 : 0))
     }
 
     /**
      * 监听线条
      */
     @observeEntities(WorkflowLineEntity)
-    protected readonly lines: WorkflowLineEntity[]
+    protected readonly lines: WorkflowLineEntity[] | any
 
     /**
      * 是否正在调整线条
@@ -162,7 +162,7 @@ export class HoverLayer extends Layer<HoverLayerOptions> {
                          */
                         this.dragService
                             .startDragSelectedNodes(e)
-                            ?.then((dragSuccess) => {
+                            ?.then((dragSuccess: any) => {
                                 if (!dragSuccess) {
                                     // 拖拽没有成功触发了点击
                                     if (

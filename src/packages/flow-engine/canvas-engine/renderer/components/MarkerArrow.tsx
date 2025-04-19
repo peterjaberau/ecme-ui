@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { useBaseColor } from '../hooks/use-base-color'
 
 export const MARK_ARROW_ID = 'line-marker-arrow'
 export const MARK_ARROW_URL = `url(#${MARK_ARROW_ID})`
 
-function MarkerArrow(): JSX.Element {
+function MarkerArrow(): ReactElement {
     const { baseColor } = useBaseColor()
     return (
         <marker

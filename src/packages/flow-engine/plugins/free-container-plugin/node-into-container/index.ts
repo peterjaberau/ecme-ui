@@ -1,3 +1,3 @@
 export { NodeIntoContainerType } from './constant'
 export { NodeIntoContainerService } from './service'
-export { NodeIntoContainerState, NodeIntoContainerEvent } from './type'
+export type { NodeIntoContainerState, NodeIntoContainerEvent } from './type'

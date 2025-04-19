@@ -21,7 +21,6 @@ import {
     PlaygroundContext,
     type PositionSchema,
 } from '../../common'
-// import { SelectionService } from '@flowgram.ai/application-common';
 import { type PlaygroundConfigEntity } from './config'
 
 export interface LayerOptions {}
@@ -39,24 +38,24 @@ export class Layer<
     /**
      * layer 的配置, 由 registerLayer(Layer, LayerOptions) 传入
      */
-    @inject(LayerOptions) options: OPT
+    @inject(LayerOptions) options: OPT | any
 
     protected readonly toDispose = new DisposableCollection()
 
     /**
      * layer 可能存在 dom 也可能没有，如果有，则会加入到 pipeline 的 dom 节点上
      */
-    node: HTMLElement
+    node: HTMLElement | any
 
     /**
      * 父节点
      */
-    pipelineNode: HTMLElement
+    pipelineNode: HTMLElement | any
 
     /**
      * 画布根节点
      */
-    playgroundNode: HTMLElement
+    playgroundNode: HTMLElement | any
 
     // /**
     //  * 发送 payload
@@ -69,14 +68,14 @@ export class Layer<
     /**
      * 当前 layer 的所有监听的实体数据
      */
-    observeManager: PipelineEntities
+    observeManager: PipelineEntities | any
 
     /**
      * 实体管理器
      */
-    @inject(EntityManager) readonly entityManager: EntityManager
+    @inject(EntityManager) readonly entityManager: EntityManager | any
 
-    @injectPlaygroundContext() readonly context: CONTEXT
+    @injectPlaygroundContext() readonly context: CONTEXT | any
 
     /**
      * 自动触发更新，在不需要 react 的时候用这个方法
@@ -86,7 +85,7 @@ export class Layer<
     /**
      * 绘制 react
      */
-    render?(): JSX.Element
+    render?(): Element
 
     /**
      * 默认在渲染时候都会启用 react memo 进行隔离，这种情况就需要数据驱动更新
@@ -104,6 +103,7 @@ export class Layer<
      *  2. 没有提供，按 layer 的注册顺序，后注册先执行 (符合冒泡排序)
      *  3. 执行返回 true，则阻止后续的执行
      */
+    //@ts-ignore
     listenPlaygroundEvent: (
         name: PipeEventName,
         handle: (event: PipeSupportEvent) => boolean | void,
@@ -118,6 +118,7 @@ export class Layer<
      *  2. 没有提供，按 layer 的注册顺序，后注册先执行 (符合冒泡排序)
      *  3. 执行返回 true，则阻止后续的执行
      */
+    //@ts-ignore
     listenGlobalEvent: (
         name: PipeEventName,
         handle: (event: PipeSupportEvent) => boolean | void,
@@ -172,7 +173,7 @@ export class Layer<
     /**
      * playground 是否 focused
      */
-    readonly isFocused: boolean
+    readonly isFocused: boolean | any
 
     /**
      * 销毁
@@ -222,7 +223,7 @@ export class Layer<
     /**
      * 全局画布配置
      */
-    config: PlaygroundConfigEntity
+    config: PlaygroundConfigEntity | any
 
     /**
      * 获取鼠标在 Playground 的位置
@@ -241,6 +242,7 @@ export class Layer<
     /**
      * 可以用于获取别的 layer
      */
+    // @ts-ignore
     getOtherLayer: <T extends Layer>(
         layerRegistry: LayerRegistry<T>,
     ) => T | undefined

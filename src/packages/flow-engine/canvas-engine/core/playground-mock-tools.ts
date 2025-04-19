@@ -33,29 +33,30 @@ export namespace PlaygroundMockTools {
             instances: any[]
             invocationCallOrder: any
             results: { type: string; value: any }[]
-            lastCall: any[]
+            lastCall: any[],
+            [key: string]: any
         }
     }
     export class LayerTestState<T extends Layer = Layer> {
-        autorun: SpyInstance
+        autorun: SpyInstance | any
 
-        render: SpyInstance
+        render: SpyInstance | any
 
-        onReady: SpyInstance
+        onReady: SpyInstance | any
 
-        onResize: SpyInstance
+        onResize: SpyInstance | any
 
-        onFocus: SpyInstance
+        onFocus: SpyInstance | any
 
-        onBlur: SpyInstance
+        onBlur: SpyInstance | any
 
-        onZoom: SpyInstance
+        onZoom: SpyInstance | any
 
-        onScroll: SpyInstance
+        onScroll: SpyInstance | any
 
-        onViewportChange: SpyInstance
+        onViewportChange: SpyInstance | any
 
-        onReadonlyOrDisabledChange: SpyInstance
+        onReadonlyOrDisabledChange: SpyInstance | any
 
         constructor(
             readonly instance: T,

@@ -14,9 +14,9 @@ import { type WorkfloEntityHoverable } from './workflow-hover-service'
 
 @injectable()
 export class WorkflowSelectService {
-    @inject(SelectionService) protected selectionService: SelectionService
+    @inject(SelectionService) protected selectionService: SelectionService | any
 
-    @inject(Playground) protected playground: Playground
+    @inject(Playground) protected playground: Playground | any
 
     get onSelectionChanged(): Event<void> {
         return this.selectionService.onSelectionChanged
@@ -42,7 +42,7 @@ export class WorkflowSelectService {
     }
 
     isSelected(id: string): boolean {
-        return this.selectionService.selection.some((s) => s.id === id)
+        return this.selectionService.selection.some((s: any) => s.id === id)
     }
 
     isActivated(id: string): boolean {
@@ -54,7 +54,7 @@ export class WorkflowSelectService {
      */
     get selectedNodes(): WorkflowNodeEntity[] {
         return this.selectionService.selection.filter(
-            (n) => n instanceof WorkflowNodeEntity,
+            (n: any) => n instanceof WorkflowNodeEntity,
         ) as WorkflowNodeEntity[]
     }
 
@@ -69,7 +69,7 @@ export class WorkflowSelectService {
     toggleSelect(node: WorkflowNodeEntity): void {
         if (this.selectionService.selection.includes(node)) {
             this.selectionService.selection =
-                this.selectionService.selection.filter((n) => n !== node)
+                this.selectionService.selection.filter((n: any) => n !== node)
         } else {
             this.selectionService.selection =
                 this.selectionService.selection.concat(node)

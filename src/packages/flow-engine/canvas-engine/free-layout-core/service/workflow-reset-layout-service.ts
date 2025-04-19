@@ -16,13 +16,13 @@ export type PositionMap = Record<string, IPoint>
 @injectable()
 export class WorkflowResetLayoutService {
     @inject(PlaygroundConfigEntity)
-    private _config: PlaygroundConfigEntity
+    private _config: PlaygroundConfigEntity | any
 
     @inject(WorkflowDocument)
-    private _document: WorkflowDocument
+    private _document: WorkflowDocument | any
 
     @inject(EntityManager)
-    private _entityManager: EntityManager
+    private _entityManager: EntityManager | any
 
     private _resetLayoutEmitter = new Emitter<{
         nodeIds: string[]

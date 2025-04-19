@@ -5,8 +5,10 @@ import { CancellationToken, cancelled } from './cancellation'
  * An object that exposes a promise and functions to resolve and reject it.
  */
 export class PromiseDeferred<T> {
+    // @ts-ignore
     resolve: (value?: T | PromiseLike<T>) => void
 
+    // @ts-ignore
     reject: (err?: any) => void
 
     promise = new Promise<T>((resolve, reject) => {

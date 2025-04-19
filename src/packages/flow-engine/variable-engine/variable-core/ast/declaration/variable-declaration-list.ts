@@ -28,7 +28,7 @@ export class VariableDeclarationList extends ASTNode<VariableDeclarationListJSON
 
     declarationTable: Map<string, VariableDeclaration> = new Map()
 
-    declarations: VariableDeclaration[]
+    declarations: VariableDeclaration[] | any
 
     fromJSON({ declarations, startOrder }: VariableDeclarationListJSON): void {
         const removedKeys = new Set(this.declarationTable.keys())
@@ -89,7 +89,7 @@ export class VariableDeclarationList extends ASTNode<VariableDeclarationListJSON
     toJSON(): ASTNodeJSON {
         return {
             kind: ASTKind.VariableDeclarationList,
-            properties: this.declarations.map((_declaration) =>
+            properties: this.declarations.map((_declaration: any) =>
                 _declaration.toJSON(),
             ),
         }

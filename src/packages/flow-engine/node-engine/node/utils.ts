@@ -1,6 +1,6 @@
 import { find, mergeWith } from 'lodash'
 import { FormFeedback, FormPathService } from '@flow/form-core'
-import { FormValidateReturn } from '@flowgram.ai/form/src/types'
+import { FormValidateReturn } from '@flow/form/types'
 import { type FieldModel, FieldName } from '@flow/form'
 
 import { EffectOptions } from './types'

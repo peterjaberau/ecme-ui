@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import {
     type AdderProps,
@@ -71,7 +71,7 @@ export default function BranchDraggableRenderer(props: PropsType) {
     const renderTo = node.next
 
     const child = React.createElement(
-        adder.renderer as (props: AdderProps) => JSX.Element,
+        adder.renderer as (props: AdderProps) => ReactElement,
         {
             node,
             from,

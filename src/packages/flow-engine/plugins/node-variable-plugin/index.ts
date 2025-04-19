@@ -1,5 +1,5 @@
 export * from './create-node-variable-plugin'
-export {
+export type {
     VariableProviderAbilityOptions,
     VariableConsumerAbilityOptions,
     VariableAbilityParseContext,

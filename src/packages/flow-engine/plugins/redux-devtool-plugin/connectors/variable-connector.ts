@@ -5,7 +5,7 @@ import { BaseConnector } from './base'
 
 @injectable()
 export class VariableConnector extends BaseConnector {
-    @inject(VariableEngine) protected variableEngine: VariableEngine
+    @inject(VariableEngine) protected variableEngine: VariableEngine | any
 
     /**
      * 缓存变量状态
@@ -13,7 +13,7 @@ export class VariableConnector extends BaseConnector {
     scopes: Record<string, any> = {}
 
     getName(): string {
-        return '@flowgram.ai/VariableEngine'
+        return '@flow/VariableEngine'
     }
 
     getState() {
@@ -32,7 +32,7 @@ export class VariableConnector extends BaseConnector {
     }
 
     onInit() {
-        this.variableEngine.onScopeChange((action) => {
+        this.variableEngine.onScopeChange((action: any) => {
             const { scope, type } = action
 
             if (type === 'delete') {

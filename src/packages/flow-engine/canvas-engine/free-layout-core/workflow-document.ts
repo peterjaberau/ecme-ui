@@ -68,18 +68,18 @@ export class WorkflowDocument extends FlowDocument {
 
     protected _loading = false
 
-    @inject(WorkflowLinesManager) linesManager: WorkflowLinesManager
+    @inject(WorkflowLinesManager) linesManager: WorkflowLinesManager | any
 
-    @inject(PlaygroundConfigEntity) playgroundConfig: PlaygroundConfigEntity
+    @inject(PlaygroundConfigEntity) playgroundConfig: PlaygroundConfigEntity | any
 
     @injectPlaygroundContext() playgroundContext: PlaygroundContext
 
     @inject(WorkflowDocumentOptions)
     options: WorkflowDocumentOptions = {}
 
-    @inject(NodeEngineContext) @optional() nodeEngineContext: NodeEngineContext
+    @inject(NodeEngineContext) @optional() nodeEngineContext: NodeEngineContext | any
 
-    @inject(WorkflowSelectService) selectServices: WorkflowSelectService
+    @inject(WorkflowSelectService) selectServices: WorkflowSelectService | any
 
     get loading(): boolean {
         return this._loading
@@ -97,10 +97,10 @@ export class WorkflowDocument extends FlowDocument {
         this.currentLayoutKey = this.options.defaultLayout || FREE_LAYOUT_KEY
         this.linesManager.init(this)
         this.playgroundConfig.getCursors = () => this.options.cursors
-        this.linesManager.onAvailableLinesChange((e) =>
+        this.linesManager.onAvailableLinesChange((e: any) =>
             this.fireContentChange(e),
         )
-        this.playgroundConfig.onReadonlyOrDisabledChange(({ readonly }) => {
+        this.playgroundConfig.onReadonlyOrDisabledChange(({ readonly }: any) => {
             if (this.nodeEngineContext) {
                 this.nodeEngineContext.readonly = readonly
             }
@@ -150,7 +150,7 @@ export class WorkflowDocument extends FlowDocument {
      */
     clear(): void {
         this.getAllNodes().map((node) => node.dispose()) // 清空节点
-        this.linesManager.getAllLines().map((line) => line.dispose()) // 清空线条
+        this.linesManager.getAllLines().map((line: any) => line.dispose()) // 清空线条
         this.getAllPorts().map((port) => port.dispose()) // 清空端口
         this.selectServices.clear() // 清空选择
     }
@@ -350,15 +350,17 @@ export class WorkflowDocument extends FlowDocument {
     }
 
     getAllNodes(): WorkflowNodeEntity[] {
+        //@ts-ignore
         return this.entityManager
             .getEntities<WorkflowNodeEntity>(WorkflowNodeEntity)
-            .filter((n) => n.id !== FlowNodeBaseType.ROOT)
+            .filter((n: any) => n.id !== FlowNodeBaseType.ROOT)
     }
 
     getAllPorts(): WorkflowPortEntity[] {
+        //@ts-ignore
         return this.entityManager
             .getEntities<WorkflowPortEntity>(WorkflowPortEntity)
-            .filter((p) => p.node.id !== FlowNodeBaseType.ROOT)
+            .filter((p: any) => p.node.id !== FlowNodeBaseType.ROOT)
     }
 
     /**
@@ -373,8 +375,8 @@ export class WorkflowDocument extends FlowDocument {
 
         const allLines = this.linesManager
             .getAllLines()
-            .filter((line) => line.from && line.to)
-            .map((line) => ({
+            .filter((line: any) => line.from && line.to)
+            .map((line: any) => ({
                 from: line.from.id,
                 to: line.to!.id,
             }))
@@ -396,6 +398,7 @@ export class WorkflowDocument extends FlowDocument {
                 return
             }
             associatedCache.add(nodeId)
+            //@ts-ignore
             const nextNodes = allLines.reduce((ids, { from, to }) => {
                 if (from === nodeId && !associatedCache.has(to)) {
                     ids.push(to)

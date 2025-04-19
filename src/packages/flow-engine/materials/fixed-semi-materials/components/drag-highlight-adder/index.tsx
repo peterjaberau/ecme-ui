@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { min } from 'lodash'
 import {
@@ -23,7 +23,7 @@ export default function DragHighlightAdder({
     node,
 }: {
     node: FlowNodeEntity
-}): JSX.Element {
+}): ReactElement | any {
     const transformBounds = node.getData<FlowNodeTransformData>(
         FlowNodeTransformData,
     )?.bounds

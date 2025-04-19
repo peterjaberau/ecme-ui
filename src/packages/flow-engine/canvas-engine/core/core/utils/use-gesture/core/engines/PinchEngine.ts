@@ -356,6 +356,7 @@ export class PinchEngine extends Engine<'pinch'> {
             bindFunction(
                 'lostPointerCapture',
                 '',
+                // @ts-ignore
                 this[device + 'End'].bind(this),
             )
         }

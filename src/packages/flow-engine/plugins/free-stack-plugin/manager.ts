@@ -23,21 +23,21 @@ import { StackingComputeMode, StackingConfig } from './constant'
 
 @injectable()
 export class StackingContextManager {
-    @inject(WorkflowDocument) private readonly document: WorkflowDocument
+    @inject(WorkflowDocument) private readonly document: WorkflowDocument | any
 
-    @inject(EntityManager) private readonly entityManager: EntityManager
+    @inject(EntityManager) private readonly entityManager: EntityManager | any
 
     @inject(PipelineRenderer)
-    private readonly pipelineRenderer: PipelineRenderer
+    private readonly pipelineRenderer: PipelineRenderer | any
 
     @inject(PipelineRegistry)
-    private readonly pipelineRegistry: PipelineRegistry
+    private readonly pipelineRegistry: PipelineRegistry | any
 
     @inject(WorkflowHoverService)
-    private readonly hoverService: WorkflowHoverService
+    private readonly hoverService: WorkflowHoverService | any
 
     @inject(WorkflowSelectService)
-    private readonly selectService: WorkflowSelectService
+    private readonly selectService: WorkflowSelectService | any
 
     public readonly node = domUtils.createDivWithClass(
         'gedit-playground-layer gedit-flow-render-layer',
@@ -117,12 +117,14 @@ export class StackingContextManager {
     }
 
     private get nodes(): WorkflowNodeEntity[] {
+        //@ts-ignore
         return this.entityManager.getEntities<WorkflowNodeEntity>(
             WorkflowNodeEntity,
         )
     }
 
     private get lines(): WorkflowLineEntity[] {
+        //@ts-ignore
         return this.entityManager.getEntities<WorkflowLineEntity>(
             WorkflowLineEntity,
         )
@@ -134,7 +136,7 @@ export class StackingContextManager {
             hoveredEntityID: this.hoverService.hoveredNode?.id,
             selectedEntities: this.selectService.selection,
             selectedIDs: this.selectService.selection.map(
-                (entity) => entity.id,
+                (entity: any) => entity.id,
             ),
         }
     }

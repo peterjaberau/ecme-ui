@@ -14,9 +14,9 @@ interface FocusNodeOptions {
 
 @injectable()
 export class FlowEditorClient {
-    @inject(NodeClient) readonly nodeClient: NodeClient
+    @inject(NodeClient) readonly nodeClient: NodeClient | any
 
-    @inject(Playground) readonly playground: Playground
+    @inject(Playground) readonly playground: Playground | any
 
     focusNodeFormItem(formItem: FormItem, options?: FocusNodeFormItemOptions) {
         this.nodeClient.nodeFocusService.focusNodeFormItem(formItem, options)

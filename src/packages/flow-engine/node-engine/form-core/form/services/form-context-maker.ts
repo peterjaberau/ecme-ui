@@ -6,7 +6,7 @@ import { FormItem, FormItemMaterialContext } from '..'
 
 @injectable()
 export class FormContextMaker {
-    @inject(NodeEngineContext) readonly nodeEngineContext: NodeEngineContext
+    @inject(NodeEngineContext) readonly nodeEngineContext: NodeEngineContext | any
 
     @injectPlaygroundContext() readonly playgroundContext: PlaygroundContext
 

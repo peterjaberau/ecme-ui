@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 
 import {
     type AdderProps,
@@ -83,7 +83,8 @@ export default function Adder(props: PropsType) {
     const renderTo = node.next
 
     const child = React.createElement(
-        adder.renderer as (props: AdderProps) => JSX.Element,
+        //@ts-ignore
+        adder.renderer as (props: AdderProps | any) => ReactElement,
         {
             node,
             from,

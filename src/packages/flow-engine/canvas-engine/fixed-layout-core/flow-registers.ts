@@ -76,7 +76,7 @@ export class FlowRegisters
      * 注册渲染层
      * @param renderer
      */
-    registerRenderer(renderer: FlowRendererRegistry) {
+    registerRenderer(renderer: FlowRendererRegistry | any) {
         /**
          * 注册 layer (ECS - System)
          */

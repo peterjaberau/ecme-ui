@@ -12,7 +12,7 @@ import { MinimapRender } from './component'
 export class FlowMinimapLayer extends Layer<MinimapLayerOptions> {
     public static type = 'FlowMinimapLayer'
 
-    @inject(FlowMinimapService) private readonly service: FlowMinimapService
+    @inject(FlowMinimapService) private readonly service: FlowMinimapService | any
 
     public readonly node: HTMLElement
 
@@ -24,7 +24,7 @@ export class FlowMinimapLayer extends Layer<MinimapLayerOptions> {
         this.node.style.zIndex = '9999'
     }
 
-    public render(): JSX.Element {
+    public render(): Element | any {
         if (this.options.disableLayer) {
             return <></>
         }

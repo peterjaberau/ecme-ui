@@ -36,19 +36,19 @@ import { SnapDefaultOptions } from './constant'
 
 @injectable()
 export class WorkflowSnapService {
-    @inject(WorkflowDocument) private readonly document: WorkflowDocument
+    @inject(WorkflowDocument) private readonly document: WorkflowDocument | any
 
-    @inject(EntityManager) private readonly entityManager: EntityManager
+    @inject(EntityManager) private readonly entityManager: EntityManager | any
 
     @inject(WorkflowDragService)
-    private readonly dragService: WorkflowDragService
+    private readonly dragService: WorkflowDragService | any
 
     @inject(PlaygroundConfigEntity)
-    private readonly playgroundConfig: PlaygroundConfigEntity
+    private readonly playgroundConfig: PlaygroundConfigEntity | any
 
     private disposers: Disposable[] = []
 
-    private options: WorkflowSnapServiceOptions
+    private options: WorkflowSnapServiceOptions | any
 
     private snapEmitter = new Emitter<SnapEvent>()
 
@@ -90,7 +90,7 @@ export class WorkflowSnapService {
 
     private mountListener(): void {
         const dragAdjusterDisposer = this.dragService.registerPosAdjuster(
-            (params) => {
+            (params: any) => {
                 const { selectedNodes: targetNodes, position } = params
                 const isMultiSnapping = this.options.enableMultiSnapping
                     ? false
@@ -111,7 +111,7 @@ export class WorkflowSnapService {
                 })
             },
         )
-        const dragEndDisposer = this.dragService.onNodesDrag((event) => {
+        const dragEndDisposer = this.dragService.onNodesDrag((event: any) => {
             if (event.type !== 'onDragEnd' || this._disabled) {
                 return
             }
@@ -443,6 +443,7 @@ export class WorkflowSnapService {
     }
 
     private get nodes(): WorkflowNodeEntity[] {
+        //@ts-ignore
         return this.entityManager.getEntities<WorkflowNodeEntity>(
             WorkflowNodeEntity,
         )

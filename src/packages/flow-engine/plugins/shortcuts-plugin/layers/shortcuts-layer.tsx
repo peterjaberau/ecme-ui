@@ -8,9 +8,9 @@ import { ShortcutsRegistry } from '../shortcuts-contribution'
 export class ShortcutsLayer extends Layer<object> {
     static type = 'ShortcutsLayer'
 
-    @inject(ShortcutsRegistry) shortcuts: ShortcutsRegistry
+    @inject(ShortcutsRegistry) shortcuts: ShortcutsRegistry | any
 
-    @inject(SelectionService) selection: SelectionService
+    @inject(SelectionService) selection: SelectionService | any
 
     onReady(): void {
         this.shortcuts.addHandlersIfNotFound(
@@ -43,7 +43,7 @@ export class ShortcutsLayer extends Layer<object> {
                 if (!this.isFocused || e.target !== this.playgroundNode) {
                     return
                 }
-                this.shortcuts.shortcutsHandlers.some((shortcutsHandler) => {
+                this.shortcuts.shortcutsHandlers.some((shortcutsHandler: any) => {
                     if (
                         isShortcutsMatch(e, shortcutsHandler.shortcuts) &&
                         (!shortcutsHandler.isEnabled ||

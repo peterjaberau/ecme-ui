@@ -8,7 +8,7 @@ export { usePlaygroundTools } from './hooks'
 export {
     PlaygroundReact,
     PlaygroundReactContent,
-    PlaygroundReactContentProps,
-    PlaygroundRef,
+    type PlaygroundReactContentProps,
+    type PlaygroundRef,
 } from './components'
-export { PlaygroundReactProps, createPlaygroundReactPreset } from './preset'
+export { type PlaygroundReactProps, createPlaygroundReactPreset } from './preset'

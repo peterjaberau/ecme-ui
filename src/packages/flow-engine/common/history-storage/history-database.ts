@@ -6,9 +6,9 @@ import { HistoryOperationRecord, HistoryRecord } from './types'
  * 历史数据库
  */
 export class HistoryDatabase extends Dexie {
-    readonly history: Table<HistoryRecord>
+    readonly history: Table<HistoryRecord> | any
 
-    readonly operation: Table<HistoryOperationRecord>
+    readonly operation: Table<HistoryOperationRecord> | any
 
     resourceStorageLimit: number = 100
 
@@ -71,11 +71,11 @@ export class HistoryDatabase extends Dexie {
                         .where({ resourceURI: history.resourceURI })
                         .limit(limit)
                         .toArray()
-                    const ids = items.map((i) => i.id)
-                    const uuid = items.map((i) => i.uuid)
+                    const ids = items.map((i: any) => i.id)
+                    const uuid = items.map((i: any) => i.uuid)
                     await Promise.all([
                         this.history.bulkDelete(ids),
-                        ...uuid.map(async (uuid) => {
+                        ...uuid.map(async (uuid: any) => {
                             await this.operation
                                 .where({ historyId: uuid })
                                 .delete()

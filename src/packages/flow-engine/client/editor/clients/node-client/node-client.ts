@@ -4,5 +4,5 @@ import { NodeFocusService } from './node-focus-service'
 
 @injectable()
 export class NodeClient {
-    @inject(NodeFocusService) nodeFocusService: NodeFocusService
+    @inject(NodeFocusService) nodeFocusService: NodeFocusService | any
 }

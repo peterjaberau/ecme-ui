@@ -30,16 +30,16 @@ import { ChangeContentHandler } from './handlers/change-content-handler'
 @injectable()
 export class FreeHistoryManager {
     @inject(DragNodesHandler)
-    private _dragNodesHandler: DragNodesHandler
+    private _dragNodesHandler: DragNodesHandler | any
 
     @inject(ChangeNodeDataHandler)
-    private _changeNodeDataHandler: ChangeNodeDataHandler
+    private _changeNodeDataHandler: ChangeNodeDataHandler | any
 
     @inject(ChangeContentHandler)
-    private _changeContentHandler: ChangeContentHandler
+    private _changeContentHandler: ChangeContentHandler | any
 
     @inject(HistoryEntityManager)
-    private _entityManager: HistoryEntityManager
+    private _entityManager: HistoryEntityManager | any
 
     @inject(FormManager)
     @optional()
@@ -48,7 +48,7 @@ export class FreeHistoryManager {
     private _toDispose: DisposableCollection = new DisposableCollection()
 
     @inject(WorkflowOperationBaseService)
-    private _operationService: WorkflowOperationBaseService
+    private _operationService: WorkflowOperationBaseService | any
 
     onInit(ctx: PluginContext, opts: FreeHistoryPluginOptions) {
         const document = ctx.get<WorkflowDocument>(WorkflowDocument)
@@ -120,7 +120,7 @@ export class FreeHistoryManager {
                 )
             }),
             this._operationService.onNodeMove(
-                ({ node, fromParent, fromIndex, toParent, toIndex }) => {
+                ({ node, fromParent, fromIndex, toParent, toIndex }: any) => {
                     historyService.pushOperation(
                         {
                             type: OperationType.moveChildNodes,
@@ -138,7 +138,7 @@ export class FreeHistoryManager {
                     )
                 },
             ),
-            this._operationService.onNodePostionUpdate((event) => {
+            this._operationService.onNodePostionUpdate((event: any) => {
                 const value: DragNodeOperationValue = {
                     ids: [event.node.id],
                     value: [event.newPosition],

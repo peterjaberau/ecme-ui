@@ -12,13 +12,13 @@ export const FormModelEntity = Symbol('FormModelEntity')
 
 @injectable()
 export abstract class FormModel {
-    readonly onValidate: Event<FormModel>
+    readonly onValidate: Event<FormModel> | any
 
-    readonly onValidChange: Event<FormModelValid>
+    readonly onValidChange: Event<FormModelValid> | any
 
-    readonly onFeedbacksChange: Event<FormFeedback[]>
+    readonly onFeedbacksChange: Event<FormFeedback[]> | any
 
-    readonly onInitialized: Event<FormModel>
+    readonly onInitialized: Event<FormModel> | any
 
     protected toDispose: DisposableCollection = new DisposableCollection()
 

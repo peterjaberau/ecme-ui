@@ -14,7 +14,7 @@ export class ArrayType extends BaseType<ArrayJSON> {
 
     static kind: string = ASTKind.Array
 
-    items: BaseType
+    items: BaseType | any
 
     fromJSON({ items }: ArrayJSON): void {
         this.updateChildNodeByKey('items', parseTypeJsonOrKind(items))

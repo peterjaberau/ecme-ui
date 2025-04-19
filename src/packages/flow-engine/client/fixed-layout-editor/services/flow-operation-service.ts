@@ -18,7 +18,7 @@ export class FlowOperationServiceImpl
     implements FlowOperationService
 {
     @inject(FlowGroupService)
-    protected groupService: FlowGroupService
+    protected groupService: FlowGroupService | any
 
     createGroup(nodes: FlowNodeEntity[]): FlowNodeEntity | undefined {
         return this.groupService.createGroup(nodes)

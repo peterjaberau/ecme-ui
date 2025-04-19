@@ -17,7 +17,7 @@ import { WorkflowNodePanelService } from './service'
 export class WorkflowNodePanelLayer extends Layer<NodePanelLayerOptions> {
     public static type = 'WorkflowNodePanelLayer'
 
-    @inject(WorkflowNodePanelService) private service: WorkflowNodePanelService
+    @inject(WorkflowNodePanelService) private service: WorkflowNodePanelService  | any
 
     public node: HTMLDivElement
 
@@ -40,7 +40,7 @@ export class WorkflowNodePanelLayer extends Layer<NodePanelLayerOptions> {
         this.node.style.transform = `scale(${zoom})`
     }
 
-    public render(): JSX.Element {
+    public render(): Element | any {
         const NodePanelRender = this.options.renderer
         return (
             <>

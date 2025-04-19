@@ -25,21 +25,21 @@ import type {
  */
 @injectable()
 export class WorkflowNodePanelService {
-    @inject(WorkflowDocument) private readonly document: WorkflowDocument
+    @inject(WorkflowDocument) private readonly document: WorkflowDocument | any
 
     @inject(WorkflowDragService)
-    private readonly dragService: WorkflowDragService
+    private readonly dragService: WorkflowDragService | any
 
     @inject(WorkflowSelectService)
-    private readonly selectService: WorkflowSelectService
+    private readonly selectService: WorkflowSelectService | any
 
     @inject(WorkflowLinesManager)
-    private readonly linesManager: WorkflowLinesManager
+    private readonly linesManager: WorkflowLinesManager | any
 
     @inject(PlaygroundConfigEntity)
-    private readonly playgroundConfig: PlaygroundConfigEntity
+    private readonly playgroundConfig: PlaygroundConfigEntity | any
 
-    @inject(HistoryService) private readonly historyService: HistoryService
+    @inject(HistoryService) private readonly historyService: HistoryService | any
 
     private readonly toDispose = new DisposableCollection()
 

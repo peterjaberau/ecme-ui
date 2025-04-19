@@ -6,7 +6,7 @@ import { usePlayground } from '@flow/canvas-core'
 export function useStartDragNode() {
     const playground = usePlayground()
 
-    const dragLayer = playground.getLayer(FlowDragLayer)
+    const dragLayer: any = playground.getLayer(FlowDragLayer as any)
 
     return useMemo(
         () => ({

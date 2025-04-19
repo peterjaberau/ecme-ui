@@ -19,13 +19,13 @@ import { FlowNodeRenderData } from '../datas'
 @injectable()
 export class FlowDragService {
     @inject(FlowDocument)
-    protected document: FlowDocument
+    protected document: FlowDocument | any
 
     @inject(FlowOperationBaseService)
-    protected operationService: FlowOperationBaseService
+    protected operationService: FlowOperationBaseService | any
 
     @inject(EntityManager)
-    protected entityManager: EntityManager
+    protected entityManager: EntityManager | any
 
     protected onDropEmitter = new Emitter<{
         dropNode: FlowNodeEntity

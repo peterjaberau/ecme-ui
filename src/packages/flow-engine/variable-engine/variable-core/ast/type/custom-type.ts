@@ -10,7 +10,7 @@ export interface CustomTypeJSON {
 export class CustomType extends BaseType<CustomTypeJSON> {
     static kind: string = ASTKind.CustomType
 
-    protected _typeName: string
+    protected _typeName: string | any
 
     get typeName(): string {
         return this._typeName

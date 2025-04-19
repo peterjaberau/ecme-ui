@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import metadata from '../metadata'
 import { NodeWrap, NodeLabel, NodesWrap } from './styles'
 
 function Node(props: {
     label: string
-    icon: JSX.Element
+    icon: ReactElement | any
     onClick: () => void
 }) {
     return (

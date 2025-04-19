@@ -11,7 +11,8 @@ export const NodeWrap = styled.div`
   cursor: pointer;
   font-size: 19px;
   padding: 0 15px;
-  &:hover: {
+    
+  &:hover {
     background-color: ${primaryOpacity09};
     color: ${primary};
   },

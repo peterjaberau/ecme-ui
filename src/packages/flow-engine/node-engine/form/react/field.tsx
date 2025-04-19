@@ -4,7 +4,7 @@ import { isFunction } from 'lodash'
 import { DisposableCollection, useRefresh } from '@flow/utils'
 import { useReadonlyReactiveState } from '@flow/reactive'
 
-import { toField, toFieldState } from 'src/core/to-field'
+import { toField, toFieldState } from '../core/to-field'
 import {
     FieldModelState,
     FieldName,

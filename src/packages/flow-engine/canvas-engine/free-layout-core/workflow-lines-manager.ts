@@ -1,4 +1,4 @@
-import { last } from 'lodash-es'
+import { last } from 'lodash'
 import { inject, injectable } from 'inversify'
 import {
     Disposable,
@@ -46,7 +46,7 @@ import {
  */
 @injectable()
 export class WorkflowLinesManager {
-    protected document: WorkflowDocument
+    protected document: WorkflowDocument | any
 
     protected toDispose = new DisposableCollection()
     // 线条类型
@@ -58,14 +58,14 @@ export class WorkflowLinesManager {
 
     protected onForceUpdateEmitter = new Emitter<void>()
 
-    @inject(WorkflowHoverService) hoverService: WorkflowHoverService
+    @inject(WorkflowHoverService) hoverService: WorkflowHoverService | any
 
-    @inject(WorkflowSelectService) selectService: WorkflowSelectService
+    @inject(WorkflowSelectService) selectService: WorkflowSelectService | any
 
-    @inject(EntityManager) protected readonly entityManager: EntityManager
+    @inject(EntityManager) protected readonly entityManager: EntityManager | any
 
     @inject(WorkflowDocumentOptions)
-    readonly options: WorkflowDocumentOptions
+    readonly options: WorkflowDocumentOptions | any
 
     /**
      * 有效的线条被添加或者删除时候触发，未连上的线条不算
@@ -133,12 +133,14 @@ export class WorkflowLinesManager {
     }
 
     hasLine(portInfo: WorkflowLinePortInfo): boolean {
+        //@ts-ignore
         return !!this.entityManager.getEntityById<WorkflowLineEntity>(
             WorkflowLineEntity.portInfoToLineId(portInfo),
         )
     }
 
     getLine(portInfo: WorkflowLinePortInfo): WorkflowLineEntity | undefined {
+        //@ts-ignore
         return this.entityManager.getEntityById<WorkflowLineEntity>(
             WorkflowLineEntity.portInfoToLineId(portInfo),
         )
@@ -164,7 +166,8 @@ export class WorkflowLinesManager {
         const { from, to, drawingTo, fromPort, toPort } = options
         const available = Boolean(from && to)
         const key = options.key || WorkflowLineEntity.portInfoToLineId(options)
-        let line = this.entityManager.getEntityById<WorkflowLineEntity>(key)!
+        //@ts-ignore
+        let line: any = this.entityManager.getEntityById<WorkflowLineEntity>(key)!
         if (line) {
             // 如果之前有线条，则先把颜色去掉
             line.highlightColor = ''
@@ -172,10 +175,12 @@ export class WorkflowLinesManager {
             return line
         }
 
+        //@ts-ignore
         const fromNode = this.entityManager
             .getEntityById<WorkflowNodeEntity>(from)
             ?.getData<WorkflowNodeLinesData>(WorkflowNodeLinesData)
         const toNode = to
+            //@ts-ignore
             ? this.entityManager
                   .getEntityById<WorkflowNodeEntity>(to)!
                   .getData<WorkflowNodeLinesData>(WorkflowNodeLinesData)!
@@ -187,6 +192,7 @@ export class WorkflowLinesManager {
         }
 
         this.isDrawing = Boolean(drawingTo)
+        //@ts-ignore
         line = this.entityManager.createEntity<WorkflowLineEntity>(
             WorkflowLineEntity,
             {
@@ -389,6 +395,7 @@ export class WorkflowLinesManager {
     }
 
     getPortById(portId: string): WorkflowPortEntity | undefined {
+        //@ts-ignore
         return this.entityManager.getEntityById<WorkflowPortEntity>(portId)
     }
 
@@ -427,18 +434,19 @@ export class WorkflowLinesManager {
      * @param pos
      */
     getPortFromMousePos(pos: IPoint): WorkflowPortEntity | undefined {
+        //@ts-ignore
         const allPorts = this.entityManager
             .getEntities<WorkflowPortEntity>(WorkflowPortEntity)
-            .filter((port) => port.node.flowNodeType !== 'root')
-        const targetPort = allPorts.find((port) => port.isHovered(pos.x, pos.y))
+            .filter((port: any) => port.node.flowNodeType !== 'root')
+        const targetPort = allPorts.find((port: any) => port.isHovered(pos.x, pos.y))
         if (targetPort) {
             // 后创建的要先校验
             const targetNode = this.document
                 .getAllNodes()
                 .slice()
                 .reverse()
-                .filter((node) => targetPort.node?.parent?.id !== node.id)
-                .find((node) =>
+                .filter((node: any) => targetPort.node?.parent?.id !== node.id)
+                .find((node: any) =>
                     node.getData(TransformData)!.contains(pos.x, pos.y),
                 )
             // 点位可能会被节点覆盖
@@ -456,15 +464,17 @@ export class WorkflowLinesManager {
     getNodeFromMousePos(pos: IPoint): WorkflowNodeEntity | undefined {
         const allNodes = this.document
             .getAllNodes()
-            .sort((a, b) => this.getNodeIndex(a) - this.getNodeIndex(b))
+            .sort((a: any, b: any) => this.getNodeIndex(a) - this.getNodeIndex(b))
         // 先挑选出 bounds 区域符合的 node
         const containNodes: WorkflowNodeEntity[] = []
         const { selection } = this.selectService
         const zoom =
+            //@ts-ignore
             this.entityManager.getEntity<PlaygroundConfigEntity>(
                 PlaygroundConfigEntity,
             )?.config?.zoom || 1
-        allNodes.forEach((node) => {
+        allNodes.forEach((node: any) => {
+            //@ts-ignore
             const { bounds } = node.getData<FlowNodeTransformData>(
                 FlowNodeTransformData,
             )
@@ -481,7 +491,7 @@ export class WorkflowLinesManager {
         // 当有元素被选中的时候选中元素在顶层
         if (selection?.length) {
             const filteredNodes = containNodes.filter((node) =>
-                selection.some((_node) => node.id === _node.id),
+                selection.some((_node: any) => node.id === _node.id),
             )
             if (filteredNodes?.length) {
                 return last(filteredNodes)

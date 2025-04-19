@@ -19,7 +19,7 @@ export abstract class FormItem {
     readonly onDispose = this.toDispose.onDispose
 
     // todo(heyuan): 将dom 相关逻辑拆到form item插件里
-    private _domRef: FormItemDomRef
+    private _domRef: FormItemDomRef | any
 
     protected constructor(
         meta: IFormItemMeta,

@@ -45,7 +45,7 @@ export class KeyPathExpressionV2<
 
     // 直接生成新的 returnType 节点而不是直接复用
     // 确保不同的 keyPath 不指向同一个 Field
-    _returnType: BaseType
+    _returnType: BaseType | any
 
     get returnType() {
         return this._returnType

@@ -13,7 +13,7 @@ export abstract class ScopeChain {
     readonly toDispose: DisposableCollection = new DisposableCollection()
 
     @inject(VariableEngineProvider)
-    variableEngineProvider: VariableEngineProvider
+    variableEngineProvider: VariableEngineProvider | any
 
     get variableEngine() {
         return this.variableEngineProvider()
@@ -25,7 +25,7 @@ export abstract class ScopeChain {
      * 所有作用域依赖关系刷新
      */
     refreshAllChange(): void {
-        this.variableEngine.getAllScopes().forEach((_scope) => {
+        this.variableEngine.getAllScopes().forEach((_scope: any) => {
             _scope.refreshCovers()
             _scope.refreshDeps()
         })

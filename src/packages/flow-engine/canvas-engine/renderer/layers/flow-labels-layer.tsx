@@ -18,26 +18,27 @@ import { createLabels } from '../components/LabelsRenderer'
 
 @injectable()
 export class FlowLabelsLayer extends Layer {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
     node = domUtils.createDivWithClass('gedit-flow-labels-layer')
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntity(FlowRendererStateEntity)
-    readonly flowRenderState: FlowRendererStateEntity
+    readonly flowRenderState: FlowRendererStateEntity | any
 
     /**
      * 监听 transition 变化
      */
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransitionData)
-    _transitions: FlowNodeTransitionData[]
+    _transitions: FlowNodeTransitionData[] | any
 
     get transitions(): FlowNodeTransitionData[] {
+        //@ts-ignore
         return this.document.getRenderDatas<FlowNodeTransitionData>(
             FlowNodeTransitionData,
         )
@@ -71,8 +72,9 @@ export class FlowLabelsLayer extends Layer {
         this.render()
     }
 
+    //@ts-ignore
     render() {
-        const labels: JSX.Element[] = []
+        const labels: Element[] = []
         if (this.documentTransformer?.loading) return <></>
         this.documentTransformer?.refresh?.()
         const { baseActivatedColor, baseColor } = useBaseColor()
@@ -84,6 +86,7 @@ export class FlowLabelsLayer extends Layer {
                 data: transition,
                 rendererRegistry: this.rendererRegistry,
                 isViewportVisible,
+                //@ts-ignore
                 labelsSave: labels,
                 getLabelColor: (activated) =>
                     activated ? baseActivatedColor : baseColor,

@@ -20,7 +20,7 @@ const FlowManagerHeader = ({
 
     const handleAddNewFlow = async () => {
         const newFlow: any = await addFlow();
-        navigate(`/editor/${newFlow.id}`);
+        navigate(`/edit/${newFlow.id}`);
     };
 
 

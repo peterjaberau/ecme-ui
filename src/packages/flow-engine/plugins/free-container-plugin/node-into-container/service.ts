@@ -30,26 +30,26 @@ import { NodeIntoContainerType } from './constant'
 
 @injectable()
 export class NodeIntoContainerService {
-    public state: NodeIntoContainerState
+    public state: NodeIntoContainerState | any
 
     @inject(WorkflowDragService)
-    private dragService: WorkflowDragService
+    private dragService: WorkflowDragService | any
 
     @inject(WorkflowDocument)
-    private document: WorkflowDocument
+    private document: WorkflowDocument | any
 
     @inject(PlaygroundConfigEntity)
-    private playgroundConfig: PlaygroundConfigEntity
+    private playgroundConfig: PlaygroundConfigEntity | any
 
     @inject(WorkflowOperationBaseService)
-    private operationService: WorkflowOperationBaseService
+    private operationService: WorkflowOperationBaseService | any
 
     @inject(WorkflowLinesManager)
-    private linesManager: WorkflowLinesManager
+    private linesManager: WorkflowLinesManager | any
 
-    @inject(HistoryService) private historyService: HistoryService
+    @inject(HistoryService) private historyService: HistoryService | any
 
-    @inject(WorkflowSelectService) private selectService: WorkflowSelectService
+    @inject(WorkflowSelectService) private selectService: WorkflowSelectService | any
 
     private emitter = new Emitter<NodeIntoContainerEvent>()
 
@@ -74,7 +74,7 @@ export class NodeIntoContainerService {
     /** 移除节点连线 */
     public async removeNodeLines(node: WorkflowNodeEntity): Promise<void> {
         const lines = this.linesManager.getAllLines()
-        lines.forEach((line) => {
+        lines.forEach((line: any) => {
             if (line.from.id !== node.id && line.to?.id !== node.id) {
                 return
             }
@@ -151,7 +151,7 @@ export class NodeIntoContainerService {
     private listenDragToContainer(): Disposable {
         const draggingNode = (e: NodesDragEvent) => this.draggingNode(e)
         const throttledDraggingNode = throttle(draggingNode, 200) // 200ms触发一次计算
-        return this.dragService.onNodesDrag(async (event) => {
+        return this.dragService.onNodesDrag(async (event: any) => {
             if (this.selectService.selectedNodes.length !== 1) {
                 return
             }
@@ -217,7 +217,7 @@ export class NodeIntoContainerService {
             return
         }
         const lines = this.linesManager.getAllLines()
-        lines.forEach((line) => {
+        lines.forEach((line: any) => {
             if (line.from.id !== dragNode.id && line.to?.id !== dragNode.id) {
                 return
             }
@@ -291,7 +291,7 @@ export class NodeIntoContainerService {
     private getContainerTransforms(): FlowNodeTransformData[] {
         return this.document
             .getRenderDatas(FlowNodeTransformData, false)
-            .filter((transform) => {
+            .filter((transform: any) => {
                 const { entity } = transform
                 if (entity.originParent) {
                     return (
@@ -301,7 +301,7 @@ export class NodeIntoContainerService {
                 }
                 return entity.getNodeMeta().selectable
             })
-            .filter((transform) => this.isContainer(transform.entity))
+            .filter((transform: any) => this.isContainer(transform.entity))
     }
 
     /** 放置节点到容器 */

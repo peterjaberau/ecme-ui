@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { type IPoint, Rectangle } from '@flow/utils'
 import {
@@ -19,7 +19,7 @@ export interface LabelOpts {
     data: FlowNodeTransitionData
     rendererRegistry: FlowRendererRegistry
     isViewportVisible: (bounds: Rectangle) => boolean
-    labelsSave: JSX.Element[]
+    labelsSave: ReactElement[]
     getLabelColor: (activated?: boolean) => string
 }
 
@@ -50,7 +50,7 @@ export function createLabels(labelProps: LabelOpts): void {
     const { activated } = renderData || {}
 
     // 标签绘制逻辑
-    const renderLabel = (label: FlowTransitionLabel, index: number) => {
+    const renderLabel: any = (label: FlowTransitionLabel, index: number) => {
         const { offset, renderKey, props, rotate, type } = label || {}
         const offsetX = offset.x
         const offsetY = offset.y
@@ -123,7 +123,7 @@ export function createLabels(labelProps: LabelOpts): void {
                     const renderer =
                         rendererRegistry.getRendererComponent(renderKey)
                     child = React.createElement(
-                        renderer.renderer as (props: any) => JSX.Element,
+                        renderer.renderer as (props: any) => ReactElement,
                         {
                             node: data.entity,
                             ...props,
@@ -155,7 +155,7 @@ export function createLabels(labelProps: LabelOpts): void {
 
     labels.forEach((label, index) => {
         if (labelProps.isViewportVisible(getLabelBounds(label.offset))) {
-            labelsSave.push(renderLabel(label, index) as JSX.Element)
+            labelsSave.push(renderLabel(label, index) as ReactElement | any)
         }
     })
 }

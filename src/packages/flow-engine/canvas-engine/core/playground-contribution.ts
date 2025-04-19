@@ -44,13 +44,13 @@ export interface PlaygroundContribution {
 
 @injectable()
 export class PlaygroundRegistry {
-    @inject(PipelineRegistry) protected readonly pipeline: PipelineRegistry
+    @inject(PipelineRegistry) protected readonly pipeline: PipelineRegistry | any
 
     // @inject(AbleManager) readonly ableManager: AbleManager;
 
-    @inject(EntityManager) readonly entityManager: EntityManager
+    @inject(EntityManager) readonly entityManager: EntityManager | any
 
-    @inject(PlaygroundConfig) readonly playgroundConfig: PlaygroundConfig
+    @inject(PlaygroundConfig) readonly playgroundConfig: PlaygroundConfig | any
 
     config(config: Partial<PlaygroundConfig>): void {
         Object.assign(this.playgroundConfig, config)
@@ -68,9 +68,10 @@ export class PlaygroundRegistry {
     //   this.ableManager.registerAble(ableRegistry);
     // }
 
-    registerEditorState(state: EditorState): void {
+    registerEditorState(state: EditorState | any): void {
         const stateConfig =
-            this.entityManager.getEntity<EditorStateConfigEntity>(
+            //@ts-ignore
+            this.entityManager.getEntity<EditorStateConfigEntity | any>(
                 EditorStateConfigEntity,
             )
         stateConfig?.registerState(state)

@@ -28,15 +28,17 @@ function randomColor(percent: number): string {
  */
 @injectable()
 export class FlowDebugLayer extends Layer {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransformData)
+    //@ts-ignore
     _transforms: FlowNodeTransformData[]
 
     get transforms(): FlowNodeTransformData[] {
+        //@ts-ignore
         return this.document.getRenderDatas<FlowNodeTransformData>(
             FlowNodeTransformData,
         )
@@ -218,7 +220,8 @@ export class FlowDebugLayer extends Layer {
         this.documentTransformer.refresh()
         // let lastDepth = 0
         let color = randomColor(0)
-        this.document.traverse((entity, depth) => {
+        this.document.traverse((entity: any, depth: any) => {
+            //@ts-ignore
             const transform = entity.getData<FlowNodeTransformData>(
                 FlowNodeTransformData,
             )!

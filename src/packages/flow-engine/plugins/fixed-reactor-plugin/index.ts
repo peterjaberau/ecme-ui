@@ -7,5 +7,5 @@ export { createReactorFromJSON } from './utils/create'
 export { isReactor, insideReactor } from './utils/node'
 export {
     createFixedReactorPlugin,
-    FixedReactorPluginOpts,
+    type FixedReactorPluginOpts,
 } from './create-fixed-reactor-plugin'

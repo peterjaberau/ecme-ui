@@ -1,7 +1,7 @@
 import { VariablePluginOptions } from '@flow/variable-plugin'
 import { ReduxDevToolPluginOptions } from '@flow/redux-devtool-plugin'
 import { PlaygroundReactProps, SelectionService } from '@flow/playground-react'
-import { NodeCorePluginOptions } from '@flow/node-engine-core-plugin'
+import { NodeCorePluginOptions } from '@flow/node-core-plugin'
 import { MaterialsPluginOptions } from '@flow/materials-plugin'
 import { I18nPluginOptions } from '@flow/i18n-plugin'
 import { HistoryPluginOptions } from '@flow/history'

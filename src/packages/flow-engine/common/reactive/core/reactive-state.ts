@@ -53,7 +53,7 @@ export class ReactiveState<
         }
     }
 
-    private _proxyValue: V
+    private _proxyValue: V | any
 
     get value(): V {
         this._addDepend(this._dep)
@@ -69,7 +69,7 @@ export class ReactiveState<
         return this._proxyValue
     }
 
-    private _proxyReadonlyValue: V
+    private _proxyReadonlyValue: V | any
 
     get readonlyValue(): Readonly<V> {
         this._addDepend(this._dep)

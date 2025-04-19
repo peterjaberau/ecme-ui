@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, ReactElement } from 'react'
 
 import {
     type CollapseProps,
@@ -56,7 +56,7 @@ export default function Collapse(props: PropsType) {
     const node = data.entity
 
     const child = React.createElement(
-        collapseOpener.renderer as (props: CollapseProps) => JSX.Element,
+        collapseOpener.renderer as (props: CollapseProps) => ReactElement,
         {
             node,
             collapseNode: node,

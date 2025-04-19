@@ -30,9 +30,9 @@ export class FormManager {
     readonly extensionRegistryMap: Map<string, FormAbilityExtensionRegistry> =
         new Map()
 
-    @inject(FormPathService) readonly pathManager: FormPathService
+    @inject(FormPathService) readonly pathManager: FormPathService | any
 
-    @inject(FormContextMaker) readonly formContextMaker: FormContextMaker
+    @inject(FormContextMaker) readonly formContextMaker: FormContextMaker | any
 
     @injectPlaygroundContext() readonly playgroundContext: PlaygroundContext
 

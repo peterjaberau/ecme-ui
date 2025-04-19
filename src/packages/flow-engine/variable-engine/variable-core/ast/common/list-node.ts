@@ -8,7 +8,7 @@ export interface ListNodeJSON {
 export class ListNode extends ASTNode<ListNodeJSON> {
     static kind: string = ASTKind.ListNode
 
-    protected _list: ASTNode[]
+    protected _list: ASTNode[] | any
 
     get list(): ASTNode[] {
         return this._list
@@ -16,7 +16,7 @@ export class ListNode extends ASTNode<ListNodeJSON> {
 
     fromJSON({ list }: ListNodeJSON): void {
         // 超出长度的 children 需要被销毁
-        this._list.slice(list.length).forEach((_item) => {
+        this._list.slice(list.length).forEach((_item: any) => {
             _item.dispose()
             this.fireChange()
         })
@@ -39,7 +39,7 @@ export class ListNode extends ASTNode<ListNodeJSON> {
     toJSON(): ASTNodeJSON {
         return {
             kind: ASTKind.ListNode,
-            list: this._list.map((item) => item.toJSON()),
+            list: this._list.map((item: any) => item.toJSON()),
         }
     }
 }

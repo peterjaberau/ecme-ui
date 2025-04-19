@@ -17,7 +17,7 @@ export function useStorageHistoryItems(
             ])
 
             const grouped = groupBy<HistoryOperation>(
-                operations.map((o) => ({
+                operations.map((o: any) => ({
                     id: o.uuid,
                     timestamp: o.timestamp,
                     type: o.type,
@@ -30,9 +30,9 @@ export function useStorageHistoryItems(
                 'historyId',
             )
             return historyItems
-                .sort((a, b) => (b.id as number) - (a.id as number))
+                .sort((a: any, b: any) => (b.id as number) - (a.id as number))
                 .map(
-                    (historyItem) =>
+                    (historyItem: any) =>
                         ({
                             id: historyItem.uuid,
                             type: historyItem.type,

@@ -21,12 +21,12 @@ import { MinimapDefaultCanvasStyle, MinimapDefaultOptions } from './constant'
 
 @injectable()
 export class FlowMinimapService {
-    @inject(FlowDocument) private readonly document: FlowDocument
+    @inject(FlowDocument) private readonly document: FlowDocument | any
 
-    @inject(EntityManager) private readonly entityManager: EntityManager
+    @inject(EntityManager) private readonly entityManager: EntityManager | any
 
     @inject(PlaygroundConfigEntity)
-    private readonly playgroundConfig: PlaygroundConfigEntity
+    private readonly playgroundConfig: PlaygroundConfigEntity | any
 
     public readonly canvas: HTMLCanvasElement
 
@@ -36,7 +36,7 @@ export class FlowMinimapService {
 
     private onActiveCallbacks: Set<(activated: boolean) => void>
 
-    private options: MinimapServiceOptions
+    private options: MinimapServiceOptions | any
 
     private toDispose: DisposableCollection
 
@@ -44,7 +44,7 @@ export class FlowMinimapService {
 
     private isDragging
 
-    private style: MinimapCanvasStyle
+    private style: MinimapCanvasStyle | any
 
     private dragStart?: IPoint
 
@@ -270,7 +270,7 @@ export class FlowMinimapService {
     }
 
     private get nodes(): FlowNodeEntity[] {
-        return this.document.getAllNodes().filter((node) => {
+        return this.document.getAllNodes().filter((node: any) => {
             // 去除不可见节点
             if (node.hidden) return false
             // 去除根节点

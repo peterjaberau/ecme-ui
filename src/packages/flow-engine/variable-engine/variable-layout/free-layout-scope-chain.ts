@@ -16,10 +16,10 @@ import { FlowNodeVariableData } from './flow-node-variable-data'
  * 自由布局作用域链实现
  */
 export class FreeLayoutScopeChain extends ScopeChain {
-    @inject(EntityManager) entityManager: EntityManager
+    @inject(EntityManager) entityManager: EntityManager | any
 
     @inject(FlowDocument)
-    protected flowDocument: FlowDocument
+    protected flowDocument: FlowDocument | any
 
     @optional()
     @inject(VariableLayoutConfig)
@@ -33,7 +33,7 @@ export class FreeLayoutScopeChain extends ScopeChain {
     onInit() {
         this.toDispose.pushAll([
             // 线条发生变化时，会触发作用域链的更新
-            this.entityManager.onEntityDataChange(({ entityDataType }) => {
+            this.entityManager.onEntityDataChange(({ entityDataType }: any) => {
                 if (entityDataType === WorkflowNodeLinesData.type) {
                     this.refreshAllChange()
                 }
@@ -198,6 +198,7 @@ export class FreeLayoutScopeChain extends ScopeChain {
             return initParent
         }
 
+        //@ts-ignore
         const nodeMeta = initParent.getNodeMeta<WorkflowNodeMeta>()
         const subCanvas = nodeMeta.subCanvas?.(initParent)
         if (subCanvas?.isCanvas) {

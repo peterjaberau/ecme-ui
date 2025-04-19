@@ -16,7 +16,7 @@ export interface ClipboardService {
  */
 @injectable()
 export class DefaultClipboardService implements ClipboardService {
-    private _currentData: string
+    private _currentData: string | any
 
     protected readonly onClipboardChangedEmitter = new Emitter<string>()
 

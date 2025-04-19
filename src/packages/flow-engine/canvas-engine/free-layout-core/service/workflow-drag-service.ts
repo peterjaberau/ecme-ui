@@ -68,24 +68,24 @@ function checkDragSuccess(
 @injectable()
 export class WorkflowDragService {
     @inject(PlaygroundConfigEntity)
-    protected playgroundConfig: PlaygroundConfigEntity
+    protected playgroundConfig: PlaygroundConfigEntity | any
 
-    @inject(WorkflowHoverService) protected hoverService: WorkflowHoverService
+    @inject(WorkflowHoverService) protected hoverService: WorkflowHoverService | any
 
-    @inject(WorkflowDocument) protected document: WorkflowDocument
+    @inject(WorkflowDocument) protected document: WorkflowDocument | any
 
-    @inject(WorkflowLinesManager) protected linesManager: WorkflowLinesManager
+    @inject(WorkflowLinesManager) protected linesManager: WorkflowLinesManager | any
 
-    @inject(CommandService) protected commandService: CommandService
+    @inject(CommandService) protected commandService: CommandService | any
 
     @inject(WorkflowSelectService)
-    protected selectService: WorkflowSelectService
+    protected selectService: WorkflowSelectService | any
 
     @inject(FlowOperationBaseService)
-    protected operationService: FlowOperationBaseService
+    protected operationService: FlowOperationBaseService | any
 
     @inject(WorkflowDocumentOptions)
-    readonly options: WorkflowDocumentOptions
+    readonly options: WorkflowDocumentOptions | any
 
     private _onDragLineEventEmitter = new Emitter<LineEventProps>()
 
@@ -151,7 +151,7 @@ export class WorkflowDragService {
         // 节点整体开始位置
         let startPosition = this.getNodesPosition(selectedNodes)
         // 单个节点开始位置
-        let startPositions = selectedNodes.map((node) => {
+        let startPositions = selectedNodes.map((node: any) => {
             const transform = node.getData(TransformData)
             return { x: transform.position.x, y: transform.position.y }
         })
@@ -185,7 +185,7 @@ export class WorkflowDragService {
 
                 const positions: PositionSchema[] = []
 
-                selectedNodes.forEach((node, index) => {
+                selectedNodes.forEach((node: any, index: any) => {
                     const transform = node.getData(TransformData)
                     const nodeStartPosition = startPositions[index]
                     const newPosition = {
@@ -194,8 +194,9 @@ export class WorkflowDragService {
                     }
                     if (node.collapsedChildren?.length > 0) {
                         // 嵌套情况下需将子节点 transform 设为 dirty
-                        node.collapsedChildren.forEach((childNode) => {
+                        node.collapsedChildren.forEach((childNode: any) => {
                             const childNodeTransformData =
+                                //@ts-ignore
                                 childNode.getData<FlowNodeTransformData>(
                                     FlowNodeTransformData,
                                 )
@@ -475,6 +476,7 @@ export class WorkflowDragService {
     private updateDroppableTransforms() {
         this._droppableTransforms = this.document
             .getRenderDatas(FlowNodeTransformData, false)
+            //@ts-ignore
             .filter((transform) => {
                 const { entity } = transform
                 if (entity.originParent) {
@@ -485,7 +487,7 @@ export class WorkflowDragService {
                 }
                 return this.nodeSelectable(entity)
             })
-            .filter((transform) => this.isContainer(transform.entity))
+            .filter((transform: any) => this.isContainer(transform.entity))
     }
 
     /** 是否容器节点 */

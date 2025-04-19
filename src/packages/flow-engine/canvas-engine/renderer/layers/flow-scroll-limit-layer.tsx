@@ -10,7 +10,7 @@ import { scrollLimit } from '../utils'
  */
 @injectable()
 export class FlowScrollLimitLayer extends Layer {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     getInitScroll(): ScrollSchema {
         return this.document.layout.getInitScroll(
@@ -21,7 +21,7 @@ export class FlowScrollLimitLayer extends Layer {
     onReady(): void {
         const initScroll = () => this.getInitScroll()
         this.config.updateConfig(initScroll())
-        this.config.addScrollLimit((scroll) =>
+        this.config.addScrollLimit((scroll: any) =>
             scrollLimit(
                 scroll,
                 [this.document.root.getData(FlowNodeTransformData)!.bounds],

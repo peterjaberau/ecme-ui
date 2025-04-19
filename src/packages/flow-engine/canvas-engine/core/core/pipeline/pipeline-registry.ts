@@ -92,17 +92,17 @@ export class PipelineRegistry implements Disposable, IMessageHandler {
 
     // @inject(PipelineDispatcher) dispatcher: PipelineDispatcher;
 
-    @inject(PipelineRenderer) renderer: PipelineRenderer
+    @inject(PipelineRenderer) renderer: PipelineRenderer | any
 
-    @inject(PipelineEntitiesSelector) selector: PipelineEntitiesSelector
+    @inject(PipelineEntitiesSelector) selector: PipelineEntitiesSelector | any
 
-    @inject(EntityManager) entityManager: EntityManager
+    @inject(EntityManager) entityManager: EntityManager | any
 
     // @inject(AbleManager) ableManager: AbleManager;
 
     @injectPlaygroundContext() context: PlaygroundContext
 
-    @inject(PipelineLayerFactory) layerFactory: PipelineLayerFactory
+    @inject(PipelineLayerFactory) layerFactory: PipelineLayerFactory | any
 
     // @inject(SelectionService) @optional() selectionService?: SelectionService;
     protected playgroundEvents: {
@@ -292,8 +292,9 @@ export class PipelineRegistry implements Disposable, IMessageHandler {
         return this.allLayersMap.get(layerRegistry) as T
     }
 
-    get configEntity(): PlaygroundConfigEntity {
-        return this.entityManager.getEntity<PlaygroundConfigEntity>(
+    get configEntity(): PlaygroundConfigEntity | any {
+        // @ts-ignore
+        return this.entityManager.getEntity<PlaygroundConfigEntity | any>(
             PlaygroundConfigEntity,
             true,
         )!

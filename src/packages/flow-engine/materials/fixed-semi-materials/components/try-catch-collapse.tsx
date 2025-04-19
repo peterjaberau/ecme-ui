@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 
 import {
     FlowNodeRenderData,
@@ -11,7 +11,7 @@ import {
 } from '@flow/fixed-layout-editor'
 import { IconChevronLeft } from '@douyinfe/semi-icons'
 
-function TryCatchCollapse(props: CustomLabelProps): JSX.Element {
+function TryCatchCollapse(props: CustomLabelProps): ReactElement | any {
     const { node } = props
     const { baseColor, baseActivatedColor } = useBaseColor()
 

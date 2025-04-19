@@ -25,7 +25,7 @@ interface LocalStorage {
 
 @injectable()
 export class LocalStorageService implements StorageService {
-    private storage: LocalStorage
+    private storage: LocalStorage | any
 
     private _prefix = '__gedit:'
 

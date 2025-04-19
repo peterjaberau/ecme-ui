@@ -159,7 +159,7 @@ export class CommandRegistry implements CommandService {
 
     @multiInject(CommandContribution)
     @optional()
-    protected readonly contributions: CommandContribution[]
+    protected readonly contributions: CommandContribution[] | any
 
     init() {
         for (const contrib of this.contributions) {

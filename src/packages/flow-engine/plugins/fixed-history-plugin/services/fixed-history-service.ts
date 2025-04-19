@@ -21,16 +21,16 @@ import { FixedHistoryOperationService } from './fixed-history-operation-service'
 
 @injectable()
 export class FixedHistoryService implements IHistoryDocument {
-    @inject(HistoryService) historyService: HistoryService
+    @inject(HistoryService) historyService: HistoryService | any
 
-    @inject(OperationRegistry) operationRegistry: OperationRegistry
+    @inject(OperationRegistry) operationRegistry: OperationRegistry | any
 
     @inject(FlowOperationBaseService)
-    fixedHistoryOperationService: FixedHistoryOperationService
+    fixedHistoryOperationService: FixedHistoryOperationService | any
 
-    @inject(FlowDocument) document: FlowDocument
+    @inject(FlowDocument) document: FlowDocument | any
 
-    @inject(FixedHistoryConfig) config: FixedHistoryConfig
+    @inject(FixedHistoryConfig) config: FixedHistoryConfig | any
 
     setSource(source: PluginContext) {
         this.historyService.context.source = source

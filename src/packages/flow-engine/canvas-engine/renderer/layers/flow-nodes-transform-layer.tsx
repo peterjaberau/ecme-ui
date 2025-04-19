@@ -24,20 +24,21 @@ export interface FlowNodesTransformLayerOptions {
  */
 @injectable()
 export class FlowNodesTransformLayer extends Layer<FlowNodesTransformLayerOptions> {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
     @inject(FlowRendererResizeObserver)
-    readonly resizeObserver: FlowRendererResizeObserver
+    readonly resizeObserver: FlowRendererResizeObserver | any
 
     @observeEntity(FlowDocumentTransformerEntity)
-    readonly documentTransformer: FlowDocumentTransformerEntity
+    readonly documentTransformer: FlowDocumentTransformerEntity | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransformData)
-    _transforms: FlowNodeTransformData[]
+    _transforms: FlowNodeTransformData[] | any
 
     node = domUtils.createDivWithClass('gedit-flow-nodes-layer')
 
     get transformVisibles(): FlowNodeTransformData[] {
+        //@ts-ignore
         return this.document.getRenderDatas<FlowNodeTransformData>(
             FlowNodeTransformData,
             false,

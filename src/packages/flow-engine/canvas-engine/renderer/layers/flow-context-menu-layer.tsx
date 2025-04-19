@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { inject, injectable } from 'inversify'
 import {
@@ -27,26 +27,26 @@ import { FlowSelectConfigEntity } from '../entities/flow-select-config-entity'
  */
 @injectable()
 export class FlowContextMenuLayer extends Layer {
-    @inject(CommandRegistry) readonly commandRegistry: CommandRegistry
+    @inject(CommandRegistry) readonly commandRegistry: CommandRegistry | any
 
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
-    @inject(ContextMenuService) readonly contextMenuService: ContextMenuService
+    @inject(ContextMenuService) readonly contextMenuService: ContextMenuService | any
 
     @observeEntity(FlowSelectConfigEntity)
-    protected flowSelectConfigEntity: FlowSelectConfigEntity
+    protected flowSelectConfigEntity: FlowSelectConfigEntity | any
 
-    @inject(SelectionService) readonly selectionService: SelectionService
+    @inject(SelectionService) readonly selectionService: SelectionService | any
 
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity | any
 
     @observeEntity(SelectorBoxConfigEntity)
-    protected selectorBoxConfigEntity: SelectorBoxConfigEntity
+    protected selectorBoxConfigEntity: SelectorBoxConfigEntity | any
 
     readonly node = domUtils.createDivWithClass('gedit-context-menu-layer')
 
@@ -122,13 +122,13 @@ export class FlowContextMenuLayer extends Layer {
     /**
      * 渲染工具栏
      */
-    renderCommandMenus(): JSX.Element[] {
+    renderCommandMenus(): Element[] {
         return this.commandRegistry.commands
             .filter(
-                (cmd) =>
+                (cmd: any) =>
                     cmd.category === FlowRendererCommandCategory.SELECTOR_BOX,
             )
-            .map((cmd) => {
+            .map((cmd: any) => {
                 const CommandRenderer =
                     this.rendererRegistry.getRendererComponent(
                         (cmd.icon as string) || cmd.id,
@@ -145,10 +145,10 @@ export class FlowContextMenuLayer extends Layer {
                     />
                 )
             })
-            .filter((c) => c)
+            .filter((c: any) => c)
     }
 
-    render(): JSX.Element {
+    render(): ReactElement | any {
         const SelectorBoxPopover = this.rendererRegistry.getRendererComponent(
             FlowRendererKey.CONTEXT_MENU_POPOVER,
         ).renderer

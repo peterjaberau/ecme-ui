@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import React, { ReactNode, useLayoutEffect, useState } from 'react'
+import React, { ReactElement, ReactNode, useLayoutEffect, useState } from 'react'
 
 import { inject, injectable } from 'inversify'
 import { domUtils } from '@flow/utils'
@@ -28,20 +28,20 @@ import { WorkflowLineRender } from '../components'
 export class WorkflowLinesLayer extends Layer<LinesLayerOptions> {
     static type = 'WorkflowLinesLayer'
 
-    @inject(WorkflowHoverService) hoverService: WorkflowHoverService
+    @inject(WorkflowHoverService) hoverService: WorkflowHoverService | any
 
-    @inject(WorkflowSelectService) selectService: WorkflowSelectService
+    @inject(WorkflowSelectService) selectService: WorkflowSelectService | any
 
-    @inject(StackingContextManager) stackContext: StackingContextManager
+    @inject(StackingContextManager) stackContext: StackingContextManager | any
 
-    @observeEntities(WorkflowLineEntity) readonly lines: WorkflowLineEntity[]
+    @observeEntities(WorkflowLineEntity) readonly lines: WorkflowLineEntity[] | any
 
-    @observeEntities(WorkflowPortEntity) readonly ports: WorkflowPortEntity[]
+    @observeEntities(WorkflowPortEntity) readonly ports: WorkflowPortEntity[] | any
 
     @observeEntityDatas(WorkflowNodeEntity, TransformData)
-    readonly trans: TransformData[]
+    readonly trans: TransformData[] | any
 
-    @inject(WorkflowDocument) protected workflowDocument: WorkflowDocument
+    @inject(WorkflowDocument) protected workflowDocument: WorkflowDocument | any
 
     private layerID = nanoid()
 
@@ -84,7 +84,7 @@ export class WorkflowLinesLayer extends Layer<LinesLayerOptions> {
         this.mountedLines.clear()
     }
 
-    public render(): JSX.Element {
+    public render(): Element | any {
         const [, forceUpdate] = useState({})
 
         useLayoutEffect(() => {
@@ -92,7 +92,7 @@ export class WorkflowLinesLayer extends Layer<LinesLayerOptions> {
                 let needsUpdate = false
 
                 // 批量处理所有线条的更新
-                this.lines.forEach((line) => {
+                this.lines.forEach((line: any) => {
                     const renderData = line.getData(WorkflowLineRenderData)
                     const oldVersion = renderData.renderVersion
                     renderData.update()
@@ -112,7 +112,7 @@ export class WorkflowLinesLayer extends Layer<LinesLayerOptions> {
             return () => cancelAnimationFrame(rafId)
         }, [this.lines]) // 依赖项包含 lines
 
-        const lines = this.lines.map((line) => this.renderLine(line))
+        const lines = this.lines.map((line: any) => this.renderLine(line))
         return <>{lines}</>
     }
 

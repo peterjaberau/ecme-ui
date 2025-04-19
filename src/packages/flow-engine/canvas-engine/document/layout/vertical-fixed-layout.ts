@@ -54,7 +54,7 @@ export class VerticalFixedLayout implements FlowLayout {
     >()
 
     @inject(FlowDocumentProvider)
-    protected documentProvider: FlowDocumentProvider
+    protected documentProvider: FlowDocumentProvider | any
 
     @multiInject(FlowLayoutContribution)
     @optional()

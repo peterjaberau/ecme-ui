@@ -9,7 +9,7 @@ import { FreeOperationType, type IHandler } from '../types'
 @injectable()
 export class DragNodesHandler implements IHandler<NodesDragEndEvent> {
     @inject(HistoryService)
-    private _historyService: HistoryService
+    private _historyService: HistoryService | any
 
     handle(event: NodesDragEndEvent) {
         if (event.type === 'onDragEnd') {

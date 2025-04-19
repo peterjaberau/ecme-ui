@@ -80,7 +80,7 @@ export class PlaygroundDrag<T = undefined> implements Disposable {
         'contextmenu',
     ]
 
-    private localId: LocalId
+    private localId: LocalId | any
 
     protected context?: T
 

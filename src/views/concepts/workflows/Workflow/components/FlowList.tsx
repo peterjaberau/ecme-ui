@@ -1,27 +1,28 @@
 import { useMemo, useState } from 'react'
 import FlowSegment from './FlowSegment'
+import { useNavigate } from 'react-router-dom'
 
 type FlowsListProps = {
     flowList: any[]
-    onDelete: (id: string) => void
-    onOpen: (id: string) => void
-    onClick: (id: string, data: any) => void
     [key: string]: any
 }
 
 
 const FileList = (props: FlowsListProps) => {
+    const navigate = useNavigate()
+
     const [layout, setLayout] = useState('grid')
     const {
         flowList,
-        onDelete,
-        onClick,
-        onOpen,
     } = props
 
     const flowItems = useMemo(() => {
         return flowList
     }, [flowList])
+
+    const handleOpenFlow = (id: any) => {
+        navigate(`edit/${id}`)
+    }
 
 
 
@@ -33,7 +34,7 @@ const FileList = (props: FlowsListProps) => {
                     fileType={flow.fileType}
                     size={flow.nodes.length || 0}
                     name={flow.name}
-                    onClick={() => console.log('onClick', flow.id)}
+                    onClick={() => handleOpenFlow(flow.id)}
                 />
             ))}
         </div>

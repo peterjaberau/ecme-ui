@@ -23,13 +23,14 @@ export class HistoryOperationServiceImpl
     implements FlowOperationService
 {
     @inject(FixedHistoryService)
-    protected fixedHistoryService: FixedHistoryService
+    protected fixedHistoryService: FixedHistoryService | any
 
     @inject(HistoryService)
-    protected historyService: HistoryService
+    protected historyService: HistoryService | any
 
     @inject(FlowDocument)
-    protected document: FlowDocument
+    //@ts-ignore
+    protected document: FlowDocument | any
 
     @postConstruct()
     protected init() {

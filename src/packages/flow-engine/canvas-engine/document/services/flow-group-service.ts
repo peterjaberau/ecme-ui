@@ -14,10 +14,10 @@ import { FlowNodeRenderData, FlowNodeTransformData } from '../datas'
 @injectable()
 /** 分组服务 */
 export class FlowGroupService {
-    @inject(EntityManager) public readonly entityManager: EntityManager
+    @inject(EntityManager) public readonly entityManager: EntityManager | any
 
     @inject(FlowOperationBaseService)
-    public readonly operationService: FlowOperationBaseService
+    public readonly operationService: FlowOperationBaseService | any
 
     /** 创建分组节点 */
     public createGroup(nodes: FlowNodeEntity[]): FlowNodeEntity | undefined {
@@ -41,6 +41,7 @@ export class FlowGroupService {
             },
         })
         const groupNode =
+            //@ts-ignore
             this.entityManager.getEntityById<FlowNodeEntity>(groupId)
         if (!groupNode) {
             return
@@ -92,12 +93,13 @@ export class FlowGroupService {
     /** 返回所有分组节点 */
     public getAllGroups(): FlowGroupController[] {
         const allNodes =
+            //@ts-ignore
             this.entityManager.getEntities<FlowNodeEntity>(FlowNodeEntity)
         const groupNodes = allNodes.filter(
-            (node) => node.flowNodeType === FlowNodeBaseType.GROUP,
+            (node: any) => node.flowNodeType === FlowNodeBaseType.GROUP,
         )
         return groupNodes
-            .map((node) => this.groupController(node))
+            .map((node: any) => this.groupController(node))
             .filter(Boolean) as FlowGroupController[]
     }
 

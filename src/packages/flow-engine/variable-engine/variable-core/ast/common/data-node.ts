@@ -9,7 +9,7 @@ import { ASTNode } from '../ast-node'
 export class DataNode<Data = any> extends ASTNode {
     static kind: string = ASTKind.DataNode
 
-    protected _data: Data
+    protected _data: Data | any
 
     get data(): Data {
         return this._data

@@ -34,7 +34,7 @@ export class ObjectType extends BaseType<ObjectJSON> {
 
     propertyTable: Map<string, Property> = new Map()
 
-    properties: Property[]
+    properties: Property[] | any
 
     fromJSON({ properties }: ObjectJSON): void {
         const removedKeys = new Set(this.propertyTable.keys())
@@ -84,7 +84,7 @@ export class ObjectType extends BaseType<ObjectJSON> {
     toJSON(): ASTNodeJSON {
         return {
             kind: ASTKind.Object,
-            properties: this.properties.map((_property) => _property.toJSON()),
+            properties: this.properties.map((_property: any) => _property.toJSON()),
         }
     }
 

@@ -61,29 +61,29 @@ export interface FlowDragOptions {
  */
 @injectable()
 export class FlowDragLayer extends Layer<FlowDragOptions> {
-    @inject(FlowDocument) readonly document: FlowDocument
+    @inject(FlowDocument) readonly document: FlowDocument | any
 
-    @inject(FlowDragService) readonly service: FlowDragService
+    @inject(FlowDragService) readonly service: FlowDragService | any
 
     @observeEntityDatas(FlowNodeEntity, FlowNodeTransformData)
-    transforms: FlowNodeTransformData[]
+    transforms: FlowNodeTransformData[] | any
 
     @observeEntity(EditorStateConfigEntity)
-    protected editorStateConfig: EditorStateConfigEntity
+    protected editorStateConfig: EditorStateConfigEntity | any
 
     @observeEntity(PlaygroundConfigEntity)
-    protected playgroundConfigEntity: PlaygroundConfigEntity
+    protected playgroundConfigEntity: PlaygroundConfigEntity | any
 
     @observeEntity(FlowDragEntity)
-    protected flowDragConfigEntity: FlowDragEntity
+    protected flowDragConfigEntity: FlowDragEntity | any
 
     @observeEntity(FlowRendererStateEntity)
-    protected flowRenderStateEntity: FlowRendererStateEntity
+    protected flowRenderStateEntity: FlowRendererStateEntity | any
 
     @observeEntity(FlowSelectConfigEntity)
-    protected selectConfigEntity: FlowSelectConfigEntity
+    protected selectConfigEntity: FlowSelectConfigEntity | any
 
-    private initialPosition: Position
+    private initialPosition: Position | any
 
     private dragOffset = {
         x: DEFAULT_DRAG_OFFSET_X,
@@ -92,16 +92,17 @@ export class FlowDragLayer extends Layer<FlowDragOptions> {
 
     get transitions(): FlowNodeTransitionData[] {
         const result: FlowNodeTransitionData[] = []
-        this.document.traverse((entity) => {
+        this.document.traverse((entity: any) => {
             result.push(
-                entity.getData<FlowNodeTransitionData>(FlowNodeTransitionData)!,
+                //@ts-ignore
+                entity.getData<FlowNodeTransitionData | any>(FlowNodeTransitionData)!,
             )
         })
         return result
     }
 
     @inject(FlowRendererRegistry)
-    readonly rendererRegistry: FlowRendererRegistry
+    readonly rendererRegistry: FlowRendererRegistry | any
 
     get dragStartEntity() {
         return this.flowRenderStateEntity.getDragStartEntity()!
@@ -119,7 +120,7 @@ export class FlowDragLayer extends Layer<FlowDragOptions> {
         this.flowRenderStateEntity.setDragEntities(entities)
     }
 
-    private dragNodeComp: FlowRendererComponent
+    private dragNodeComp: FlowRendererComponent | any
 
     containerRef = React.createRef<HTMLDivElement>()
 
@@ -132,9 +133,10 @@ export class FlowDragLayer extends Layer<FlowDragOptions> {
 
     setDraggingStatus(status: boolean): void {
         if (this.service.nodeDragIdsWithChildren.length) {
-            this.service.nodeDragIdsWithChildren.forEach((_id) => {
+            this.service.nodeDragIdsWithChildren.forEach((_id: any) => {
                 const node = this.entityManager.getEntityById(_id)
                 const data =
+                    //@ts-ignore
                     node?.getData<FlowNodeRenderData>(FlowNodeRenderData)!
                 data.dragging = status
             })
@@ -357,6 +359,7 @@ export class FlowDragLayer extends Layer<FlowDragOptions> {
         }
     }
 
+    //@ts-ignore
     render() {
         // styled-component component type 为 any
         const DragComp: any = this.dragNodeComp.renderer

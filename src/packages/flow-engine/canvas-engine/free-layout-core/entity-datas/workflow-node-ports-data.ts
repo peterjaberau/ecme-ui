@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash-es'
+import { isEqual } from 'lodash'
 import { FlowNodeRenderData } from '@flow/canvas-document'
 import { EntityData, SizeData } from '@flow/canvas-core'
 import { type IPoint } from '@flow/utils'
@@ -28,7 +28,7 @@ export class WorkflowNodePortsData extends EntityData {
     protected _portIDSet = new Set<string>()
 
     /** 上一次的 ports 数据，用于判断 ports 是否发生变化 */
-    protected _prePorts: WorkflowPorts
+    protected _prePorts: WorkflowPorts | any
 
     constructor(entity: WorkflowNodeEntity) {
         super(entity)

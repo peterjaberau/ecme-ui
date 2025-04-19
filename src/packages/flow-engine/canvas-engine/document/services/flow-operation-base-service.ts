@@ -28,10 +28,10 @@ import { FlowNodeEntity } from '../entities'
 @injectable()
 export class FlowOperationBaseServiceImpl implements FlowOperationBaseService {
     @inject(EntityManager)
-    protected entityManager: EntityManager
+    protected entityManager: EntityManager | any
 
     @inject(FlowDocument)
-    protected document: FlowDocument
+    protected document: FlowDocument | any
 
     protected onNodeAddEmitter = new Emitter<OnNodeAddEvent>()
 
