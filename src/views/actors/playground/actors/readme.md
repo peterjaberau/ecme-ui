@@ -1,0 +1,12 @@
+- AppWrapper
+  - AppComponent
+    - AppLoader
+      - RealtimeEditor
+        - Editor
+          - EditorHeader
+            - EditionSpecificComponent
+              - LogoNavDropdown
+                - BaseLogoNavDropdown
+                  - OverlayTrigger
+                    - AppLogo
+                    - Overlay

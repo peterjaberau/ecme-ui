@@ -1,4 +1,4 @@
-import authRoute from '@/configs/routes.config/authRoute'
+import { publicRoutes } from '@/configs/routes.config'
 import { useLocation } from 'react-router-dom'
 import AuthLayout from './AuthLayout'
 import type { CommonProps } from '@/@types/common'
@@ -8,7 +8,7 @@ const PreLoginLayout = ({ children }: CommonProps) => {
 
     const { pathname } = location
 
-    const isAuthPath = authRoute.some((route) => route.path === pathname)
+    const isAuthPath = publicRoutes.some((route) => route.path === pathname)
 
     return (
         <div className="flex flex-auto flex-col h-[100vh]">

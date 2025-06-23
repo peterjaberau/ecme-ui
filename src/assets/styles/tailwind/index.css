@@ -4,6 +4,23 @@
 
 @layer theme {
 	:root {
+		/* for code mirror*/
+		--text-disabled: #889099;
+		--text-default: #1B1F24;
+		--surfaces-surface-02: #F6F8FA;
+		--borders-disabled-on-white: #E4E7EB;
+		--slate1: #fff;
+		--text-placeholder: #6A727C;
+		--surfaces-surface-03: #E4E7EB;
+		--slate9: hsl(206, 6.0%, 56.1%);
+		--interactive-default: #CCD1D54D;
+		--interactive-hover: #ACB2B959;
+		--slate7: hsl(207, 11.1%, 85.9%);
+		--tomato9: hsl(10, 78.0%, 54.0%);
+		----theme-border-color: #e5e7eb;
+
+
+		/* rest of css */
 		--neutral: #ffffff;
 		--primary: #2a85ff;
 		--primary-deep: #0069f6;
@@ -31,13 +48,27 @@
 	}
 
 	.dark {
+		--text-disabled: #6D757D;
+		--text-default: #FAFCFF;
+		--surfaces-surface-02: #2B3036;
+		--borders-disabled-on-white: rgba(43, 48, 54, 20%);
+		--slate1: #1f2936;
+		--text-placeholder: #858C94;
+		--surfaces-surface-03: #3C434B;
+		--slate9: hsl(206, 6.0%, 43.9%);
+		--interactive-default: #A1A7AE1F;
+		--interactive-hover: #A1A7AE29;
+		--slate7: hsl(203, 6.0%, 24.3%);
+		--tomato9: hsl(10, 78.0%, 54.0%);
+		--theme-border-color: #374151;
+
 		--neutral: #ffffff;
 		--primary: #2a85ff;
 		--primary-deep: #0069f6;
 		--primary-mild: #4996ff;
 		--primary-subtle: #2a85ff1a;
 		--error: #ff6a55;
-		--error-subtle: #ff6a551a; 
+		--error-subtle: #ff6a551a;
 		--success: #10b981;
 		--success-subtle: #05eb7624;
 		--info: #2a85ff;

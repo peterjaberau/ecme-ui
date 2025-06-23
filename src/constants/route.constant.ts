@@ -1,4 +1,5 @@
 export const ROOT = '/'
+export const ACTORS_PREFIX_PATH = '/actors'
 export const DASHBOARDS_PREFIX_PATH = '/dashboards'
 export const CONCEPTS_PREFIX_PATH = '/concepts'
 export const AUTH_PREFIX_PATH = '/auth'

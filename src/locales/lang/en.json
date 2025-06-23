@@ -1,5 +1,8 @@
 {
     "nav": {
+        "actor": {
+            "playground": "Playground"
+        },
         "dashboard": {
             "dashboard": "Dashboard",
             "ecommerce": "Ecommerce",
