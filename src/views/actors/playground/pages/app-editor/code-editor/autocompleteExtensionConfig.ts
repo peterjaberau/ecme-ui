@@ -99,7 +99,7 @@ export const generateHints = (
     hints: any,
     totalReferences = 1,
     input: any,
-    searchText: any,
+    searchText?: any,
 ) => {
     if (!hints) return []
 

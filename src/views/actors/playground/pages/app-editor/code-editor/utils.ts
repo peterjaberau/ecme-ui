@@ -3,9 +3,9 @@ import _, { isEmpty } from 'lodash';
 // import useStore from '@/AppBuilder/_stores/store';
 import { any } from 'superstruct';
 import { generateSchemaFromValidationDefinition, validate } from '../_utils/component-properties-validation';
-import { hasCircularDependency, resolveReferences as olderResolverMethod } from '@/_helpers/utils';
-import { validateMultilineCode } from '@/_helpers/utility';
-import { removeNestedDoubleCurlyBraces } from '../_stores/utils';
+import { hasCircularDependency, resolveReferences as olderResolverMethod } from '@/views/actors/playground/_helpers/utils';
+import { validateMultilineCode } from '@/views/actors/playground/_helpers/utility';
+import { removeNestedDoubleCurlyBraces } from '@/views/actors/playground/_helpers/utils';
 
 const acorn = require('acorn');
 
@@ -126,7 +126,7 @@ const resolveWorkspaceVariables = (query) => {
   return [valid, error, resolvedStr];
 };
 
-function resolveCode(code, customObjects = {}, withError = false, reservedKeyword, isJsCode) {
+function resolveCode(code?: any, customObjects:any = {}, withError:any = false, reservedKeyword?: any, isJsCode?: any) {
   let result = '';
   let error;
 
@@ -137,6 +137,7 @@ function resolveCode(code, customObjects = {}, withError = false, reservedKeywor
     try {
       const state = useStore.getState().getResolvedState();
       const evalFunction = Function(
+          //@ts-ignore
         [
           'variables',
           'components',
@@ -171,6 +172,55 @@ function resolveCode(code, customObjects = {}, withError = false, reservedKeywor
   if (withError) return [result, error];
   return result;
 }
+
+export function resolveString(str, state, customObjects, reservedKeyword, withError, forPreviewBox) {
+    let resolvedStr = str;
+
+    // Resolve {{object}}
+    const codeRegex = /(\{\{.+?\}\})/g;
+    const codeMatches = resolvedStr.match(codeRegex);
+
+    if (codeMatches) {
+        codeMatches.forEach((codeMatch) => {
+            const code = removeNestedDoubleCurlyBraces(codeMatch);
+
+            if (reservedKeyword.includes(code)) {
+                resolvedStr = resolvedStr.replace(codeMatch, '');
+            } else {
+                const resolvedCode = resolveCode(code, state, customObjects, withError, reservedKeyword, true);
+                if (forPreviewBox) {
+                    resolvedStr = resolvedStr.replace(codeMatch, resolvedCode[0]);
+                } else {
+                    resolvedStr = resolvedStr.replace(codeMatch, resolvedCode);
+                }
+            }
+        });
+    }
+
+    // Resolve %%object%%
+    const serverRegex = /(%%.+?%%)/g;
+    const serverMatches = resolvedStr.match(serverRegex);
+
+    if (serverMatches) {
+        serverMatches.forEach((serverMatch) => {
+            const code = serverMatch.replace(/%%/g, '');
+
+            if (code.includes('server.') && !/^server\.[A-Za-z0-9]+$/.test(code)) {
+                resolvedStr = resolvedStr.replace(serverMatch, 'HiddenEnvironmentVariable');
+            } else {
+                const resolvedCode = resolveCode(code, state, customObjects, withError, reservedKeyword, false);
+                if (forPreviewBox) {
+                    resolvedStr = resolvedStr.replace(serverMatch, resolvedCode[0]);
+                } else {
+                    resolvedStr = resolvedStr.replace(serverMatch, resolvedCode);
+                }
+            }
+        });
+    }
+
+    return resolvedStr;
+}
+
 
 function getDynamicVariables(text) {
   /* eslint-disable no-useless-escape */

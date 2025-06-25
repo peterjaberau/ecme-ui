@@ -49,6 +49,7 @@ const getPropsGroupFilters = (allComponents: any) => {
 }
 
 
+
 export function useInspectorComponent() {
     const inspectorComponentActorRef =
         GlobalPlaygroundContext.useActorRef().system.get('inspector-component')
@@ -59,7 +60,10 @@ export function useInspectorComponent() {
         (state) => state,
     )
 
+    // getCurrentPageComponents
     const allComponents = inspectorComponentState.context.allComponents;
+
+
     const dataQueries = inspectorComponentState.context.dataQueries
     const currentState = inspectorComponentState.context.currentState
     const componentMeta = inspectorComponentState.context.componentMeta

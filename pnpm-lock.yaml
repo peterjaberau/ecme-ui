@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@apidevtools/json-schema-ref-parser':
+        specifier: ^11.7.3
+        version: 11.9.3
       '@ark-ui/react':
         specifier: ^5.13.0
         version: 5.14.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -35,6 +38,12 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.0
         version: 6.11.1
+      '@codemirror/search':
+        specifier: ^6.5.11
+        version: 6.5.11
+      '@codemirror/state':
+        specifier: ^6.5.2
+        version: 6.5.2
       '@codemirror/view':
         specifier: ^6.24.0
         version: 6.37.2
@@ -242,6 +251,9 @@ importers:
       '@tweenjs/tween.js':
         specifier: ^25.0.0
         version: 25.0.0
+      '@types/codemirror':
+        specifier: ^5.60.16
+        version: 5.60.16
       '@types/d3-dsv':
         specifier: ^3.0.7
         version: 3.0.7
@@ -299,6 +311,9 @@ importers:
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      codemirror:
+        specifier: ^6.0.2
+        version: 6.0.2
       copy-to-clipboard:
         specifier: ^3.3.3
         version: 3.3.3
@@ -488,6 +503,9 @@ importers:
       react-hook-form:
         specifier: ^7.53.0
         version: 7.55.0(react@19.0.0)
+      react-hotkeys-hook:
+        specifier: ^5.1.0
+        version: 5.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-i18next:
         specifier: ^15.0.1
         version: 15.4.1(i18next@25.0.0(typescript@5.8.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -572,6 +590,9 @@ importers:
       tw-animate-css:
         specifier: ^1.2.5
         version: 1.3.4
+      uuid:
+        specifier: 8.3.2
+        version: 8.3.2
       xstate:
         specifier: ^5.19.4
         version: 5.19.4
@@ -807,6 +828,10 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@apidevtools/json-schema-ref-parser@11.9.3':
+    resolution: {integrity: sha512-60vepv88RwcJtSHrD6MjIL6Ta3SOYbgfnkHb+ppAVK+o9mXprRtulx7VlRl3lN3bbvysAfCS7WMVfhUYemB0IQ==}
+    engines: {node: '>= 16'}
 
   '@ark-ui/react@5.14.0':
     resolution: {integrity: sha512-7WWlCM3SowtF01e9NouuO4T6SYuKTM1dovR+2NZuuWTlqTBlvZ+1vPHS6BeqzXriwMLU7QUU+Y0i/TcI6/s/Sg==}
@@ -2354,6 +2379,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@jsdevtools/ono@7.1.3':
+    resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
 
   '@jsep-plugin/assignment@1.3.0':
     resolution: {integrity: sha512-VVgV+CXrhbMI3aSusQyclHkenWSAm95WaiKrMxRFam3JSUiIaQjoMIw2sEs/OX4XifnqeQUN4DYbJjlA8EfktQ==}
@@ -4366,6 +4394,9 @@ packages:
   '@types/bezier-js@4.1.3':
     resolution: {integrity: sha512-FNVVCu5mx/rJCWBxLTcL7oOajmGtWtBTDjq6DSUWUI12GeePivrZZXz+UgE0D6VYsLEjvExRO03z4hVtu3pTEQ==}
 
+  '@types/codemirror@5.60.16':
+    resolution: {integrity: sha512-V/yHdamffSS075jit+fDxaOAmdP2liok8NSNJnAZfDJErzOheuygHZEhAJrfmk5TEyM32MhkZjwo/idX791yxw==}
+
   '@types/d3-color@2.0.6':
     resolution: {integrity: sha512-tbaFGDmJWHqnenvk3QGSvD3RVwr631BjKRD7Sc7VLRgrdX5mk5hTyoeBL6rXZaeoXzmZwIl1D2HPogEdt1rHBg==}
 
@@ -4563,6 +4594,9 @@ packages:
 
   '@types/styled-components@5.1.34':
     resolution: {integrity: sha512-mmiVvwpYklFIv9E8qfxuPyIt/OuyIrn6gMOAMOFUO3WJfSrSE+sGUoa4PiZj77Ut7bKZpaa6o1fBKS/4TOEvnA==}
+
+  '@types/tern@0.23.9':
+    resolution: {integrity: sha512-ypzHFE/wBzh+BlH6rrBgS5I/Z7RD21pGhZ2rltb/+ZrVM1awdZwjx7hE5XfuYgHWk9uvV5HLZN3SloevCAp3Bw==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -8616,6 +8650,12 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
 
+  react-hotkeys-hook@5.1.0:
+    resolution: {integrity: sha512-GCNGXjBzV9buOS3REoQFmSmE4WTvBhYQ0YrAeeMZI83bhXg3dRWsLHXDutcVDdEjwJqJCxk5iewWYX5LtFUd7g==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   react-i18next@15.4.1:
     resolution: {integrity: sha512-ahGab+IaSgZmNPYXdV1n+OYky95TGpFwnKRflX/16dY04DsYYKHtVLjeny7sBSCREEcoMbAgSkFiGLF5g5Oofw==}
     peerDependencies:
@@ -10307,6 +10347,12 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@apidevtools/json-schema-ref-parser@11.9.3':
+    dependencies:
+      '@jsdevtools/ono': 7.1.3
+      '@types/json-schema': 7.0.15
+      js-yaml: 4.1.0
 
   '@ark-ui/react@5.14.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
@@ -12539,6 +12585,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@jsdevtools/ono@7.1.3': {}
 
   '@jsep-plugin/assignment@1.3.0(jsep@1.4.0)':
     dependencies:
@@ -15114,6 +15162,10 @@ snapshots:
 
   '@types/bezier-js@4.1.3': {}
 
+  '@types/codemirror@5.60.16':
+    dependencies:
+      '@types/tern': 0.23.9
+
   '@types/d3-color@2.0.6': {}
 
   '@types/d3-drag@3.0.7':
@@ -15332,6 +15384,10 @@ snapshots:
       '@types/hoist-non-react-statics': 3.3.6
       '@types/react': 19.0.2
       csstype: 3.1.3
+
+  '@types/tern@0.23.9':
+    dependencies:
+      '@types/estree': 1.0.7
 
   '@types/trusted-types@2.0.7':
     optional: true
@@ -20812,6 +20868,11 @@ snapshots:
   react-hook-form@7.55.0(react@19.0.0):
     dependencies:
       react: 19.0.0
+
+  react-hotkeys-hook@5.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react-i18next@15.4.1(i18next@24.2.3(typescript@5.8.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

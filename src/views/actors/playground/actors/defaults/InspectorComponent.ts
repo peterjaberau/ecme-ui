@@ -18885,6 +18885,7 @@ export default {
     "handleComponentNameChange": "handleComponentNameChange",
     "getDefaultValue": "getDefaultValue",
     "buildGeneralStyle": "buildGeneralStyle()",
-    "pages": []
+    "pages": [],
+
 }
 

@@ -11,10 +11,11 @@ import {
   replaceAll,
   openSearchPanel,
 } from '@codemirror/search';
-import './SearchBox.scss';
-import InputComponent from '@/components/ui/Input/Index.jsx';
-import { Button as ButtonComponent } from '@/components/ui/Button/Button.jsx';
-import { ToolTip } from '@/_components/ToolTip';
+import { MdSearch, MdArrowUpward, MdArrowDownward, MdFindReplace, MdOutlineFindReplace } from "react-icons/md";
+import './SearchBox.css';
+import { Input as InputComponent, InputGroup } from '@chakra-ui/react'
+import { Button, IconButton } from '@chakra-ui/react';
+import { Tooltip as ToolTip } from '@/views/actors/playground/_components/Tooltip'
 import { SelectionRange } from '@codemirror/state';
 import { useHotkeys } from 'react-hotkeys-hook';
 
@@ -40,6 +41,7 @@ function SearchPanel({ view }) {
 
     const currentPos = view.state.selection.main.head;
     view.dispatch({
+        //@ts-ignore
       selection: SelectionRange.create(currentPos, currentPos),
     });
   };
@@ -68,50 +70,41 @@ function SearchPanel({ view }) {
 
   const displaySearchField = () => (
     <div className="search-replace-inputs">
-      <InputComponent
-        leadingIcon="search01"
-        onChange={(e) => setSearchText(e.target.value)}
-        onFocus={() => setShortcutEnabled(true)}
-        onBlur={() => setShortcutEnabled(false)}
-        placeholder="Find"
-        size="small"
-        value={searchText}
-        aria-label="Find text"
-      />
-      <InputComponent
-        leadingIcon="arrowreturn01"
-        onChange={(e) => setReplaceText(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && replaceNext(view)}
-        placeholder="Replace"
-        size="small"
-        value={replaceText}
-        aria-label="Replace text"
-      />
+        <InputGroup startElement={<MdSearch />}>
+            <InputComponent
+                onChange={(e) => setReplaceText(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && replaceNext(view)}
+                placeholder="Replace"
+                size="sm"
+                value={replaceText}
+                aria-label="Replace text"
+            />
+        </InputGroup>
     </div>
   );
 
   const displaySearchButtons = () => (
     <div className="search-buttons">
       <ToolTip message={'Previous'}>
-        <ButtonComponent
-          iconOnly
-          leadingIcon="arrowup01"
+        <IconButton
           onClick={() => findPrevious(view)}
-          size="medium"
+          size="md"
           variant="ghost"
           aria-label="Previous match"
-        />
+        >
+            <MdArrowUpward />
+        </IconButton>
       </ToolTip>
       <div className="navbar-seperator"></div>
       <ToolTip message={'Next'}>
-        <ButtonComponent
-          iconOnly
-          leadingIcon="arrowdown01"
+        <IconButton
           onClick={() => findNext(view)}
-          size="medium"
+          size="md"
           variant="ghost"
           aria-label="Next match"
-        />
+        >
+            <MdArrowDownward />
+        </IconButton>
       </ToolTip>
     </div>
   );
@@ -119,35 +112,33 @@ function SearchPanel({ view }) {
   const displayReplaceButtons = () => (
     <div className="replace-buttons">
       <ToolTip message={'Replace'}>
-        <ButtonComponent
-          iconOnly
-          leadingIcon="replace"
+        <IconButton
           onClick={() => replaceNext(view)}
-          size="medium"
+          size="md"
           variant="ghost"
           aria-label="Replace"
-        />
+        >
+            <MdFindReplace/>
+        </IconButton>
       </ToolTip>
       <div className="navbar-seperator"></div>
       <ToolTip message={'Replace all'}>
-        <ButtonComponent
-          iconOnly
-          leadingIcon="replaceall"
+        <IconButton
           onClick={() => replaceAll(view)}
-          size="medium"
+          size="md"
           variant="ghost"
           aria-label="Replace all"
-        />
+        >
+            <MdOutlineFindReplace/>
+        </IconButton>
       </ToolTip>
       <div className="navbar-seperator"></div>
-      <ButtonComponent
-        iconOnly
-        leadingIcon="remove02"
+      <IconButton
         onClick={() => closeSearchPanel(view)}
-        size="medium"
+        size="md"
         variant="ghost"
         aria-label="Close search panel"
-        className="!tw-w-[28px]"
+        className="!w-[28px]"
       />
     </div>
   );
@@ -169,15 +160,15 @@ export const SearchBtn = ({ view }) => {
       className="d-flex justify-content-end w-100 position-absolute tw-pt-[3px] tw-pr-[4px] codehinter-search-btn-wrapper"
       style={{ top: 0 }}
     >
-      <ButtonComponent
-        iconOnly
-        trailingIcon="search01"
-        size="small"
+      <IconButton
+        size="sm"
         variant="outline"
-        ariaLabel="Open search panel"
+        aria-label="Open search panel"
         className="codehinter-search-btn"
         onClick={() => openSearchPanel(view)}
-      />
+      >
+          <MdSearch />
+      </IconButton>
     </div>
   );
 };

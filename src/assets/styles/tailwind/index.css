@@ -17,8 +17,9 @@
 		--interactive-hover: #ACB2B959;
 		--slate7: hsl(207, 11.1%, 85.9%);
 		--tomato9: hsl(10, 78.0%, 54.0%);
-		----theme-border-color: #e5e7eb;
-
+		--theme-border-color: #e5e7eb;
+		--border-weak: #E4E7EB;
+		--background-surface-layer-01: #FFFFFF;
 
 		/* rest of css */
 		--neutral: #ffffff;
@@ -61,6 +62,8 @@
 		--slate7: hsl(203, 6.0%, 24.3%);
 		--tomato9: hsl(10, 78.0%, 54.0%);
 		--theme-border-color: #374151;
+		--border-weak: #2B3036;
+		--background-surface-layer-01: #1E2226;
 
 		--neutral: #ffffff;
 		--primary: #2a85ff;
