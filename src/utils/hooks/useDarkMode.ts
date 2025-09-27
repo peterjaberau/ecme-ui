@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import { useThemeStore } from '@/store/themeStore'
 import type { Mode } from '@/@types/theme'
 
@@ -10,7 +10,7 @@ function useDarkMode(): [
     const mode = useThemeStore((state) => state.mode)
     const setMode = useThemeStore((state) => state.setMode)
 
-    const { MODE_DARK, MODE_LIGHT } = THEME_ENUM
+    const { MODE_DARK, MODE_LIGHT } = THEME_CONSTANTS
 
     const isEnabled = mode === MODE_DARK
 

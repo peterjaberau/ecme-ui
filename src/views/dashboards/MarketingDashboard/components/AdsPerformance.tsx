@@ -2,13 +2,13 @@ import { useState, useMemo } from 'react'
 import Card from '@/components/ui/Card'
 import Segment from '@/components/ui/Segment'
 import ApexChart from 'react-apexcharts'
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import type { AdsPerformanceData } from '../types'
 
 type AdsPerformance = {
     data: AdsPerformanceData
 }
-
+const { COLORS } = MODULE_CONSTANTS.chart
 const AdsPerformance = ({ data }: AdsPerformance) => {
     const [category, setCategory] = useState('all')
 

@@ -23,10 +23,10 @@ const OverallThemeConfig = () => {
                 method from the store. For more details, see the{' '}
                 <strong>&quot;State Persistence&quot;</strong> section below.
             </p>
-            <CodeToggleTabs 
+            <CodeToggleTabs
                 languages={['tsx', 'jsx']}
                 tsMarkdown={`\`\`\`tsx
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import {
     Direction,
     Mode,
@@ -58,7 +58,7 @@ export const themeConfig: ThemeConfig = {
     },
 }`}
                         jsMarkdown={`\`\`\`jsx
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 
 export const themeConfig = {
     themeSchema: '',

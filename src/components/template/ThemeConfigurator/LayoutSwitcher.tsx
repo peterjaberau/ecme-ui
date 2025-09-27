@@ -1,14 +1,7 @@
 import classNames from 'classnames'
 import Segment from '@/components/ui/Segment'
 import { useThemeStore } from '@/store/themeStore'
-import {
-    LAYOUT_COLLAPSIBLE_SIDE,
-    LAYOUT_STACKED_SIDE,
-    LAYOUT_TOP_BAR_CLASSIC,
-    LAYOUT_FRAMELESS_SIDE,
-    LAYOUT_CONTENT_OVERLAY,
-    LAYOUT_BLANK,
-} from '@/constants/theme.constant'
+import { SYSTEM_CONSTANTS, THEME_CONSTANTS } from '@/internals/constants'
 import CollapsibleSideSvg from '@/assets/svg/CollapsibleSideSvg'
 import StackedSideSvg from '@/assets/svg/StackedSideSvg'
 import TopBarClassicSvg from '@/assets/svg/TopBarClassicSvg'
@@ -19,42 +12,42 @@ import type { LayoutType } from '@/@types/theme'
 
 const layouts = [
     {
-        value: LAYOUT_COLLAPSIBLE_SIDE,
+        value: THEME_CONSTANTS.LAYOUT_COLLAPSIBLE_SIDE,
         label: 'Collapsible',
         src: '/img/thumbs/layouts/classic.jpg',
         srcDark: '/img/thumbs/layouts/classic-dark.jpg',
         svg: <CollapsibleSideSvg height={'100%'} width={'100%'} />,
     },
     {
-        value: LAYOUT_STACKED_SIDE,
+        value: SYSTEM_CONSTANTS.theme.LAYOUT_STACKED_SIDE,
         label: 'Stacked',
         src: '/img/thumbs/layouts/modern.jpg',
         srcDark: '/img/thumbs/layouts/modern-dark.jpg',
         svg: <StackedSideSvg height={'100%'} width={'100%'} />,
     },
     {
-        value: LAYOUT_TOP_BAR_CLASSIC,
+        value: SYSTEM_CONSTANTS.theme.LAYOUT_TOP_BAR_CLASSIC,
         label: 'Top bar',
         src: '/img/thumbs/layouts/stackedSide.jpg',
         srcDark: '/img/thumbs/layouts/stackedSide-dark.jpg',
         svg: <TopBarClassicSvg height={'100%'} width={'100%'} />,
     },
     {
-        value: LAYOUT_FRAMELESS_SIDE,
+        value: SYSTEM_CONSTANTS.theme.LAYOUT_FRAMELESS_SIDE,
         label: 'Frameless',
         src: '/img/thumbs/layouts/simple.jpg',
         srcDark: '/img/thumbs/layouts/simple-dark.jpg',
         svg: <FrameLessSideSvg height={'100%'} width={'100%'} />,
     },
     {
-        value: LAYOUT_CONTENT_OVERLAY,
+        value: SYSTEM_CONSTANTS.theme.LAYOUT_CONTENT_OVERLAY,
         label: 'Overlay',
         src: '/img/thumbs/layouts/decked.jpg',
         srcDark: '/img/thumbs/layouts/decked-dark.jpg',
         svg: <ContentOverlaySvg height={'100%'} width={'100%'} />,
     },
     {
-        value: LAYOUT_BLANK,
+        value: SYSTEM_CONSTANTS.theme.LAYOUT_BLANK,
         label: 'Blank',
         src: '/img/thumbs/layouts/blank.jpg',
         srcDark: '/img/thumbs/layouts/blank-dark.jpg',

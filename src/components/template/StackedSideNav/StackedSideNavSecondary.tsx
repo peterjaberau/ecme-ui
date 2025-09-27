@@ -1,6 +1,6 @@
 import ScrollBar from '@/components/ui/ScrollBar'
 import classNames from '@/utils/classNames'
-import { HEADER_HEIGHT, DIR_LTR, DIR_RTL } from '@/constants/theme.constant'
+import { SYSTEM_CONSTANTS } from '@/internals/constants'
 import VerticalMenuContent from '@/components/template/VerticalMenuContent'
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from 'react-icons/hi'
 import type { NavigationTree } from '@/@types/navigation'
@@ -38,7 +38,7 @@ const StackedSideNavSecondary = (props: StackedSideNavSecondaryProps) => {
         <div className={classNames('h-full', className)} {...rest}>
             <div
                 className={`flex items-center justify-between gap-4 pl-6 pr-4`}
-                style={{ height: HEADER_HEIGHT }}
+                style={{ height: SYSTEM_CONSTANTS.theme.HEADER_HEIGHT }}
             >
                 <h5 className="font-bold">{title}</h5>
                 <button
@@ -46,8 +46,8 @@ const StackedSideNavSecondary = (props: StackedSideNavSecondaryProps) => {
                     className="close-button"
                     onClick={handleCollpase}
                 >
-                    {direction === DIR_LTR && <HiOutlineArrowSmLeft />}
-                    {direction === DIR_RTL && <HiOutlineArrowSmRight />}
+                    {direction === SYSTEM_CONSTANTS.theme.DIR_LTR && <HiOutlineArrowSmLeft />}
+                    {direction === SYSTEM_CONSTANTS.theme.DIR_RTL && <HiOutlineArrowSmRight />}
                 </button>
             </div>
             <ScrollBar autoHide direction={direction}>

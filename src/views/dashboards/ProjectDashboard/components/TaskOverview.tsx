@@ -3,7 +3,7 @@ import Card from '@/components/ui/Card'
 import Segment from '@/components/ui/Segment'
 import Badge from '@/components/ui/Badge'
 import Chart from '@/components/shared/Chart'
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import isEmpty from 'lodash/isEmpty'
 import type { TaskOverviewChart } from '../types'
 
@@ -17,7 +17,7 @@ type ChartLegendProps = {
     color?: string
     showBadge?: boolean
 }
-
+const { COLORS } = MODULE_CONSTANTS.chart
 const ChartLegend = ({
     label,
     value,

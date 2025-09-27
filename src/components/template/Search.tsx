@@ -6,9 +6,8 @@ import Dialog from '@/components/ui/Dialog'
 import ScrollBar from '@/components/ui/ScrollBar'
 import navigationIcon from '@/configs/navigation-icon.config'
 import {
-    GUIDE_PREFIX_PATH,
-    UI_COMPONENTS_PREFIX_PATH,
-} from '@/constants/route.constant'
+    SYSTEM_CONSTANTS
+} from '@/internals/constants'
 import { apiGetSearchResult } from '@/services/CommonService'
 import debounce from 'lodash/debounce'
 import { HiOutlineSearch, HiChevronRight } from 'react-icons/hi'
@@ -36,7 +35,7 @@ const recommendedSearch: SearchResult[] = [
         data: [
             {
                 key: 'guide.documentation',
-                path: `${GUIDE_PREFIX_PATH}/documentation/introduction`,
+                path: `${SYSTEM_CONSTANTS.routes.GUIDE_PREFIX_PATH}/documentation/introduction`,
                 title: 'Documentation',
                 icon: 'documentation',
                 category: 'Docs',
@@ -44,7 +43,7 @@ const recommendedSearch: SearchResult[] = [
             },
             {
                 key: 'guide.changeLog',
-                path: `${GUIDE_PREFIX_PATH}/changelog`,
+                path: `${SYSTEM_CONSTANTS.routes.GUIDE_PREFIX_PATH}/changelog`,
                 title: 'Changelog',
                 icon: 'changeLog',
                 category: 'Docs',
@@ -52,7 +51,7 @@ const recommendedSearch: SearchResult[] = [
             },
             {
                 key: 'uiComponent.common.button',
-                path: `${UI_COMPONENTS_PREFIX_PATH}/button`,
+                path: `${SYSTEM_CONSTANTS.routes.UI_COMPONENTS_PREFIX_PATH}/button`,
                 title: 'Button',
                 icon: 'uiCommonButton',
                 category: 'Common',

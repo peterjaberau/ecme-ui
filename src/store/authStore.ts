@@ -1,9 +1,11 @@
 import cookiesStorage from '@/utils/cookiesStorage'
 import appConfig from '@/configs/app.config'
-import { TOKEN_NAME_IN_STORAGE } from '@/constants/api.constant'
+import { API_CONSTANTS } from '@/internals/constants'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import type { User } from '@/@types/auth'
+
+const { TOKEN_NAME_IN_STORAGE } = API_CONSTANTS
 
 type Session = {
     signedIn: boolean

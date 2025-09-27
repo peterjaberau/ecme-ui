@@ -1,5 +1,7 @@
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import type { ApexOptions } from 'apexcharts'
+
+const { COLORS } = MODULE_CONSTANTS.chart
 
 export const apexLineChartDefaultOption: ApexOptions = {
     chart: {

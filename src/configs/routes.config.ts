@@ -1,13 +1,9 @@
 import type { Routes } from '@/@types/routes'
 import { lazy } from 'react'
-import { ADMIN, USER } from '@/constants/roles.constant'
-import {
-    AUTH_PREFIX_PATH,
-    CONCEPTS_PREFIX_PATH,
-    ACTORS_PREFIX_PATH,
-    DASHBOARDS_PREFIX_PATH,
-    GUIDE_PREFIX_PATH, UI_COMPONENTS_PREFIX_PATH
-} from '@/constants/route.constant'
+import { ROUTES_CONSTANTS, ROLES_CONSTANTS } from '@/internals/constants'
+
+const { ADMIN, USER} = ROLES_CONSTANTS
+const { GUIDE_PREFIX_PATH, AUTH_PREFIX_PATH, DASHBOARDS_PREFIX_PATH, ACTORS_PREFIX_PATH, CONCEPTS_PREFIX_PATH, UI_COMPONENTS_PREFIX_PATH } = ROUTES_CONSTANTS
 
 export const publicRoutes: Routes = [
     {
@@ -707,6 +703,26 @@ const guideRoute: Routes = [
 ]
 
 const uiComponentsRoute: Routes = [
+    {
+        key: 'uiComponent.ark.accordion',
+        path: `${UI_COMPONENTS_PREFIX_PATH}/accordion`,
+        component: lazy(() => import('@/views/ui-components/ark/Accordion')),
+        authority: [],
+        meta: {
+            pageBackgroundType: 'plain',
+            pageContainerType: 'contained',
+        },
+    },
+    {
+        key: 'uiComponent.ark.floating-panel',
+        path: `${UI_COMPONENTS_PREFIX_PATH}/floating-panel`,
+        component: lazy(() => import('@/views/ui-components/ark/FloatingPanel')),
+        authority: [],
+        meta: {
+            pageBackgroundType: 'plain',
+            pageContainerType: 'contained',
+        },
+    },
     {
         key: 'uiComponent.common.button',
         path: `${UI_COMPONENTS_PREFIX_PATH}/button`,

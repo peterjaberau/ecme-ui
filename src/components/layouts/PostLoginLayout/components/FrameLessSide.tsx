@@ -12,7 +12,7 @@ import LayoutBase from '@/components//template/LayoutBase'
 import classNames from '@/utils/classNames'
 import useScrollTop from '@/utils/hooks/useScrollTop'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { LAYOUT_FRAMELESS_SIDE } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { CommonProps } from '@/@types/common'
 import type { FooterPageContainerType } from '@/components/template/Footer'
 
@@ -24,7 +24,7 @@ const FrameLessSide = ({ children }: CommonProps) => {
     return (
         <LayoutBase
             adaptiveCardActive
-            type={LAYOUT_FRAMELESS_SIDE}
+            type={THEME_CONSTANTS.LAYOUT_FRAMELESS_SIDE}
             className="app-layout-frameless-side flex flex-auto flex-col bg-gray-950"
             pageContainerReassemble={({
                 pageContainerType,

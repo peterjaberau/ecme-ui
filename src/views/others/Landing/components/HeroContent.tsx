@@ -1,10 +1,10 @@
 import Button from '@/components/ui/Button'
 import { motion } from 'framer-motion'
 import TextGenerateEffect from './TextGenerateEffect'
-import { MODE_DARK, MODE_LIGHT } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import { useNavigate } from 'react-router-dom'
 import type { Mode } from '@/@types/theme'
-
+const { MODE_LIGHT, MODE_DARK } = THEME_CONSTANTS
 const HeroContent = ({ mode }: { mode: Mode }) => {
     const navigate = useNavigate()
 

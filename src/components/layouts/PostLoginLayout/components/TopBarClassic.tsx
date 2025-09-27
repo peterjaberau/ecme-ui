@@ -9,7 +9,7 @@ import MobileNav from '@/components/template/MobileNav'
 import HorizontalNav from '@/components/template/HorizontalNav'
 import LayoutBase from '@/components//template/LayoutBase'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { LAYOUT_TOP_BAR_CLASSIC } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { CommonProps } from '@/@types/common'
 
 const TopBarClassic = ({ children }: CommonProps) => {
@@ -17,7 +17,7 @@ const TopBarClassic = ({ children }: CommonProps) => {
 
     return (
         <LayoutBase
-            type={LAYOUT_TOP_BAR_CLASSIC}
+            type={THEME_CONSTANTS.LAYOUT_TOP_BAR_CLASSIC}
             className="app-layout-top-bar-classic flex flex-auto flex-col min-h-screen"
         >
             <div className="flex flex-auto min-w-0">

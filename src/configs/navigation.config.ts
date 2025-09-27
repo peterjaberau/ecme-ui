@@ -1,13 +1,27 @@
 import type { NavigationTree } from '@/@types/navigation'
-import { NAV_ITEM_TYPE_COLLAPSE, NAV_ITEM_TYPE_ITEM, NAV_ITEM_TYPE_TITLE } from '@/constants/navigation.constant'
-import { ADMIN, USER } from '@/constants/roles.constant'
 import {
+    SYSTEM_CONSTANTS,
+    ROLES_CONSTANTS,
+    NAVIGATION_CONSTANTS,
+    ROUTES_CONSTANTS,
+} from '@/internals/constants'
+
+const { ADMIN, USER } = ROLES_CONSTANTS
+const {
+    NAV_ITEM_TYPE_ITEM,
+    NAV_ITEM_TYPE_TITLE,
+    NAV_ITEM_TYPE_COLLAPSE,
+
+} = NAVIGATION_CONSTANTS
+
+const {
+    DASHBOARDS_PREFIX_PATH,
     ACTORS_PREFIX_PATH,
     AUTH_PREFIX_PATH,
+    GUIDE_PREFIX_PATH,
     CONCEPTS_PREFIX_PATH,
-    DASHBOARDS_PREFIX_PATH,
-    GUIDE_PREFIX_PATH, UI_COMPONENTS_PREFIX_PATH
-} from '@/constants/route.constant'
+    UI_COMPONENTS_PREFIX_PATH
+} = ROUTES_CONSTANTS
 
 const navigationConfig: NavigationTree[] = [
     {
@@ -16,7 +30,7 @@ const navigationConfig: NavigationTree[] = [
         title: 'Dashboard',
         translateKey: 'nav.dashboard.dashboard',
         icon: 'dashboard',
-        type: NAV_ITEM_TYPE_TITLE,
+        type: SYSTEM_CONSTANTS.navigation.NAV_ITEM_TYPE_TITLE,
         authority: [ADMIN, USER],
         meta: {
             horizontalMenu: {
@@ -698,7 +712,6 @@ const navigationConfig: NavigationTree[] = [
                 subMenu: [],
             },
 
-
             {
                 key: 'concepts.flowManager',
                 path: `${CONCEPTS_PREFIX_PATH}/flow-manager`,
@@ -764,6 +777,57 @@ const navigationConfig: NavigationTree[] = [
             },
         },
         subMenu: [
+            {
+                key: 'uiComponent.ark',
+                path: '',
+                title: 'Ark',
+                translateKey: 'nav.uiComponentsArk.ark',
+                icon: 'common',
+                type: NAV_ITEM_TYPE_COLLAPSE,
+                authority: [ADMIN, USER],
+                meta: {
+                    description: {
+                        translateKey: 'nav.uiComponentsArk.arkDesc',
+                        label: 'Ark UI elements',
+                    },
+                },
+                subMenu: [
+                    {
+                        key: 'uiComponent.ark.accordion',
+                        path: `${UI_COMPONENTS_PREFIX_PATH}/accordion`,
+                        title: 'Accordion',
+                        translateKey: 'nav.uiComponentsArk.accordion',
+                        icon: 'uiCommonButton',
+                        type: NAV_ITEM_TYPE_ITEM,
+                        authority: [ADMIN, USER],
+                        meta: {
+                            description: {
+                                translateKey:
+                                    'nav.uiComponentsArk.accordionDesc',
+                                label: 'Accordions',
+                            },
+                        },
+                        subMenu: [],
+                    },
+                    {
+                        key: 'uiComponent.ark.floatingPanel',
+                        path: `${UI_COMPONENTS_PREFIX_PATH}/floating-panel`,
+                        title: 'Floating Panel',
+                        translateKey: 'nav.uiComponentsArk.floatingPanel',
+                        icon: 'uiCommonButton',
+                        type: NAV_ITEM_TYPE_ITEM,
+                        authority: [ADMIN, USER],
+                        meta: {
+                            description: {
+                                translateKey:
+                                    'nav.uiComponentsArk.floatingPanelDesc',
+                                label: 'Floating Panels',
+                            },
+                        },
+                        subMenu: [],
+                    },
+                ],
+            },
             {
                 key: 'uiComponent.common',
                 path: '',

@@ -6,5 +6,4 @@ const sequelize: Sequelize = new Sequelize({
     storage: appConfig.sqliteDatabaseUrl,
 })
 
-console.log('---sequelize-----', sequelize)
 export default sequelize

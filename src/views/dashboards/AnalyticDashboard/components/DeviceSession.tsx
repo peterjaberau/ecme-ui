@@ -1,13 +1,13 @@
 import Card from '@/components/ui/Card'
 import Chart from '@/components/shared/Chart'
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import { TbDeviceDesktop, TbDeviceMobile, TbDeviceTablet } from 'react-icons/tb'
 import type { DeviceSessionData } from '../types'
 
 type DeviceSessionProps = {
     data: DeviceSessionData
 }
-
+const { COLORS } = MODULE_CONSTANTS.chart
 const DeviceSession = ({ data }: DeviceSessionProps) => {
     return (
         <Card>

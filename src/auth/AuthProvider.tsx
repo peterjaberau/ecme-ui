@@ -3,7 +3,7 @@ import AuthContext from './AuthContext'
 import appConfig from '@/configs/app.config'
 import { useSessionUser, useToken } from '@/store/authStore'
 import { apiSignIn, apiSignOut, apiSignUp } from '@/services/AuthService'
-import { REDIRECT_URL_KEY } from '@/constants/app.constant'
+import { SYSTEM_CONSTANTS } from '@/internals/constants'
 import { useNavigate } from 'react-router-dom'
 import type {
     SignInCredential,
@@ -50,7 +50,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     const redirect = () => {
         const search = window.location.search
         const params = new URLSearchParams(search)
-        const redirectUrl = params.get(REDIRECT_URL_KEY)
+        const redirectUrl = params.get(SYSTEM_CONSTANTS.app.REDIRECT_URL_KEY)
 
         navigatorRef.current?.navigate(
             redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath,

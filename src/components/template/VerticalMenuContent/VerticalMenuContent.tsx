@@ -5,10 +5,8 @@ import VerticalCollapsedMenuItem from './VerticalCollapsedMenuItem'
 import AuthorityCheck from '@/components/shared/AuthorityCheck'
 import { themeConfig } from '@/configs/theme.config'
 import {
-    NAV_ITEM_TYPE_TITLE,
-    NAV_ITEM_TYPE_COLLAPSE,
-    NAV_ITEM_TYPE_ITEM,
-} from '@/constants/navigation.constant'
+    SYSTEM_CONSTANTS,
+} from '@/internals/constants'
 import useMenuActive from '@/utils/hooks/useMenuActive'
 import useTranslation from '@/utils/hooks/useTranslation'
 import { Direction } from '@/@types/theme'
@@ -67,7 +65,7 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
             <>
                 {navTree.map((nav) => (
                     <Fragment key={nav.key}>
-                        {nav.type === NAV_ITEM_TYPE_ITEM && (
+                        {nav.type === SYSTEM_CONSTANTS.navigation.NAV_ITEM_TYPE_ITEM && (
                             <VerticalSingleMenuItem
                                 key={nav.key}
                                 currentKey={activedRoute?.key}
@@ -88,7 +86,7 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
                                 onLinkClick={handleLinkClick}
                             />
                         )}
-                        {nav.type === NAV_ITEM_TYPE_COLLAPSE && (
+                        {nav.type === SYSTEM_CONSTANTS.navigation.NAV_ITEM_TYPE_COLLAPSE && (
                             <VerticalCollapsedMenuItem
                                 key={nav.key}
                                 currentKey={activedRoute?.key}
@@ -112,7 +110,7 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
                                     )}
                             </VerticalCollapsedMenuItem>
                         )}
-                        {nav.type === NAV_ITEM_TYPE_TITLE && (
+                        {nav.type === SYSTEM_CONSTANTS.navigation.NAV_ITEM_TYPE_TITLE && (
                             <AuthorityCheck
                                 userAuthority={userAuthority}
                                 authority={nav.authority}

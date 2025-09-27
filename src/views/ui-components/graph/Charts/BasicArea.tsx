@@ -1,6 +1,6 @@
 import Chart from 'react-apexcharts'
-import { COLOR_1 } from '@/constants/chart.constant'
-
+import { MODULE_CONSTANTS } from '@/internals/constants'
+const { COLOR_1 } = MODULE_CONSTANTS.chart
 const BasicArea = () => {
     const data = [
         {

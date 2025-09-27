@@ -2,7 +2,7 @@ import { useState, Suspense, lazy } from 'react'
 import classNames from 'classnames'
 import Drawer from '@/components/ui/Drawer'
 import NavToggle from '@/components/shared/NavToggle'
-import { DIR_RTL } from '@/constants/theme.constant'
+import { SYSTEM_CONSTANTS } from '@/internals/constants'
 import withHeaderItem, { WithHeaderItemProps } from '@/utils/hoc/withHeaderItem'
 import navigationConfig from '@/configs/navigation.config'
 import appConfig from '@/configs/app.config'
@@ -54,7 +54,7 @@ const MobileNav = ({
                 isOpen={isOpen}
                 bodyClass={classNames('p-0')}
                 width={330}
-                placement={direction === DIR_RTL ? 'right' : 'left'}
+                placement={direction === SYSTEM_CONSTANTS.theme.DIR_RTL ? 'right' : 'left'}
                 onClose={handleDrawerClose}
                 onRequestClose={handleDrawerClose}
             >

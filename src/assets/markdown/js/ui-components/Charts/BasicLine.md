@@ -1,6 +1,6 @@
 ```jsx
 import Chart from 'react-apexcharts'
-import { COLOR_2 } from '@/constants/chart.constant'
+import { COLOR_2 } from '@/internals/constants'
 
 const BasicLine = () => {
     const data = [

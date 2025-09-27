@@ -3,7 +3,7 @@ import NavList from './NavList'
 import Drawer from '@/components/ui/Drawer'
 import classNames from '@/utils/classNames'
 import useScrollTop from '@/utils/hooks/useScrollTop'
-import { MODE_DARK, MODE_LIGHT } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import { TbMenu2 } from "react-icons/tb";
 import type { Mode } from '@/@types/theme'
 
@@ -11,7 +11,7 @@ type NavigationProps = {
     toggleMode: () => void
     mode: Mode
 }
-
+const { MODE_LIGHT, MODE_DARK } = THEME_CONSTANTS
 const navMenu = [
     {
         title: 'Features',
@@ -74,7 +74,7 @@ const Navigation = ({ toggleMode, mode }: NavigationProps) => {
                 <a href="/">
                     {
                         mode === MODE_LIGHT && (
-                            <img 
+                            <img
                                 src="/img/logo/logo-light-full.png"
                                 width={120}
                                 height={40}
@@ -84,7 +84,7 @@ const Navigation = ({ toggleMode, mode }: NavigationProps) => {
                     }
                     {
                         mode === MODE_DARK && (
-                            <img 
+                            <img
                                 src="/img/logo/logo-dark-full.png"
                                 width={120}
                                 height={40}

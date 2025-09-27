@@ -5,9 +5,8 @@ import HorizontalMenuNavLink from './HorizontalMenuNavLink'
 import AuthorityCheck from '@/components/shared/AuthorityCheck'
 import classNames from '@/utils/classNames'
 import {
-    NAV_ITEM_TYPE_COLLAPSE,
-    NAV_ITEM_TYPE_ITEM,
-} from '@/constants/navigation.constant'
+    NAVIGATION_CONSTANTS,
+} from '@/internals/constants'
 import navigationIcon from '@/configs/navigation-icon.config'
 import { TbCircle } from 'react-icons/tb'
 import type { CommonProps, TraslationFn } from '@/@types/common'
@@ -211,7 +210,7 @@ const ColumnsLayout = (
                     return null
                 })}
             </div>
-            {navigationTree.some((nav) => nav.type === NAV_ITEM_TYPE_ITEM) && (
+            {navigationTree.some((nav) => nav.type === NAVIGATION_CONSTANTS.NAV_ITEM_TYPE_ITEM) && (
                 <div
                     className={classNames(
                         'ltr:border-l rtl:border-r border-gray-200 dark:border-gray-800 min-w-[280px] p-4 flex flex-col',
@@ -220,7 +219,7 @@ const ColumnsLayout = (
                     {navigationTree.map((nav) => {
                         if (
                             nav.subMenu.length === 0 &&
-                            nav.type === NAV_ITEM_TYPE_ITEM
+                            nav.type === NAVIGATION_CONSTANTS.NAV_ITEM_TYPE_ITEM
                         ) {
                             return (
                                 <AuthorityCheck
@@ -276,7 +275,7 @@ const DefaultLayout = ({
                         authority={nav.authority}
                     >
                         <ul>
-                            {nav.type === NAV_ITEM_TYPE_ITEM && (
+                            {nav.type === NAVIGATION_CONSTANTS.NAV_ITEM_TYPE_ITEM && (
                                 <Dropdown.Item active={routeKey === nav.key}>
                                     <HorizontalMenuNavLink
                                         path={nav.path}
@@ -291,7 +290,7 @@ const DefaultLayout = ({
                                     </HorizontalMenuNavLink>
                                 </Dropdown.Item>
                             )}
-                            {nav.type === NAV_ITEM_TYPE_COLLAPSE && (
+                            {nav.type === NAVIGATION_CONSTANTS.NAV_ITEM_TYPE_COLLAPSE && (
                                 <Dropdown
                                     renderTitle={
                                         <span className="flex items-center gap-2">
@@ -401,7 +400,7 @@ const TabLayout = ({
             {navigationTree.some(
                 (nav) =>
                     nav.key === activeKey &&
-                    nav.type === NAV_ITEM_TYPE_COLLAPSE,
+                    nav.type === NAVIGATION_CONSTANTS.NAV_ITEM_TYPE_COLLAPSE,
             ) && (
                 <div className="ltr:border-l rtl:border-r border-gray-200 dark:border-gray-800 p-6">
                     <div

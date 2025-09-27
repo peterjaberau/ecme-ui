@@ -1,6 +1,6 @@
 ```jsx
 import Chart from 'react-apexcharts'
-import { COLORS } from '@/constants/chart.constant'
+import { COLORS } from '@/internals/constants'
 
 const GroupedBar = () => {
     const data = [

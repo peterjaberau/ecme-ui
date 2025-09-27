@@ -9,7 +9,7 @@ import UserProfileDropdown from '@/components//template/UserProfileDropdown'
 import SidePanel from '@/components//template/SidePanel'
 import LayoutBase from '@/components//template/LayoutBase'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { LAYOUT_COLLAPSIBLE_SIDE } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { CommonProps } from '@/@types/common'
 
 const CollapsibleSide = ({ children }: CommonProps) => {
@@ -17,7 +17,7 @@ const CollapsibleSide = ({ children }: CommonProps) => {
 
     return (
         <LayoutBase
-            type={LAYOUT_COLLAPSIBLE_SIDE}
+            type={THEME_CONSTANTS.LAYOUT_COLLAPSIBLE_SIDE}
             className="app-layout-collapsible-side flex flex-auto flex-col"
         >
             <div className="flex flex-auto min-w-0">

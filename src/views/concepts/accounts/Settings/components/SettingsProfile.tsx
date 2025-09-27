@@ -6,7 +6,7 @@ import Select, { Option as DefaultOption } from '@/components/ui/Select'
 import Avatar from '@/components/ui/Avatar'
 import { Form, FormItem } from '@/components/ui/Form'
 import NumericInput from '@/components/shared/NumericInput'
-import { countryList } from '@/constants/countries.constant'
+import { DATA_CONSTANTS } from '@/internals/constants'
 import { components } from 'react-select'
 import type { ControlProps, OptionProps } from 'react-select'
 import { apiGetSettingsProfile } from '@/services/AccontsService'
@@ -39,9 +39,11 @@ type CountryOption = {
     value: string
 }
 
+const { countries: countryList } = DATA_CONSTANTS
+
 const { Control } = components
 
-const validationSchema: ZodType<ProfileSchema> = z.object({
+const validationSchema: ZodType<ProfileSchema> | any = z.object({
     firstName: z.string().min(1, { message: 'First name required' }),
     lastName: z.string().min(1, { message: 'Last name required' }),
     email: z

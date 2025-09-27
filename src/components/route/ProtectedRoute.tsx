@@ -1,5 +1,5 @@
 import appConfig from '@/configs/app.config'
-import { REDIRECT_URL_KEY } from '@/constants/app.constant'
+import { APP_CONSTANTS } from '@/internals/constants'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '@/auth'
 
@@ -11,7 +11,7 @@ const ProtectedRoute = () => {
     const { pathname } = useLocation()
 
     const getPathName =
-        pathname === '/' ? '' : `?${REDIRECT_URL_KEY}=${location.pathname}`
+        pathname === '/' ? '' : `?${APP_CONSTANTS.REDIRECT_URL_KEY}=${location.pathname}`
 
     if (!authenticated) {
         return (

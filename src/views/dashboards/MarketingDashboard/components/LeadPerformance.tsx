@@ -1,13 +1,13 @@
 import Card from '@/components/ui/Card'
 import Chart from '@/components/shared/Chart'
 import classNames from '@/utils/classNames'
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import type { LeadPerformanceData } from '../types'
 
 type LeadPerformanceProps = {
     data: LeadPerformanceData
 }
-
+const { COLORS } = MODULE_CONSTANTS.chart
 const LeadPerformance = ({ data }: LeadPerformanceProps) => {
     return (
         <Card>

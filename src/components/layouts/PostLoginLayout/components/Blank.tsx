@@ -1,12 +1,12 @@
 import { CommonProps } from '@/@types/common'
 import LayoutBase from '@/components//template/LayoutBase'
 import SidePanel from '@/components//template/SidePanel'
-import { LAYOUT_BLANK } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 
 const Blank = ({ children }: CommonProps) => {
     return (
         <LayoutBase
-            type={LAYOUT_BLANK}
+            type={THEME_CONSTANTS.LAYOUT_BLANK}
             className="app-layout-blank flex flex-auto flex-col h-[100vh]"
         >
             <div className="flex min-w-0 w-full flex-1">

@@ -7,7 +7,7 @@ import {
     apexDonutChartDefaultOption,
     apexRadarChartDefultOption,
 } from '@/configs/chart.config'
-import { DIR_RTL } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { ApexOptions } from 'apexcharts'
 import type { Direction } from '@/@types/theme'
 import type { ReactNode } from 'react'
@@ -72,7 +72,7 @@ const Chart = (props: ChartProps) => {
             const lengend = chartRef.current.querySelectorAll<HTMLDivElement>(
                 'div.apexcharts-legend',
             )[0]
-            if (direction === DIR_RTL) {
+            if (direction === THEME_CONSTANTS.DIR_RTL) {
                 lengend.style.right = 'auto'
                 lengend.style.left = '0'
             }
@@ -112,7 +112,7 @@ const Chart = (props: ChartProps) => {
     return (
         <div
             ref={chartRef}
-            style={direction === DIR_RTL ? { direction: 'ltr' } : {}}
+            style={direction === THEME_CONSTANTS.DIR_RTL ? { direction: 'ltr' } : {}}
             className="chartRef"
         >
             <ApexChart

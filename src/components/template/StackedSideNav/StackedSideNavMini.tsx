@@ -4,10 +4,8 @@ import Menu from '@/components/ui/Menu'
 import ScrollBar from '@/components/ui/ScrollBar'
 import AuthorityCheck from '@/components/shared/AuthorityCheck'
 import {
-    SIDE_NAV_CONTENT_GUTTER,
-    HEADER_HEIGHT,
-} from '@/constants/theme.constant'
-import { NAV_ITEM_TYPE_ITEM } from '@/constants/navigation.constant'
+    SYSTEM_CONSTANTS,
+} from '@/internals/constants'
 import appConfig from '@/configs/app.config'
 import navigationIcon from '@/configs/navigation-icon.config'
 import useMenuActive from '@/utils/hooks/useMenuActive'
@@ -75,7 +73,7 @@ const StackedSideNavMini = (props: StackedSideNavMiniProps) => {
 
     useEffect(() => {
         if (
-            includedRouteTree.type !== NAV_ITEM_TYPE_ITEM &&
+            includedRouteTree.type !== SYSTEM_CONSTANTS.navigation.NAV_ITEM_TYPE_ITEM &&
             !isEmpty(includedRouteTree)
         ) {
             onChange({
@@ -100,13 +98,13 @@ const StackedSideNavMini = (props: StackedSideNavMiniProps) => {
             <Link
                 to={appConfig.authenticatedEntryPath}
                 className="stacked-mini-nav-header flex items-center justify-center"
-                style={{ height: HEADER_HEIGHT }}
+                style={{ height: SYSTEM_CONSTANTS.theme.HEADER_HEIGHT }}
             >
                 <Logo
                     imgClass="max-h-10"
                     mode={mode}
                     type="streamline"
-                    className={SIDE_NAV_CONTENT_GUTTER}
+                    className={SYSTEM_CONSTANTS.theme.SIDE_NAV_CONTENT_GUTTER}
                 />
             </Link>
             <ScrollBar autoHide direction={direction}>

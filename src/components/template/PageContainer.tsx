@@ -4,9 +4,8 @@ import Footer from '@/components/template/Footer'
 import useLayout from '@/utils/hooks/useLayout'
 import classNames from '@/utils/classNames'
 import {
-    PAGE_CONTAINER_GUTTER_X,
-    PAGE_CONTAINER_GUTTER_Y,
-} from '@/constants/theme.constant'
+    SYSTEM_CONSTANTS
+} from '@/internals/constants'
 import type { CommonProps } from '@/@types/common'
 import type { Meta, PageHeaderProps } from '@/@types/routes'
 import type { FooterPageContainerType } from '@/components/template/Footer'
@@ -126,7 +125,7 @@ const PageContainer = (props: PageContainerProps) => {
     const defaultClass = 'h-full flex flex-auto flex-col justify-between'
     const pageContainerDefaultClass =
         'page-container relative h-full flex flex-auto flex-col'
-    const pageContainerGutterClass = `${PAGE_CONTAINER_GUTTER_X} ${PAGE_CONTAINER_GUTTER_Y}`
+    const pageContainerGutterClass = `${SYSTEM_CONSTANTS.theme.PAGE_CONTAINER_GUTTER_X} ${SYSTEM_CONSTANTS.theme.PAGE_CONTAINER_GUTTER_Y}`
 
     return (
         <>

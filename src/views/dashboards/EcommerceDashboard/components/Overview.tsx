@@ -6,7 +6,7 @@ import AbbreviateNumber from '@/components/shared/AbbreviateNumber'
 import Chart from '@/components/shared/Chart'
 import { useThemeStore } from '@/store/themeStore'
 import classNames from '@/utils/classNames'
-import { COLOR_1, COLOR_2, COLOR_4 } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import { options } from '../constants'
 import { NumericFormat } from 'react-number-format'
 import { TbCoin, TbShoppingBagCheck, TbEye } from 'react-icons/tb'
@@ -28,6 +28,8 @@ type StatisticCardProps = {
 type StatisticGroupsProps = {
     data: StatisticData
 }
+
+const { COLOR_1, COLOR_2, COLOR_4 } = MODULE_CONSTANTS.chart
 
 const chartColors: Record<StatisticCategory, string> = {
     totalProfit: COLOR_1,

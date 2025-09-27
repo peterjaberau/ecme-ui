@@ -1,4 +1,5 @@
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
+
 import { Direction, Mode, ControlSize, LayoutType } from '@/@types/theme'
 
 export type ThemeConfig = {
@@ -19,12 +20,12 @@ export type ThemeConfig = {
  */
 export const themeConfig: ThemeConfig = {
     themeSchema: '',
-    direction: THEME_ENUM.DIR_LTR,
-    mode: THEME_ENUM.MODE_LIGHT,
+    direction: THEME_CONSTANTS.DIR_LTR,
+    mode: THEME_CONSTANTS.MODE_LIGHT,
     panelExpand: false,
     controlSize: 'md',
     layout: {
-        type: THEME_ENUM.LAYOUT_COLLAPSIBLE_SIDE,
+        type: THEME_CONSTANTS.LAYOUT_COLLAPSIBLE_SIDE,
         sideNavCollapse: false,
     },
 }

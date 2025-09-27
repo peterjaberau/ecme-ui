@@ -1,10 +1,11 @@
-import {
-    AUTH_PREFIX_PATH,
+import { ROUTES_CONSTANTS } from '@/internals/constants'
+const {
+    GUIDE_PREFIX_PATH,
     UI_COMPONENTS_PREFIX_PATH,
+    AUTH_PREFIX_PATH,
     DASHBOARDS_PREFIX_PATH,
     CONCEPTS_PREFIX_PATH,
-    GUIDE_PREFIX_PATH,
-} from '@/constants/route.constant'
+} = ROUTES_CONSTANTS
 
 export const notificationListData = [
     {

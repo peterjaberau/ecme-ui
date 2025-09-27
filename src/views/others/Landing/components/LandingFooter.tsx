@@ -2,16 +2,16 @@ import Container from './LandingContainer'
 import Button from '@/components/ui/Button'
 import AuroraBackground from './AuroraBackground'
 import { motion } from 'framer-motion'
-import { MODE_DARK, MODE_LIGHT } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import { useNavigate } from 'react-router-dom'
 import type { Mode } from '@/@types/theme'
-
+const { MODE_LIGHT, MODE_DARK } = THEME_CONSTANTS
 const LandingFooter = ({mode}: {mode: Mode}) => {
 
     const year = new Date().getFullYear()
 
      const navigate = useNavigate()
-    
+
     const handlePreview = () => {
         navigate('/dashboards/ecommerce')
     }
@@ -44,7 +44,7 @@ const LandingFooter = ({mode}: {mode: Mode}) => {
 							<a href="/">
                                 {
                                     mode === MODE_LIGHT && (
-                                        <img 
+                                        <img
                                             src="/img/logo/logo-light-full.png"
                                             width={120}
                                             height={40}
@@ -54,7 +54,7 @@ const LandingFooter = ({mode}: {mode: Mode}) => {
                                 }
                                 {
                                     mode === MODE_DARK && (
-                                        <img 
+                                        <img
                                             src="/img/logo/logo-dark-full.png"
                                             width={120}
                                             height={40}

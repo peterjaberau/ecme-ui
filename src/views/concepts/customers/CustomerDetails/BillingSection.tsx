@@ -17,7 +17,7 @@ import {
     createColumnHelper,
 } from '@tanstack/react-table'
 import { NumericFormat } from 'react-number-format'
-import { countryList } from '@/constants/countries.constant'
+import { DATA_CONSTANTS } from '@/internals/constants'
 import dayjs from 'dayjs'
 
 type OrderHistory = {
@@ -49,7 +49,7 @@ type BillingSectionProps = {
         paymentMethod: PaymentMethod[]
     }>
 }
-
+const { countries: countryList } = DATA_CONSTANTS
 const { Tr, Td, TBody } = Table
 
 const months = [

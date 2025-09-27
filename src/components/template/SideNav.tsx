@@ -9,12 +9,8 @@ import navigationConfig from '@/configs/navigation.config'
 import appConfig from '@/configs/app.config'
 import { Link } from 'react-router-dom'
 import {
-    SIDE_NAV_WIDTH,
-    SIDE_NAV_COLLAPSED_WIDTH,
-    SIDE_NAV_CONTENT_GUTTER,
-    HEADER_HEIGHT,
-    LOGO_X_GUTTER,
-} from '@/constants/theme.constant'
+    SYSTEM_CONSTANTS,
+} from '@/internals/constants'
 import type { Mode } from '@/@types/theme'
 
 type SideNavProps = {
@@ -26,13 +22,13 @@ type SideNavProps = {
 }
 
 const sideNavStyle = {
-    width: SIDE_NAV_WIDTH,
-    minWidth: SIDE_NAV_WIDTH,
+    width: SYSTEM_CONSTANTS.theme.SIDE_NAV_WIDTH,
+    minWidth: SYSTEM_CONSTANTS.theme.SIDE_NAV_WIDTH,
 }
 
 const sideNavCollapseStyle = {
-    width: SIDE_NAV_COLLAPSED_WIDTH,
-    minWidth: SIDE_NAV_COLLAPSED_WIDTH,
+    width: SYSTEM_CONSTANTS.theme.SIDE_NAV_COLLAPSED_WIDTH,
+    minWidth: SYSTEM_CONSTANTS.theme.SIDE_NAV_COLLAPSED_WIDTH,
 }
 
 const SideNav = ({
@@ -65,7 +61,7 @@ const SideNav = ({
             <Link
                 to={appConfig.authenticatedEntryPath}
                 className="side-nav-header flex flex-col justify-center"
-                style={{ height: HEADER_HEIGHT }}
+                style={{ height: SYSTEM_CONSTANTS.theme.HEADER_HEIGHT }}
             >
                 <Logo
                     imgClass="max-h-10"
@@ -74,8 +70,8 @@ const SideNav = ({
                     className={classNames(
                         sideNavCollapse && 'ltr:ml-[11.5px] ltr:mr-[11.5px]',
                         sideNavCollapse
-                            ? SIDE_NAV_CONTENT_GUTTER
-                            : LOGO_X_GUTTER,
+                            ? SYSTEM_CONSTANTS.theme.SIDE_NAV_CONTENT_GUTTER
+                            : SYSTEM_CONSTANTS.theme.LOGO_X_GUTTER,
                     )}
                 />
             </Link>

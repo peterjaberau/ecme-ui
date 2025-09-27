@@ -1,5 +1,5 @@
 import { useThemeStore } from '@/store/themeStore'
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { DetailedHTMLProps, ImgHTMLAttributes } from 'react'
 
 interface DoubleSidedImageProps
@@ -10,7 +10,7 @@ interface DoubleSidedImageProps
     darkModeSrc: string
 }
 
-const { MODE_DARK } = THEME_ENUM
+const { MODE_DARK } = THEME_CONSTANTS
 
 const DoubleSidedImage = ({
     src,

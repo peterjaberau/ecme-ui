@@ -5,7 +5,7 @@ import Select, { Option as DefaultOption } from '@/components/ui/Select'
 import Avatar from '@/components/ui/Avatar'
 import { FormItem } from '@/components/ui/Form'
 import NumericInput from '@/components/shared/NumericInput'
-import { countryList } from '@/constants/countries.constant'
+import { DATA_CONSTANTS } from '@/internals/constants'
 import { Controller } from 'react-hook-form'
 import { components } from 'react-select'
 import type { FormSectionBaseProps } from './types'
@@ -18,7 +18,7 @@ type CountryOption = {
     dialCode: string
     value: string
 }
-
+const { countries: countryList } = DATA_CONSTANTS
 const { Control } = components
 
 const CustomSelectOption = (props: OptionProps<CountryOption>) => {

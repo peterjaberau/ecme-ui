@@ -1,12 +1,12 @@
 import Button from '@/components/ui/Button'
 import InputGroup from '@/components/ui/InputGroup'
 import useDirection from '@/utils/hooks/useDirection'
-import { THEME_ENUM } from '@/constants/theme.constant'
+import { SYSTEM_CONSTANTS } from '@/internals/constants'
 import type { Direction } from '@/@types/theme'
 
 const dirList = [
-    { value: THEME_ENUM.DIR_LTR, label: 'LTR' },
-    { value: THEME_ENUM.DIR_RTL, label: 'RTL' },
+    { value: SYSTEM_CONSTANTS.theme.DIR_LTR, label: 'LTR' },
+    { value: SYSTEM_CONSTANTS.theme.DIR_RTL, label: 'RTL' },
 ]
 
 const DirectionSwitcher = ({

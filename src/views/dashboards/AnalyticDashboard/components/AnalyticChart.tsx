@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import Card from '@/components/ui/Card'
 import Chart from '@/components/shared/Chart'
 import GrowShrinkValue from '@/components/shared/GrowShrinkValue'
-import { COLORS } from '@/constants/chart.constant'
+import { MODULE_CONSTANTS } from '@/internals/constants'
 import { useThemeStore } from '@/store/themeStore'
 import { NumericFormat } from 'react-number-format'
 import type { WebAnalyticData } from '../types'
@@ -10,7 +10,7 @@ import type { WebAnalyticData } from '../types'
 type WebAnalyticProps = {
     data: WebAnalyticData
 }
-
+const { COLORS } = MODULE_CONSTANTS.chart
 const WebAnalytic = ({ data }: WebAnalyticProps) => {
     const isFirstRender = useRef(true)
 

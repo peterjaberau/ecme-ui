@@ -1,5 +1,5 @@
 import classNames from '@/utils/classNames'
-import { HEADER_HEIGHT } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { ReactNode } from 'react'
 import type { CommonProps } from '@/@types/common'
 
@@ -29,7 +29,7 @@ const Header = (props: HeaderProps) => {
                     container && 'container mx-auto',
                     wrapperClass,
                 )}
-                style={{ height: HEADER_HEIGHT }}
+                style={{ height: THEME_CONSTANTS.HEADER_HEIGHT }}
             >
                 <div className="header-action header-action-start">
                     {headerStart}

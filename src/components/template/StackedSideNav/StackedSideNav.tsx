@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import {
-    SPLITTED_SIDE_NAV_MINI_WIDTH,
-    STACKED_SIDE_NAV_SECONDARY_WIDTH,
-    DIR_LTR,
-    DIR_RTL,
-} from '@/constants/theme.constant'
+    SYSTEM_CONSTANTS,
+} from '@/internals/constants'
 import StackedSideNavMini, { SelectedMenuItem } from './StackedSideNavMini'
 import StackedSideNavSecondary from './StackedSideNavSecondary'
 import useResponsive from '@/utils/hooks/useResponsive'
@@ -18,7 +15,7 @@ import useTranslation from '@/utils/hooks/useTranslation'
 import type { TraslationFn } from '@/@types/common'
 
 const stackedSideNavDefaultStyle = {
-    width: SPLITTED_SIDE_NAV_MINI_WIDTH,
+    width: SYSTEM_CONSTANTS.theme.SPLITTED_SIDE_NAV_MINI_WIDTH,
 }
 
 const StackedSideNav = ({
@@ -59,12 +56,12 @@ const StackedSideNav = ({
 
     const stackedSideNavSecondaryDirStyle = () => {
         let style = {}
-        const marginValue = `${-STACKED_SIDE_NAV_SECONDARY_WIDTH}px`
-        if (direction === DIR_LTR) {
+        const marginValue = `${-SYSTEM_CONSTANTS.theme.STACKED_SIDE_NAV_SECONDARY_WIDTH}px`
+        if (direction === SYSTEM_CONSTANTS.theme.DIR_LTR) {
             style = { marginLeft: marginValue }
         }
 
-        if (direction === DIR_RTL) {
+        if (direction === SYSTEM_CONSTANTS.theme.DIR_RTL) {
             style = { marginRight: marginValue }
         }
 
@@ -98,7 +95,7 @@ const StackedSideNav = ({
                             mode,
                         )}`}
                         style={{
-                            width: STACKED_SIDE_NAV_SECONDARY_WIDTH,
+                            width: SYSTEM_CONSTANTS.theme.STACKED_SIDE_NAV_SECONDARY_WIDTH,
                             ...(isEmpty(selectedMenu)
                                 ? stackedSideNavSecondaryDirStyle()
                                 : {}),

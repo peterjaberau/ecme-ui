@@ -71,6 +71,10 @@
         "mail": "Mail",
         "chat": "Chat",
         "uiComponents": "UI Components",
+        "uiComponentsArk": {
+            "ark": "Ark",
+            "accordion": "Accordion"
+        },
         "uiComponentsCommon": {
             "common": "Common",
             "grid": "Grid",

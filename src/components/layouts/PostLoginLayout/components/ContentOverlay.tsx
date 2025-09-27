@@ -11,7 +11,7 @@ import LayoutBase from '@/components//template/LayoutBase'
 import classNames from '@/utils/classNames'
 import useScrollTop from '@/utils/hooks/useScrollTop'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { LAYOUT_CONTENT_OVERLAY } from '@/constants/theme.constant'
+import { THEME_CONSTANTS } from '@/internals/constants'
 import type { CommonProps } from '@/@types/common'
 import type { FooterPageContainerType } from '@/components/template/Footer'
 
@@ -22,7 +22,7 @@ const ContentOverlay = ({ children }: CommonProps) => {
 
     return (
         <LayoutBase
-            type={LAYOUT_CONTENT_OVERLAY}
+            type={THEME_CONSTANTS.LAYOUT_CONTENT_OVERLAY}
             className="app-layout-content-overlay flex flex-auto flex-col min-h-screen"
             pageContainerReassemble={({
                 children,
